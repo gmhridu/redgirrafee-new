@@ -175,7 +175,7 @@ export const PaymentCategoriesSection = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid-responsive-1-2-3 gap-responsive mb-16 sm:mb-20">
           {paymentCategories[activeTab as keyof typeof paymentCategories].map((category, index) => (
             <div
               key={index}
