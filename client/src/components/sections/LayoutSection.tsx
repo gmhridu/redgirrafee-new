@@ -93,14 +93,11 @@ export const LayoutSection = () => {
               </motion.div>
               
               {/* Orbiting Problem Indicators */}
-              {[0, 1, 2, 3, 4, 5].map((index) => {
-                const angle = (index * 60) * (Math.PI / 180);
-                const radius = 140;
+              {[0, 1, 2, 3, 4].map((index) => {
+                const angle = (index * 72) * (Math.PI / 180); // 5 dots evenly spaced at 72 degrees
+                const radius = 160; // Increased radius to keep dots outside the big circle
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
-                
-                // Skip the dot that would be positioned over the center circle (around 270 degrees)
-                if (index === 4) return null; // This removes the bottom dot that overlaps with center
                 
                 return (
                   <motion.div
@@ -154,7 +151,7 @@ export const LayoutSection = () => {
 
               {/* Problem Label */}
               <motion.div 
-                className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg"
+                className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-xl shadow-lg"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
