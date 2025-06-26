@@ -93,18 +93,15 @@ export const LayoutSection = () => {
               </motion.div>
               
               {/* Orbiting Problem Indicators */}
-              {[0, 1, 2, 3, 4].map((index) => {
-                const angle = (index * 72 + 36) * (Math.PI / 180); // 5 dots evenly spaced, offset to avoid center
-                const radius = 140; // Same radius as the rotating circle line
+              {[0, 1, 3, 4].map((dotIndex, arrayIndex) => { // Use dotIndex for calculation, arrayIndex for key
+                const angle = (dotIndex * 72 + 36) * (Math.PI / 180); 
+                const radius = 140; 
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
                 
-                // Skip the dot that's blocking the Legacy Issues text - based on screenshot it's index 4
-                if (index === 4) return null; // Remove the dot that's covering the text
-                
                 return (
                   <motion.div
-                    key={index}
+                    key={arrayIndex}
                     className="absolute w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
                     style={{
                       left: x - 12,
@@ -117,7 +114,7 @@ export const LayoutSection = () => {
                     transition={{
                       duration: 2,
                       repeat: Infinity,
-                      delay: index * 0.3,
+                      delay: arrayIndex * 0.3,
                       ease: "easeInOut"
                     }}
                   />
