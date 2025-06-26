@@ -181,63 +181,65 @@ export const MainContentSection = () => {
           {solutionCards.map((solution, solutionIndex) => (
             <motion.div
               key={solutionIndex}
-              className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-slate-200/50 overflow-hidden relative group"
+              className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-200/30 overflow-hidden relative group hover:shadow-2xl hover:border-emerald-200/40 transition-all duration-500"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: solutionIndex * 0.2 }}
             >
-              {/* Sophisticated Card Header */}
-              <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/5"></div>
-                <h3 className="text-3xl font-bold text-white text-center relative z-10 tracking-tight">
+              {/* Premium Card Header */}
+              <div className="bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-md px-8 py-6 relative overflow-hidden border-b border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/8 via-green-400/5 to-teal-500/8"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
+                <h3 className="text-xl font-semibold text-white text-center relative z-10 tracking-wide letter-spacing-wide">
                   {solution.title}
                 </h3>
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-green-400/20 to-emerald-400/10 rounded-full blur-xl"></div>
+                <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-emerald-400/15 to-green-400/10 rounded-full blur-lg"></div>
+                <div className="absolute -bottom-1 -left-1 w-12 h-12 bg-gradient-to-tl from-teal-400/10 to-green-500/5 rounded-full blur-md"></div>
               </div>
 
-              {/* Static Features List with Classy Animated Icons */}
-              <div className="p-8">
-                <div className="space-y-7">
+              {/* Refined Features List */}
+              <div className="p-10">
+                <div className="space-y-6">
                   {solution.features.map((feature, featureIndex) => (
                     <div
                       key={featureIndex}
-                      className="flex items-start gap-5"
+                      className="flex items-start gap-4 group hover:bg-slate-50/50 rounded-xl p-4 -m-4 transition-all duration-300"
                     >
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden group">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden">
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"
+                          className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"
                           animate={{ 
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.6, 0.3]
+                            scale: [1, 1.15, 1],
+                            opacity: [0.4, 0.7, 0.4]
                           }}
                           transition={{ 
-                            duration: 3,
+                            duration: 2.5,
                             repeat: Infinity,
-                            delay: featureIndex * 0.4,
+                            delay: featureIndex * 0.3,
                             ease: "easeInOut"
                           }}
                         />
                         <motion.div
                           animate={{ 
-                            rotate: [0, 5, -5, 0],
-                            scale: [1, 1.1, 1]
+                            rotate: [0, 3, -3, 0],
+                            scale: [1, 1.05, 1]
                           }}
                           transition={{ 
-                            duration: 4,
+                            duration: 3.5,
                             repeat: Infinity,
-                            delay: featureIndex * 0.3,
+                            delay: featureIndex * 0.2,
                             ease: "easeInOut"
                           }}
                         >
-                          <feature.icon className="w-6 h-6 text-white relative z-10" />
+                          <feature.icon className="w-5 h-5 text-white relative z-10" />
                         </motion.div>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-xl text-slate-800 mb-3 tracking-tight">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-lg text-slate-800 mb-2 leading-tight group-hover:text-emerald-700 transition-colors duration-300">
                           {feature.title}
                         </h4>
-                        <p className="text-slate-600 leading-relaxed text-base">
+                        <p className="text-slate-600 leading-relaxed text-sm">
                           {feature.description}
                         </p>
                       </div>
