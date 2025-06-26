@@ -86,12 +86,15 @@ export const TailoredSuccessSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-blue-50/30 via-indigo-50/20 to-violet-50/30 relative overflow-hidden">
-      {/* Sophisticated Background Elements */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-gradient-to-br from-emerald-300 via-green-200 to-teal-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-slate-300 via-gray-200 to-zinc-300 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 rounded-full blur-3xl"></div>
+    <section className="section-spacing bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 relative overflow-hidden">
+      {/* Sophisticated Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-indigo-500/3 to-violet-400/5"></div>
+      
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-blue-300 to-indigo-300 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-violet-200 to-blue-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-200 to-violet-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container-inner relative">

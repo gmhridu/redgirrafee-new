@@ -111,11 +111,15 @@ export const IndustriesSection = () => {
   ];
 
   return (
-    <section className="section-spacing-tight bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-lime-50/30 relative overflow-hidden">
-      {/* Minimal Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-200 rounded-full blur-3xl"></div>
+    <section className="section-spacing-tight bg-gradient-to-br from-amber-50 via-yellow-50 to-lime-50 relative overflow-hidden">
+      {/* Sophisticated Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-600/5 via-yellow-500/3 to-lime-400/5"></div>
+      
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-amber-300 to-yellow-300 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-lime-200 to-amber-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-yellow-200 to-lime-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container-inner relative">
