@@ -13,6 +13,7 @@ import { IndustriesSection } from "@/components/sections/IndustriesSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { StatisticsSection } from "@/components/sections/StatisticsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
+import { PricingCardsSection } from "@/components/sections/PricingCardsSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -139,6 +140,11 @@ export default function Homepage() {
         <section className="section-fullscreen">
           <div className="container-inner">
             <ProcessSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <PricingCardsSection />
           </div>
         </section>
         <section id="pricing" className="section-fullscreen">
