@@ -22,16 +22,16 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showFlagDropdown, setShowFlagDropdown] = useState(false);
-  const [selectedFlag, setSelectedFlag] = useState(0); // UK is default (index 0)
+  const [selectedFlag, setSelectedFlag] = useState(0); // US is default (index 0)
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const flagDropdownRef = useRef<HTMLDivElement>(null);
 
   // Flag data
   const flags = [
-    { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
-    { name: "India", code: "IN", flag: "🇮🇳" },
     { name: "United States", code: "US", flag: "🇺🇸" },
+    { name: "India", code: "IN", flag: "🇮🇳" },
+    { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
     { name: "European Union", code: "EU", flag: "🇪🇺" },
   ];
 

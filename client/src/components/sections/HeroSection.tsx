@@ -186,7 +186,7 @@ export const HeroSection = () => {
               className="text-lg sm:text-xl text-slate-600 leading-relaxed font-light"
               variants={itemVariants}
             >
-              Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring payouts in 97+ countries.
+              Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
             </motion.p>
 
             {/* Action Buttons */}
