@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe } from "lucide-react";
+import { ArrowRight, Users, Building2, Globe, CreditCard, Truck, Calendar, Shield, Server, Home, Plane, Zap, UserCheck, Laptop, Receipt, Scale, TrendingUp } from "lucide-react";
 import { useState } from "react";
 
 export const PaymentCategoriesSection = () => {
@@ -8,80 +8,122 @@ export const PaymentCategoriesSection = () => {
   const paymentCategories = {
     vendor: [
       {
-        title: "Data Centres & SaaS Tools",
-        subtitle: "Streamline hosting and software costs"
-      },
-      {
-        title: "Marketing & Advertising", 
-        subtitle: "Settle bills for campaigns and creative services"
-      },
-      {
-        title: "Cleaning, Security & Facility Services",
-        subtitle: "Fund premises upkeep"
-      },
-      {
-        title: "Logistics & Shipping",
-        subtitle: "Fund freight and transportation services"
-      },
-      {
-        title: "Event & Sponsorship Payments",
-        subtitle: "Support events, sponsorships, and promotional activities"
-      },
-      {
-        title: "Professional Services",
-        subtitle: "Pay consultants, auditors, and advisors efficiently"
-      },
-      {
+        icon: Users,
         title: "Vendor/Contractor Payouts",
-        subtitle: "Pay freelancers and service partners"
+        subtitle: "Pay freelancers and service partners",
+        color: "from-blue-500 to-blue-600"
+      },
+      {
+        icon: TrendingUp,
+        title: "Marketing & Advertising", 
+        subtitle: "Settle bills for campaigns and creative services",
+        color: "from-purple-500 to-purple-600"
+      },
+      {
+        icon: Shield,
+        title: "Cleaning, Security & Facility Services",
+        subtitle: "Fund premises upkeep",
+        color: "from-green-500 to-green-600"
+      },
+      {
+        icon: Truck,
+        title: "Logistics & Shipping",
+        subtitle: "Fund freight and transportation services",
+        color: "from-orange-500 to-orange-600"
+      },
+      {
+        icon: Calendar,
+        title: "Event & Sponsorship Payments",
+        subtitle: "Support events, sponsorships, and promotional activities",
+        color: "from-pink-500 to-pink-600"
+      },
+      {
+        icon: UserCheck,
+        title: "Professional Services",
+        subtitle: "Pay consultants, auditors, and advisors efficiently",
+        color: "from-indigo-500 to-indigo-600"
       }
     ],
     business: [
       {
+        icon: Server,
+        title: "Data Centres & SaaS Tools",
+        subtitle: "Streamline hosting and software costs",
+        color: "from-cyan-500 to-cyan-600"
+      },
+      {
+        icon: Building2,
         title: "Commercial Property Rent",
-        subtitle: "Pay for office and retail spaces"
+        subtitle: "Pay for office and retail spaces",
+        color: "from-slate-500 to-slate-600"
       },
       {
+        icon: Plane,
         title: "Travel & Accommodation",
-        subtitle: "Fund business travel and hotel bookings"
+        subtitle: "Fund business travel and hotel bookings",
+        color: "from-sky-500 to-sky-600"
       },
       {
+        icon: Zap,
         title: "Utility Bills",
-        subtitle: "Settle electricity, water, and gas expenses"
+        subtitle: "Settle electricity, water, and gas expenses",
+        color: "from-yellow-500 to-yellow-600"
       },
       {
+        icon: CreditCard,
         title: "Employee Expenses",
-        subtitle: "Reimburse staff for work-related costs"
+        subtitle: "Reimburse staff for work-related costs",
+        color: "from-emerald-500 to-emerald-600"
+      },
+      {
+        icon: Laptop,
+        title: "IT & Technology Services",
+        subtitle: "Fund software subscriptions and tech infrastructure",
+        color: "from-violet-500 to-violet-600"
       }
     ],
     compliance: [
       {
+        icon: Home,
         title: "Office Supplies & Equipment",
-        subtitle: "Cover costs for hardware and stationary"
+        subtitle: "Cover costs for hardware and stationary",
+        color: "from-amber-500 to-amber-600"
       },
       {
+        icon: Shield,
         title: "Insurance, Legal, Tax Liabilities",
-        subtitle: "Cover compliance-related payments"
+        subtitle: "Cover compliance-related payments",
+        color: "from-red-500 to-red-600"
       },
       {
+        icon: Scale,
         title: "Regulatory Fees",
-        subtitle: "Pay government and licensing fees"
+        subtitle: "Pay government and licensing fees",
+        color: "from-teal-500 to-teal-600"
       },
       {
+        icon: Receipt,
         title: "Tax & Compliance Payments",
-        subtitle: "Simplify tax filings, audits, and payments"
+        subtitle: "Simplify tax filings, audits, and payments",
+        color: "from-blue-500 to-blue-600"
       },
       {
+        icon: TrendingUp,
         title: "Consulting, Marketing, Advisory",
-        subtitle: "Settle bills for strategic partnerships"
+        subtitle: "Settle bills for strategic partnerships",
+        color: "from-purple-500 to-purple-600"
       },
       {
+        icon: UserCheck,
         title: "Audit & Assurance Services",
-        subtitle: "Fund compliance audits and certifications"
+        subtitle: "Fund compliance audits and certifications",
+        color: "from-indigo-500 to-indigo-600"
       },
       {
+        icon: Shield,
         title: "Risk Management",
-        subtitle: "Support payments for risk mitigation services"
+        subtitle: "Support payments for risk mitigation services",
+        color: "from-rose-500 to-rose-600"
       }
     ]
   };
@@ -103,8 +145,11 @@ export const PaymentCategoriesSection = () => {
       <div className="container-inner relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent mb-8 tracking-tight">
-            Pay Everything That Matters. At the<br />Speed of Now
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+            Pay Everything That Matters. At the{" "}
+            <span className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-600 bg-clip-text text-transparent">
+              Speed of Now
+            </span>
           </h2>
         </div>
 
@@ -130,25 +175,40 @@ export const PaymentCategoriesSection = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {paymentCategories[activeTab as keyof typeof paymentCategories].map((category, index) => (
             <div
               key={index}
-              className="bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-lg border border-slate-200/30 hover:shadow-xl hover:border-emerald-200/40 transition-all duration-300 group"
+              className="group relative bg-white/95 backdrop-blur-xl rounded-3xl p-8 shadow-xl border border-slate-200/40 hover:shadow-2xl hover:border-emerald-200/60 transition-all duration-500 hover:scale-[1.02] overflow-hidden"
             >
+              {/* Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 via-white/30 to-slate-100/50 opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+              
+              {/* Floating Elements */}
+              <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-emerald-100/30 to-green-100/20 rounded-full blur-xl group-hover:scale-110 transition-transform duration-500"></div>
+              <div className="absolute -bottom-3 -left-3 w-16 h-16 bg-gradient-to-tl from-slate-100/40 to-gray-100/30 rounded-full blur-lg group-hover:scale-110 transition-transform duration-500"></div>
+
               {/* Icon */}
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
-                <Globe className="w-6 h-6 text-white relative z-10" />
+              <div className={`relative w-16 h-16 bg-gradient-to-br ${category.color} rounded-2xl flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-2xl"></div>
+                <category.icon className="w-8 h-8 text-white relative z-10 drop-shadow-sm" />
+                
+                {/* Icon Glow Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} rounded-2xl blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300`}></div>
               </div>
 
               {/* Content */}
-              <h3 className="font-semibold text-xl text-slate-800 mb-4 leading-tight group-hover:text-emerald-700 transition-colors duration-300">
-                {category.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {category.subtitle}
-              </p>
+              <div className="relative z-10">
+                <h3 className="font-bold text-xl text-slate-800 mb-4 leading-tight group-hover:text-slate-900 transition-colors duration-300">
+                  {category.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed text-sm group-hover:text-slate-700 transition-colors duration-300">
+                  {category.subtitle}
+                </p>
+              </div>
+
+              {/* Hover Accent Line */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-green-400 to-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
             </div>
           ))}
         </div>
