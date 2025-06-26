@@ -149,11 +149,11 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 relative pt-24 sm:pt-28 lg:pt-32 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full max-w-[95%] xl:max-w-[90%] mx-auto">
+      <div className="container-responsive relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
+        <div className="grid-responsive-1-2 gap-responsive items-center">
           {/* Left Content */}
           <motion.div
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -220,7 +220,7 @@ export const HeroSection = () => {
 
             {/* Main Heading */}
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight tracking-tight"
+              className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
               variants={itemVariants}
             >
               RedGirraffe Global
@@ -230,7 +230,7 @@ export const HeroSection = () => {
 
             {/* Subtitle */}
             <motion.p 
-              className="text-lg sm:text-xl text-slate-600 leading-relaxed font-light"
+              className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
               variants={itemVariants}
             >
               Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
@@ -238,7 +238,7 @@ export const HeroSection = () => {
 
             {/* Action Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
               variants={itemVariants}
             >
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
@@ -271,19 +271,19 @@ export const HeroSection = () => {
 
           {/* Right Video Section */}
           <motion.div 
-            className="relative w-full"
+            className="relative w-full order-1 lg:order-2"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div 
               ref={containerRef}
-              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-2 lg:p-3 shadow-2xl w-full ${
+              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl sm:rounded-3xl p-2 sm:p-3 shadow-2xl w-full ${
                 isFullscreen ? 'bg-black' : ''
               }`}
             >
               {/* Video Container */}
-              <div className="relative bg-black rounded-2xl overflow-hidden aspect-video group">
+              <div className="relative bg-black rounded-xl sm:rounded-2xl overflow-hidden aspect-video group">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
