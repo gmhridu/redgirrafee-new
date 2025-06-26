@@ -134,10 +134,10 @@ export const MainContentSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Sophisticated Header */}
-        <div className="text-center mb-24">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+        <div className="text-center mb-16 sm:mb-20 md:mb-24">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-6 sm:mb-8 tracking-tight">
             Our{" "}
             <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-600 bg-clip-text text-transparent">
               Solutions
@@ -150,7 +150,7 @@ export const MainContentSection = () => {
         </div>
 
         {/* Static Solutions Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20">
+        <div className="grid-responsive-1-2-3 gap-responsive mb-16 sm:mb-20">
           {solutionCards.map((solution, solutionIndex) => (
             <div
               key={solutionIndex}

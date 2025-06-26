@@ -47,16 +47,16 @@ export const LayoutSection = () => {
         <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-20 lg:mb-24">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
+          <h2 className="text-responsive-xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
             Traditional B2B payouts fail —
             <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent"> and what we fix.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
+        <div className="grid-responsive-1-2 gap-responsive items-center">
           {/* Dynamic Problem Visualization */}
           <motion.div 
             className="relative flex items-center justify-center order-2 lg:order-1"
@@ -65,7 +65,7 @@ export const LayoutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative w-96 h-96">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
               {/* Central Problem Core */}
               <motion.div 
                 className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white"
