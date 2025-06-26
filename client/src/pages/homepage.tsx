@@ -1,7 +1,10 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FeatureHighlightSection } from "@/components/sections/FeatureHighlightSection";
+import { MainContentSection } from "@/components/sections/MainContentSection";
 import { TailoredSuccessSection } from "@/components/sections/TailoredSuccessSection";
 import { PaymentCategoriesSection } from "@/components/sections/PaymentCategoriesSection";
+import { ContentSection } from "@/components/sections/ContentSection";
+import { LayoutSection } from "@/components/sections/LayoutSection";
 import { FooterSection } from "@/components/sections/FooterSection";
 import { UserTestimonialsSection } from "@/components/sections/UserTestimonialsSection";
 import { SubscriptionFormSection } from "@/components/sections/SubscriptionFormSection";
@@ -83,12 +86,27 @@ export default function Homepage() {
         <HeroSection />
         <section className="section-fullscreen">
           <div className="container-inner">
+            <LayoutSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <MainContentSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
             <TailoredSuccessSection />
           </div>
         </section>
         <section className="section-fullscreen">
           <div className="container-inner">
             <PaymentCategoriesSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <ContentSection />
           </div>
         </section>
         <section id="industries" className="section-fullscreen">
