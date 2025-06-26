@@ -394,7 +394,7 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #1a3c34, #4a8b7b, #00d959);
+    background: linear-gradient(135deg, #166534, #16a34a, #22c55e);
     background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;

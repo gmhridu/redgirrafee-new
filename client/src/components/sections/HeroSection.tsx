@@ -252,8 +252,8 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <div className="flex items-center gap-2 text-indigo-600 font-medium">
-                  <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center gap-2 text-green-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                   organized
                 </div>
               </motion.div>
