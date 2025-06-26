@@ -1,0 +1,468 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --abu-bg: hsl(0, 0%, 96%);
+  --abu-stroke: hsl(0, 0%, 92%);
+  --app-primary: hsl(160, 39%, 15%);
+  --app-secondary: hsl(160, 25%, 42%);
+  --black: hsl(0, 0%, 11%);
+  --body-large-body-large-regular-font-family: "Inter", Helvetica;
+  --body-large-body-large-regular-font-size: 16px;
+  --body-large-body-large-regular-font-style: normal;
+  --body-large-body-large-regular-font-weight: 400;
+  --body-large-body-large-regular-letter-spacing: 0px;
+  --body-large-body-large-regular-line-height: 24px;
+  --body-large-body-large-semibold-font-family: "SF Pro Display", Helvetica;
+  --body-large-body-large-semibold-font-size: 16px;
+  --body-large-body-large-semibold-font-style: normal;
+  --body-large-body-large-semibold-font-weight: 400;
+  --body-large-body-large-semibold-letter-spacing: 0px;
+  --body-large-body-large-semibold-line-height: 24px;
+  --body-medium-body-medium-bold-font-family: "SF Pro Display", Helvetica;
+  --body-medium-body-medium-bold-font-size: 14px;
+  --body-medium-body-medium-bold-font-style: normal;
+  --body-medium-body-medium-bold-font-weight: 700;
+  --body-medium-body-medium-bold-letter-spacing: 0px;
+  --body-medium-body-medium-bold-line-height: 20px;
+  --body-medium-body-medium-regular-font-family: "SF Pro Display", Helvetica;
+  --body-medium-body-medium-regular-font-size: 14px;
+  --body-medium-body-medium-regular-font-style: normal;
+  --body-medium-body-medium-regular-font-weight: 400;
+  --body-medium-body-medium-regular-letter-spacing: 0px;
+  --body-medium-body-medium-regular-line-height: 20px;
+  --dark-green: hsl(159, 68%, 20%);
+  --h1-h1-semibold-font-family: "SF Pro Display", Helvetica;
+  --h1-h1-semibold-font-size: 64px;
+  --h1-h1-semibold-font-style: normal;
+  --h1-h1-semibold-font-weight: 400;
+  --h1-h1-semibold-letter-spacing: 0px;
+  --h1-h1-semibold-line-height: 72px;
+  --h2-h2-bold-font-family: "Inter", Helvetica;
+  --h2-h2-bold-font-size: 48px;
+  --h2-h2-bold-font-style: normal;
+  --h2-h2-bold-font-weight: 700;
+  --h2-h2-bold-letter-spacing: 0px;
+  --h2-h2-bold-line-height: 56px;
+  --h3-h3-semibold-font-family: "Inter", Helvetica;
+  --h3-h3-semibold-font-size: 40px;
+  --h3-h3-semibold-font-style: normal;
+  --h3-h3-semibold-font-weight: 600;
+  --h3-h3-semibold-letter-spacing: 0px;
+  --h3-h3-semibold-line-height: 48px;
+  --h4-h4-semibold-font-family: "Inter", Helvetica;
+  --h4-h4-semibold-font-size: 32px;
+  --h4-h4-semibold-font-style: normal;
+  --h4-h4-semibold-font-weight: 600;
+  --h4-h4-semibold-letter-spacing: 0px;
+  --h4-h4-semibold-line-height: 40px;
+  --h5-h5-bold-font-family: "SF Pro Display", Helvetica;
+  --h5-h5-bold-font-size: 24px;
+  --h5-h5-bold-font-style: normal;
+  --h5-h5-bold-font-weight: 700;
+  --h5-h5-bold-letter-spacing: 0px;
+  --h5-h5-bold-line-height: 32px;
+  --h5-h5-semibold-font-family: "Inter", Helvetica;
+  --h5-h5-semibold-font-size: 24px;
+  --h5-h5-semibold-font-style: normal;
+  --h5-h5-semibold-font-weight: 600;
+  --h5-h5-semibold-letter-spacing: 0px;
+  --h5-h5-semibold-line-height: 32px;
+  --h6-h6-regular-font-family: "SF Pro Display", Helvetica;
+  --h6-h6-regular-font-size: 18px;
+  --h6-h6-regular-font-style: normal;
+  --h6-h6-regular-font-weight: 400;
+  --h6-h6-regular-letter-spacing: 0px;
+  --h6-h6-regular-line-height: 26px;
+  --h6-h6-semibold-font-family: "Inter", Helvetica;
+  --h6-h6-semibold-font-size: 18px;
+  --h6-h6-semibold-font-style: normal;
+  --h6-h6-semibold-font-weight: 600;
+  --h6-h6-semibold-letter-spacing: 0px;
+  --h6-h6-semibold-line-height: 26px;
+  --highlight-c1: hsl(186, 14%, 64%);
+  --logo-color: hsla(0, 0%, 11%, 0.16);
+  --neutral-100: hsl(0, 0%, 4%);
+  --neutral-50: hsl(0, 0%, 45%);
+  --neutralwhite: hsl(0, 0%, 100%);
+  --tag-green: hsl(145, 55%, 82%);
+  --text: hsl(0, 0%, 34%);
+  --textblack: hsl(0, 0%, 11%);
+  --texthighlight: hsl(145, 55%, 82%);
+  --textwhite: hsl(0, 0%, 100%);
+  --white: hsl(0, 0%, 100%);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(222, 47%, 11%);
+
+    --muted: hsl(210, 40%, 96%);
+    --muted-foreground: hsl(215, 16%, 47%);
+
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(222, 47%, 11%);
+
+    --border: hsl(214, 32%, 91%);
+    --input: hsl(214, 32%, 91%);
+
+    --card: transparent;
+    --card-foreground: hsl(222, 47%, 11%);
+
+    --primary: hsl(222, 47%, 11%);
+    --primary-foreground: hsl(210, 40%, 98%);
+
+    --secondary: hsl(210, 40%, 96%);
+    --secondary-foreground: hsl(222, 47%, 11%);
+
+    --accent: hsl(210, 40%, 96%);
+    --accent-foreground: hsl(222, 47%, 11%);
+
+    --destructive: hsl(0, 100%, 50%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --ring: hsl(215, 20%, 65%);
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: hsl(224, 71%, 4%);
+    --foreground: hsl(213, 31%, 91%);
+
+    --muted: hsl(223, 47%, 11%);
+    --muted-foreground: hsl(215, 16%, 57%);
+
+    --accent: hsl(216, 34%, 17%);
+    --accent-foreground: hsl(210, 40%, 98%);
+
+    --popover: hsl(224, 71%, 4%);
+    --popover-foreground: hsl(215, 20%, 65%);
+
+    --border: hsl(216, 34%, 17%);
+    --input: hsl(216, 34%, 17%);
+
+    --card: transparent;
+    --card-foreground: hsl(213, 31%, 91%);
+
+    --primary: hsl(210, 40%, 98%);
+    --primary-foreground: hsl(222, 47%, 1%);
+
+    --secondary: hsl(222, 47%, 11%);
+    --secondary-foreground: hsl(210, 40%, 98%);
+
+    --destructive: hsl(0, 63%, 31%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+
+    --ring: hsl(216, 34%, 17%);
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
+  }
+
+  /* Enhanced smooth scrolling with custom easing */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Smooth scrolling with momentum on iOS */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Improve text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Mobile-first responsive typography */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  /* Ensure images are responsive by default */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better touch targets for mobile */
+  button, [role="button"], input[type="submit"], input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve form inputs on mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Better focus states for accessibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Mobile-optimized typography classes */
+  .responsive-h1 {
+    @apply text-h1-mobile sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+    @apply font-bold leading-tight;
+  }
+
+  .responsive-h2 {
+    @apply text-h2-mobile sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+    @apply font-semibold leading-tight;
+  }
+
+  .responsive-h3 {
+    @apply text-h3-mobile sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+    @apply font-semibold leading-tight;
+  }
+
+  .responsive-h4 {
+    @apply text-h4-mobile sm:text-base md:text-lg lg:text-xl xl:text-2xl;
+    @apply font-medium leading-tight;
+  }
+
+  .responsive-h5 {
+    @apply text-h5-mobile sm:text-sm md:text-base lg:text-lg xl:text-xl;
+    @apply font-medium leading-tight;
+  }
+
+  .responsive-h6 {
+    @apply text-h6-mobile sm:text-xs md:text-sm lg:text-base xl:text-lg;
+    @apply font-medium leading-tight;
+  }
+
+  .responsive-body {
+    @apply text-sm sm:text-base lg:text-lg;
+    @apply leading-relaxed;
+  }
+
+  .responsive-small {
+    @apply text-xs sm:text-sm lg:text-base;
+    @apply leading-normal;
+  }
+
+  /* Mobile-optimized card layouts */
+  .card-mobile {
+    @apply p-4 sm:p-6 lg:p-8;
+    @apply rounded-lg sm:rounded-xl lg:rounded-2xl;
+    @apply shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  /* Touch-friendly buttons */
+  .btn-mobile {
+    @apply btn-touch;
+    @apply rounded-lg sm:rounded-xl;
+    @apply font-medium;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  .btn-mobile-lg {
+    @apply btn-touch-lg;
+    @apply rounded-xl sm:rounded-2xl;
+    @apply font-semibold;
+    @apply transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  /* Responsive form inputs */
+  .input-responsive {
+    @apply input-mobile;
+    @apply rounded-lg sm:rounded-xl;
+    @apply border border-input;
+    @apply bg-background;
+    @apply transition-colors;
+    @apply focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* Mobile-optimized grid layouts */
+  .grid-mobile-1 {
+    @apply grid grid-cols-1;
+  }
+
+  .grid-mobile-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+
+  .grid-mobile-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-mobile-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Responsive spacing utilities */
+  .spacing-mobile {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .spacing-mobile-lg {
+    @apply gap-6 sm:gap-8 lg:gap-12;
+  }
+
+  .padding-mobile {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .padding-mobile-lg {
+    @apply p-6 sm:p-8 lg:p-12;
+  }
+
+  .margin-mobile {
+    @apply m-4 sm:m-6 lg:m-8;
+  }
+
+  /* Mobile-first section spacing */
+  .section-mobile {
+    @apply py-8 sm:py-12 lg:py-16 xl:py-20;
+    @apply px-4 sm:px-6 lg:px-8 xl:px-20;
+  }
+
+  /* Full-screen section backgrounds */
+  .section-fullscreen-bg {
+    @apply w-full min-h-screen;
+  }
+
+  .section-fullscreen-bg-alt {
+    @apply w-full bg-abu-bg;
+  }
+
+  /* Animation utilities */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hover-lift {
+    transition: all 0.3s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-scale {
+    transition: transform 0.3s ease-out;
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease-out;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(74, 139, 123, 0.3);
+    border-color: rgba(74, 139, 123, 0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #1a3c34, #4a8b7b, #00d959);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 3s ease-in-out infinite;
+  }
+
+  .text-gradient-redgirraffe {
+    background: radial-gradient(ellipse 45% 280% at 39% 50%, #010101 0%, #799782 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .fade-in-up {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .fade-in-up-delay-1 {
+    animation: fade-in 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .fade-in-up-delay-2 {
+    animation: fade-in 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .fade-in-up-delay-3 {
+    animation: fade-in 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+
+  .slide-in-left-animation {
+    animation: slide-in-left 1s ease-out forwards;
+  }
+
+  .slide-in-right-animation {
+    animation: slide-in-right 1s ease-out forwards;
+  }
+
+  .scale-in-animation {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  .stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+}
