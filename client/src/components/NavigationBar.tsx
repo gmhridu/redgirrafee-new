@@ -136,9 +136,9 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 relative ${className}`} >
         {/* Sophisticated Gradient Overlay - Same as hero */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
-        <div className="container-inner relative z-10">
-          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
-            <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
+        <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 relative z-10 w-full">
+          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[95%] xl:max-w-[90%] mx-auto py-4 sm:py-4 lg:py-6">
+            <div className="flex items-center gap-3 lg:gap-8 xl:gap-12">
               {/* Logo */}
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="font-bold text-black text-2xl sm:text-2xl lg:text-2xl tracking-tight">
@@ -147,7 +147,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
               </div>
 
               {/* Navigation Links - Hidden on mobile and tablet */}
-              <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+              <div className="hidden lg:flex items-center gap-4 xl:gap-6">
                 {navItems.map((item, index) => (
                   <div
                     key={index}
@@ -163,7 +163,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center justify-center gap-2 xl:gap-3">
+            <div className="flex items-center justify-center gap-1 xl:gap-2">
               {/* Mobile Menu Button - Show only on mobile */}
               <Button
                 ref={mobileMenuButtonRef}
@@ -197,7 +197,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
               </Button>
 
               {/* Desktop Buttons - Hidden on mobile */}
-              <div className="hidden lg:flex items-center gap-2 xl:gap-3">
+              <div className="hidden lg:flex items-center gap-1 xl:gap-2">
                 {/* Flag Dropdown */}
                 <div className="relative" ref={flagDropdownRef}>
                   <Button
