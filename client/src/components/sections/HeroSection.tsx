@@ -80,7 +80,15 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      const isCurrentlyFullscreen = !!document.fullscreenElement;
+      setIsFullscreen(isCurrentlyFullscreen);
+      
+      // When exiting fullscreen, ensure video returns to muted state and continues playing
+      if (!isCurrentlyFullscreen && videoRef.current) {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+        videoRef.current.play().catch(console.log);
+      }
     };
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -265,29 +273,25 @@ export const HeroSection = () => {
                   Your browser does not support the video tag.
                 </video>
 
-                {/* Video Controls Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="w-full p-4 bg-gradient-to-t from-black/60 to-transparent">
-                    <div className="flex justify-between items-center">
-                      <div className="flex gap-3">
-                        <motion.button
-                          onClick={toggleMute}
-                          className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-colors duration-200"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                        </motion.button>
-                        <motion.button
-                          onClick={toggleFullscreen}
-                          className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-colors duration-200"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
-                        </motion.button>
-                      </div>
-                    </div>
+                {/* Video Controls Overlay - Bottom Right */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex gap-2">
+                    <motion.button
+                      onClick={toggleMute}
+                      className="bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 shadow-lg"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                    </motion.button>
+                    <motion.button
+                      onClick={toggleFullscreen}
+                      className="bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 shadow-lg"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
+                    </motion.button>
                   </div>
                 </div>
               </div>
