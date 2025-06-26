@@ -141,7 +141,7 @@ export const ContentSection = () => {
           <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
             Pay everything that matters.
           </h2>
-          <p className="text-2xl lg:text-3xl text-indigo-600 font-medium">
+          <p className="text-2xl lg:text-3xl text-green-600 font-medium">
             At the speed of now.
           </p>
         </div>
@@ -154,7 +154,7 @@ export const ContentSection = () => {
                 <h3 className="text-3xl font-bold text-slate-900 mb-4">
                   {category.title}
                 </h3>
-                <div className="w-16 h-1 bg-indigo-600 mx-auto"></div>
+                <div className="w-16 h-1 bg-green-600 mx-auto"></div>
                 {category.description && (
                   <p className="text-slate-600 mt-4">{category.description}</p>
                 )}
@@ -167,7 +167,7 @@ export const ContentSection = () => {
                     className={`${feature.bgColor} p-6 rounded-2xl hover:shadow-lg transition-all duration-200 group cursor-pointer border border-slate-100`}
                   >
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200">
+                      <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200">
                         <feature.icon className="w-6 h-6 text-white" />
                       </div>
                       <h4 className="font-bold text-slate-900 mb-2 text-lg">
@@ -186,7 +186,7 @@ export const ContentSection = () => {
 
         {/* CTA Button */}
         <div className="text-center mb-24">
-          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-12 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-3 mx-auto group">
+          <Button className="bg-green-600 hover:bg-green-700 text-white rounded-full px-12 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-3 mx-auto group">
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             Request a Demo
           </Button>
@@ -196,7 +196,7 @@ export const ContentSection = () => {
         <div className="bg-slate-50/50 rounded-3xl p-12">
           {/* Tab Headers */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="bg-slate-900 text-white px-8 py-3 rounded-full font-semibold border-b-4 border-indigo-600">
+            <div className="bg-slate-900 text-white px-8 py-3 rounded-full font-semibold border-b-4 border-green-600">
               Vendor & Payments
             </div>
             <div className="text-slate-600 px-8 py-3 rounded-full hover:bg-slate-200 transition-colors cursor-pointer">
@@ -215,8 +215,8 @@ export const ContentSection = () => {
                 className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 group"
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-50 transition-colors duration-200">
-                    <operation.icon className="w-8 h-8 text-slate-600 group-hover:text-indigo-600 transition-colors duration-200" />
+                  <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-green-50 transition-colors duration-200">
+                    <operation.icon className="w-8 h-8 text-slate-600 group-hover:text-green-600 transition-colors duration-200" />
                   </div>
                   <h4 className="font-bold text-slate-900 mb-3 text-lg leading-tight">
                     {operation.title}

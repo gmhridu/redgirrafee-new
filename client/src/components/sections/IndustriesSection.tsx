@@ -8,7 +8,7 @@ export const IndustriesSection = () => {
       title: "Data Centres",
       description: "Optimize infrastructure payments.",
       color: "bg-slate-50 hover:bg-slate-100",
-      iconColor: "text-indigo-600"
+      iconColor: "text-green-600"
     },
     {
       icon: TrendingUp,
@@ -122,7 +122,7 @@ export const IndustriesSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-            Industries we <span className="text-indigo-600">serve</span>.
+            Industries we <span className="text-green-600">serve</span>.
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Tailored solutions for diverse business sectors.
