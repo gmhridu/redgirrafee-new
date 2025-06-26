@@ -87,15 +87,15 @@ export const LayoutSection = () => {
               >
                 <div className="text-center">
                   <X className="w-8 h-8 text-white mx-auto mb-2" />
-                  <p className="text-xs text-white font-medium">Legacy</p>
+                  <p className="text-sm font-bold text-white">Legacy</p>
                   <p className="text-sm font-bold text-white">Issues</p>
                 </div>
               </motion.div>
               
               {/* Orbiting Problem Indicators */}
               {[0, 1, 2, 3, 4].map((index) => {
-                const angle = (index * 72) * (Math.PI / 180); // 5 dots evenly spaced at 72 degrees
-                const radius = 160; // Increased radius to keep dots outside the big circle
+                const angle = (index * 72 + 36) * (Math.PI / 180); // 5 dots evenly spaced, offset to avoid center
+                const radius = 140; // Same radius as the rotating circle line
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
                 
