@@ -99,8 +99,8 @@ export const LayoutSection = () => {
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
                 
-                // Skip the dot that would be positioned inside the Legacy Issues circle (bottom right area)
-                if (index === 1) return null; // Remove the problematic dot
+                // Skip the dot that overlaps with the Legacy Issues text (check which one is actually blocking)
+                if (index === 3) return null; // Remove the dot that's blocking the text
                 
                 return (
                   <motion.div
