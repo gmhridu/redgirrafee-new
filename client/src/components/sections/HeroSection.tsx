@@ -123,38 +123,50 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               {/* Slider Switch Container */}
-              <div className="inline-flex bg-gray-200 rounded-full p-1 shadow-inner">
-                <button
-                  onClick={() => setIsCommercial(true)}
-                  className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                    isCommercial 
-                      ? 'bg-slate-800 text-white shadow-md' 
-                      : 'text-slate-600 hover:text-slate-800'
-                  }`}
-                >
-                  Commercial
-                </button>
-                <button
-                  onClick={() => setIsCommercial(false)}
-                  className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-                    !isCommercial 
-                      ? 'bg-slate-800 text-white shadow-md' 
-                      : 'text-slate-600 hover:text-slate-800'
-                  }`}
-                >
-                  Platforms
-                </button>
+              <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-64">
+                {/* Sliding Background */}
+                <motion.div
+                  className="absolute top-1 bottom-1 bg-slate-800 rounded-full shadow-md"
+                  animate={{
+                    left: isCommercial ? "4px" : "50%",
+                    width: "calc(50% - 4px)"
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+                
+                {/* Switch Options */}
+                <div className="relative flex">
+                  <button
+                    onClick={() => setIsCommercial(true)}
+                    className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                      isCommercial ? 'text-white' : 'text-slate-600'
+                    }`}
+                  >
+                    Commercial
+                  </button>
+                  <button
+                    onClick={() => setIsCommercial(false)}
+                    className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                      !isCommercial ? 'text-white' : 'text-slate-600'
+                    }`}
+                  >
+                    Platforms
+                  </button>
+                </div>
               </div>
 
-              {/* Click to Change Button */}
-              <motion.button
-                onClick={handleToggleSwitch}
-                className="bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Click to change
-              </motion.button>
+              {/* Small Click to Change Button with Arrow */}
+              <div className="flex items-center gap-1">
+                <div className="text-green-500 text-lg">◂</div>
+                <motion.button
+                  onClick={handleToggleSwitch}
+                  className="bg-green-500 hover:bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Click to change
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Main Heading */}
