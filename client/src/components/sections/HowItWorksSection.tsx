@@ -94,10 +94,7 @@ export const HowItWorksSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-            Powered by smart{" "}
-            <span className="bg-gradient-to-r from-teal-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
-              infrastructure
-            </span>
+            Smart infrastructure
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             More than a card—an intelligent spend management platform.
