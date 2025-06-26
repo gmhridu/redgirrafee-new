@@ -113,18 +113,18 @@ export const HeroSection = () => {
             >
               <Button 
                 size="sm"
-                className="bg-slate-800 text-white rounded-full px-6 py-2 text-sm font-medium hover:bg-slate-700"
+                className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-6 py-2 text-sm font-medium shadow-lg transition-all duration-300"
               >
                 Commercial
               </Button>
               <Button 
                 variant="ghost"
                 size="sm"
-                className="hover:bg-slate-100 rounded-full px-6 py-2 text-sm font-medium text-slate-600"
+                className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 rounded-full px-6 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 transition-all duration-300"
               >
                 Platforms
               </Button>
-              <div className="ml-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+              <div className="ml-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
                 Click to change
               </div>
             </motion.div>
@@ -153,7 +153,7 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                <Button className="bg-slate-800 hover:bg-slate-700 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+                <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
                   <ArrowRight className="w-5 h-5" />
                   Request a Demo
                 </Button>
@@ -161,7 +161,7 @@ export const HeroSection = () => {
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Button 
                   variant="outline"
-                  className="border-2 border-slate-600 text-slate-600 hover:bg-slate-600 hover:text-white rounded-full px-8 py-4 text-lg font-semibold transition-all duration-300 flex items-center gap-2"
+                  className="bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-slate-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:border-purple-400 hover:text-slate-800 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                 >
                   <ArrowRight className="w-5 h-5" />
                   Contact Sales
@@ -249,18 +249,7 @@ export const HeroSection = () => {
               <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
               <div className="absolute -top-2 -right-8 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
               
-              {/* Floating Text - Positioned better */}
-              <motion.div 
-                className="absolute -right-4 top-8 bg-white px-4 py-2 rounded-full shadow-lg text-sm hidden lg:block"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-              >
-                <div className="flex items-center gap-2 text-green-600 font-medium">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                  organized
-                </div>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>
