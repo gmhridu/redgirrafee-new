@@ -306,18 +306,39 @@ export const HeroSection = () => {
                   Your browser does not support the video tag.
                 </video>
 
-                {/* Standard Video Progress Bar - Only visible in fullscreen */}
+                {/* YouTube-style Video Controls - Only visible in fullscreen */}
                 {isFullscreen && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                    <div className="flex items-center gap-3 text-white text-xs px-4 py-2">
-                      <span className="font-mono text-white/90">{formatTime(currentTime)}</span>
-                      <div className="flex-1 bg-white/30 rounded-sm h-1 overflow-hidden">
-                        <div 
-                          className="bg-white h-full transition-all duration-100 ease-out"
-                          style={{ width: `${progress}%` }}
-                        />
+                  <div className="absolute bottom-0 left-0 right-0">
+                    {/* Thin Progress Bar */}
+                    <div className="w-full bg-white/20 h-1">
+                      <div 
+                        className="bg-red-600 h-full transition-all duration-100 ease-out"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                    {/* Control Bar */}
+                    <div className="bg-gradient-to-t from-black/95 to-black/80 px-3 py-2">
+                      <div className="flex items-center justify-between text-white text-sm">
+                        <div className="flex items-center gap-2">
+                          <motion.button
+                            onClick={toggleMute}
+                            className="hover:bg-white/20 p-1 rounded transition-colors duration-200"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                          </motion.button>
+                          <span className="font-mono text-xs">{formatTime(currentTime)} / {formatTime(duration)}</span>
+                        </div>
+                        <motion.button
+                          onClick={toggleFullscreen}
+                          className="hover:bg-white/20 p-1 rounded transition-colors duration-200"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Minimize className="w-4 h-4" />
+                        </motion.button>
                       </div>
-                      <span className="font-mono text-white/90">{formatTime(duration)}</span>
                     </div>
                   </div>
                 )}
