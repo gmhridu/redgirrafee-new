@@ -2,7 +2,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { FeatureHighlightSection } from "@/components/sections/FeatureHighlightSection";
 import { MainContentSection } from "@/components/sections/MainContentSection";
 import { TailoredSuccessSection } from "@/components/sections/TailoredSuccessSection";
-import { PaymentCategoriesSection } from "@/components/sections/PaymentCategoriesSection";
+
 import { ContentSection } from "@/components/sections/ContentSection";
 import { LayoutSection } from "@/components/sections/LayoutSection";
 import { FooterSection } from "@/components/sections/FooterSection";
@@ -99,11 +99,7 @@ export default function Homepage() {
             <TailoredSuccessSection />
           </div>
         </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <PaymentCategoriesSection />
-          </div>
-        </section>
+
         <section className="section-fullscreen">
           <div className="container-inner">
             <ContentSection />
