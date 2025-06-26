@@ -119,9 +119,24 @@ export const HeroSection = () => {
           >
             {/* Commercial/Platforms Slider Switch */}
             <motion.div 
-              className="flex items-center"
+              className="flex flex-col items-start gap-2"
               variants={itemVariants}
             >
+              {/* Click to Change Button with Arrow positioned above */}
+              <div className="flex items-center gap-1 ml-8">
+                <motion.button
+                  onClick={handleToggleSwitch}
+                  className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Click to change
+                </motion.button>
+              </div>
+              
+              {/* Arrow pointing down to slider */}
+              <div className="text-green-500 text-lg ml-16">▼</div>
+              
               {/* Slider Switch Container */}
               <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-72">
                 {/* Sliding Background */}
