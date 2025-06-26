@@ -307,20 +307,8 @@ export default {
         },
         '.section-fullscreen': {
           width: '100%',
-          paddingTop: '0rem',
-          paddingBottom: '2rem',
-          '@media (min-width: 640px)': {
-            paddingTop: '1rem',
-            paddingBottom: '3rem',
-          },
-          '@media (min-width: 1024px)': {
-            paddingTop: '1rem',
-            paddingBottom: '4rem',
-          },
-          '@media (min-width: 1280px)': {
-            paddingTop: '1rem',
-            paddingBottom: '7rem',
-          },
+          paddingTop: '5rem',
+          paddingBottom: '5rem',
         },
       }
       addUtilities(newUtilities)

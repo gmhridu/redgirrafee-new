@@ -46,7 +46,7 @@ export const FooterSection = () => {
 
       <div className="container-inner relative">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 py-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 py-20"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
