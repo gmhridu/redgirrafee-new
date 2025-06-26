@@ -1,229 +1,190 @@
 import { motion } from "framer-motion";
-import { AlertTriangle, DollarSign, Clock, Shield, TrendingDown, Zap } from "lucide-react";
+import { Clock, AlertTriangle, DollarSign, TrendingDown, Zap, Shield, X } from "lucide-react";
 
 export const LayoutSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   const problemCards = [
     {
       title: "Payment Delays",
       description: "40% of transactions take 30+ days, stalling operations.",
-      color: "bg-gray-800",
       icon: Clock,
     },
     {
       title: "Manual Processes", 
       description: "Lack of automation leads to errors and inefficiencies.",
-      color: "bg-green-100",
       icon: AlertTriangle,
     },
     {
       title: "High Costs",
       description: "Traditional methods (e.g., checks, wire transfers) incur high fees.",
-      color: "bg-red-200",
       icon: DollarSign,
     },
     {
       title: "Cash Flow Bottlenecks",
       description: "Delayed payouts tie up working capital.",
-      color: "bg-yellow-200",
       icon: TrendingDown,
     },
     {
       title: "Lack of Integration",
       description: "Disconnected systems create inefficiencies.",
-      color: "bg-blue-200",
       icon: Zap,
     },
     {
       title: "Fraud Risks",
       description: "Limited security controls expose all entities to fraud.",
-      color: "bg-pink-200",
       icon: Shield,
     },
     {
       title: "Inflexible Terms",
       description: "Rigid payment terms hinder cash flow predictability.",
-      color: "bg-purple-200",
       icon: AlertTriangle,
     },
   ];
 
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-red-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-300 rounded-full blur-3xl"></div>
+    <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      {/* Minimal Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+        {/* Header */}
+        <div className="text-center mb-20 lg:mb-24">
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
             Traditional B2B payouts fail —
           </h2>
-          <p className="text-2xl lg:text-3xl text-green-500 font-medium">
+          <p className="text-2xl lg:text-4xl text-emerald-600 font-semibold tracking-tight">
             and what we fix.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Problem Circle Chart */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
+          {/* Dynamic Problem Visualization */}
           <motion.div 
-            className="relative flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="relative flex items-center justify-center order-2 lg:order-1"
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative w-80 h-80">
-              {/* Center Circle */}
-              <div className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center border-8 border-gray-800">
+            <div className="relative w-96 h-96">
+              {/* Central Problem Core */}
+              <motion.div 
+                className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  boxShadow: [
+                    "0 25px 50px -12px rgba(239, 68, 68, 0.25)",
+                    "0 25px 50px -12px rgba(239, 68, 68, 0.4)",
+                    "0 25px 50px -12px rgba(239, 68, 68, 0.25)"
+                  ]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
                 <div className="text-center">
-                  <p className="text-sm text-gray-500 mb-1">Legacy Issues</p>
-                  <p className="text-lg font-bold text-gray-800">Blocking Growth</p>
+                  <X className="w-8 h-8 text-white mx-auto mb-2" />
+                  <p className="text-xs text-white font-medium">Legacy</p>
+                  <p className="text-sm font-bold text-white">Problems</p>
                 </div>
-              </div>
+              </motion.div>
               
-              {/* Outer Ring Segments */}
-              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                {/* Dark green segment */}
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#1f2937"
-                  strokeWidth="8"
-                  strokeDasharray="25 75"
-                  strokeDashoffset="0"
-                />
-                {/* Light segments */}
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#f3e8ff"
-                  strokeWidth="8"
-                  strokeDasharray="12 88"
-                  strokeDashoffset="-25"
-                />
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#fef3c7"
-                  strokeWidth="8"
-                  strokeDasharray="10 90"
-                  strokeDashoffset="-37"
-                />
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#fce7f3"
-                  strokeWidth="8"
-                  strokeDasharray="8 92"
-                  strokeDashoffset="-47"
-                />
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#dbeafe"
-                  strokeWidth="8"
-                  strokeDasharray="15 85"
-                  strokeDashoffset="-55"
-                />
-                <circle
-                  cx="50" cy="50" r="40"
-                  fill="none"
-                  stroke="#dcfce7"
-                  strokeWidth="8"
-                  strokeDasharray="5 95"
-                  strokeDashoffset="-70"
-                />
-              </svg>
-            </div>
+              {/* Orbiting Problem Indicators */}
+              {[0, 1, 2, 3, 4, 5].map((index) => {
+                const angle = (index * 60) * (Math.PI / 180);
+                const radius = 140;
+                const x = Math.cos(angle) * radius + 192;
+                const y = Math.sin(angle) * radius + 192;
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="absolute w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
+                    style={{
+                      left: x - 12,
+                      top: y - 12,
+                    }}
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [0.7, 1, 0.7],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                      ease: "easeInOut"
+                    }}
+                  />
+                );
+              })}
 
-            {/* Problem Label */}
-            <motion.div 
-              className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm"
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              The Problem
-            </motion.div>
+              {/* Rotating Problem Ring */}
+              <motion.div
+                className="absolute inset-0"
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                <svg className="w-full h-full" viewBox="0 0 384 384">
+                  <circle
+                    cx="192" cy="192" r="140"
+                    fill="none"
+                    stroke="url(#problemGradient)"
+                    strokeWidth="2"
+                    strokeDasharray="10 5"
+                    opacity="0.6"
+                  />
+                  <defs>
+                    <linearGradient id="problemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#ef4444" />
+                      <stop offset="100%" stopColor="#f97316" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </motion.div>
+
+              {/* Problem Label */}
+              <motion.div 
+                className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1 }}
+              >
+                The Problem Ecosystem
+              </motion.div>
+            </div>
           </motion.div>
 
-          {/* Problem Cards */}
-          <motion.div 
-            className="grid grid-cols-1 gap-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+          {/* Sophisticated Problem List */}
+          <div className="space-y-6 order-1 lg:order-2">
             {problemCards.map((card, index) => (
-              <motion.div
+              <div
                 key={index}
-                className={`${card.color} p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer`}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
+                className="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300"
               >
-                <div className="flex items-start gap-4">
-                  <div className={`p-2 rounded-lg ${
-                    card.color === 'bg-gray-800' ? 'bg-gray-700' :
-                    card.color === 'bg-green-100' ? 'bg-green-200' :
-                    card.color === 'bg-red-200' ? 'bg-red-300' :
-                    card.color === 'bg-yellow-200' ? 'bg-yellow-300' :
-                    card.color === 'bg-blue-200' ? 'bg-blue-300' :
-                    card.color === 'bg-pink-200' ? 'bg-pink-300' :
-                    'bg-purple-300'
-                  }`}>
-                    <card.icon className={`w-5 h-5 ${
-                      card.color === 'bg-gray-800' ? 'text-white' : 'text-gray-700'
-                    }`} />
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:from-red-50 group-hover:to-orange-50 transition-all duration-300">
+                    <card.icon className="w-6 h-6 text-slate-600 group-hover:text-red-500 transition-colors duration-300" />
                   </div>
-                  <div>
-                    <h3 className={`font-bold text-lg mb-2 ${
-                      card.color === 'bg-gray-800' ? 'text-white' : 'text-gray-800'
-                    }`}>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
                       {card.title}
                     </h3>
-                    <p className={`text-sm leading-relaxed ${
-                      card.color === 'bg-gray-800' ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
+                    <p className="text-slate-600 leading-relaxed text-base">
                       {card.description}
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
