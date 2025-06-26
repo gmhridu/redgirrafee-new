@@ -49,53 +49,28 @@ export const LayoutSection = () => {
 
       <div className="container-inner relative">
         {/* Header */}
-        <div className="text-center mb-16 lg:mb-20">
-          <h2 className="text-4xl lg:text-6xl font-bold text-red-600 mb-4 leading-tight">
-            The Problem
+        <div className="text-center mb-20 lg:mb-24">
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            Traditional B2B payouts fail —
           </h2>
+          <p className="text-2xl lg:text-4xl text-emerald-600 font-semibold tracking-tight">
+            and what we fix.
+          </p>
         </div>
 
-        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20">
-          {/* Left Side Problems */}
-          <div className="space-y-8 lg:w-80 order-2 lg:order-1">
-            {problemCards.slice(0, 3).map((card, index) => (
-              <motion.div
-                key={index}
-                className="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:from-red-50 group-hover:to-orange-50 transition-all duration-300">
-                    <card.icon className="w-6 h-6 text-slate-600 group-hover:text-red-500 transition-colors duration-300" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-red-600 transition-colors duration-300">
-                      {card.title}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed text-sm">
-                      {card.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Central Problem Visualization */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
+          {/* Dynamic Problem Visualization */}
           <motion.div 
-            className="relative flex items-center justify-center flex-shrink-0 order-1 lg:order-2"
+            className="relative flex items-center justify-center order-2 lg:order-1"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative w-80 h-80">
+            <div className="relative w-96 h-96">
               {/* Central Problem Core */}
               <motion.div 
-                className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white"
+                className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white"
                 animate={{ 
                   scale: [1, 1.05, 1],
                   boxShadow: [
@@ -111,26 +86,26 @@ export const LayoutSection = () => {
                 }}
               >
                 <div className="text-center">
-                  <X className="w-6 h-6 text-white mx-auto mb-1" />
-                  <p className="text-xs text-white font-medium">Legacy Issues</p>
-                  <p className="text-sm font-bold text-white">Blocking Growth</p>
+                  <X className="w-8 h-8 text-white mx-auto mb-2" />
+                  <p className="text-xs text-white font-medium">Legacy</p>
+                  <p className="text-sm font-bold text-white">Problems</p>
                 </div>
               </motion.div>
               
               {/* Orbiting Problem Indicators */}
-              {[0, 1, 2, 3, 4, 5, 6].map((index) => {
-                const angle = (index * 51.4) * (Math.PI / 180); // Adjust spacing
-                const radius = 120;
-                const x = Math.cos(angle) * radius + 160;
-                const y = Math.sin(angle) * radius + 160;
+              {[0, 1, 2, 3, 4, 5].map((index) => {
+                const angle = (index * 60) * (Math.PI / 180);
+                const radius = 140;
+                const x = Math.cos(angle) * radius + 192;
+                const y = Math.sin(angle) * radius + 192;
                 
                 return (
                   <motion.div
                     key={index}
-                    className="absolute w-5 h-5 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
+                    className="absolute w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
                     style={{
-                      left: x - 10,
-                      top: y - 10,
+                      left: x - 12,
+                      top: y - 12,
                     }}
                     animate={{
                       scale: [1, 1.3, 1],
@@ -151,18 +126,18 @@ export const LayoutSection = () => {
                 className="absolute inset-0"
                 animate={{ rotate: 360 }}
                 transition={{
-                  duration: 25,
+                  duration: 20,
                   repeat: Infinity,
                   ease: "linear"
                 }}
               >
-                <svg className="w-full h-full" viewBox="0 0 320 320">
+                <svg className="w-full h-full" viewBox="0 0 384 384">
                   <circle
-                    cx="160" cy="160" r="120"
+                    cx="192" cy="192" r="140"
                     fill="none"
                     stroke="url(#problemGradient)"
                     strokeWidth="2"
-                    strokeDasharray="8 4"
+                    strokeDasharray="10 5"
                     opacity="0.6"
                   />
                   <defs>
@@ -176,7 +151,7 @@ export const LayoutSection = () => {
 
               {/* Problem Label */}
               <motion.div 
-                className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg"
+                className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-3 rounded-full font-bold text-sm shadow-lg"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -187,31 +162,27 @@ export const LayoutSection = () => {
             </div>
           </motion.div>
 
-          {/* Right Side Problems */}
-          <div className="space-y-8 lg:w-80 order-3">
-            {problemCards.slice(3, 7).map((card, index) => (
-              <motion.div
-                key={index + 3}
+          {/* Sophisticated Problem List */}
+          <div className="space-y-6 order-1 lg:order-2">
+            {problemCards.map((card, index) => (
+              <div
+                key={index}
                 className="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all duration-300"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div className="flex items-start gap-5">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl flex items-center justify-center group-hover:from-red-50 group-hover:to-orange-50 transition-all duration-300">
                     <card.icon className="w-6 h-6 text-slate-600 group-hover:text-red-500 transition-colors duration-300" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-red-600 transition-colors duration-300">
+                    <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
                       {card.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed text-sm">
+                    <p className="text-slate-600 leading-relaxed text-base">
                       {card.description}
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
