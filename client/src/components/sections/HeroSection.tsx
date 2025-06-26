@@ -160,7 +160,13 @@ export const HeroSection = () => {
                     Commercial
                   </button>
                   <button
-                    onClick={() => setIsCommercial(false)}
+                    onClick={() => {
+                      if (isCommercial) {
+                        window.location.href = "https://redgirraffe.com/in/b2b-saas";
+                      } else {
+                        setIsCommercial(false);
+                      }
+                    }}
                     className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
                       !isCommercial ? 'text-white' : 'text-slate-600'
                     }`}
