@@ -126,15 +126,10 @@ export const MainContentSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 relative overflow-hidden">
-      {/* Sophisticated Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 via-teal-500/3 to-cyan-400/5"></div>
-      
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-emerald-300 to-teal-300 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-cyan-200 to-emerald-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-teal-200 to-cyan-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section className="section-spacing bg-white relative overflow-hidden">
+      {/* Minimal elegant background */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">

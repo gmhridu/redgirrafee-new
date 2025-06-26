@@ -23,15 +23,10 @@ export const UserTestimonialsSection = () => {
   ];
 
   return (
-    <section className="section-spacing-tight bg-gradient-to-br from-purple-50 via-fuchsia-50 to-pink-50 relative overflow-hidden">
-      {/* Sophisticated Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-fuchsia-500/3 to-pink-400/5"></div>
-      
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-purple-300 to-fuchsia-300 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-pink-200 to-purple-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-fuchsia-200 to-pink-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section className="section-spacing-tight bg-white relative overflow-hidden">
+      {/* Minimal elegant background */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
       </div>
       <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">

@@ -41,15 +41,10 @@ export const LayoutSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-gradient-to-br from-red-50 via-rose-50 to-orange-50 relative overflow-hidden">
-      {/* Sophisticated Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-pink-500/3 to-orange-400/5"></div>
-      
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-red-300 to-orange-300 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-pink-200 to-rose-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-rose-200 to-orange-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section className="section-spacing bg-white relative overflow-hidden">
+      {/* Minimal elegant background */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-slate-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
