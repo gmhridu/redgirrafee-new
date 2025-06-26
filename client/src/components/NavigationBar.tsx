@@ -27,12 +27,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const flagDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Flag data
+  // Flag data with CSS classes
   const flags = [
-    { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
-    { name: "India", code: "IN", flag: "🇮🇳" },
-    { name: "United States", code: "US", flag: "🇺🇸" },
-    { name: "European Union", code: "EU", flag: "🇪🇺" },
+    { name: "United Kingdom", code: "UK", flagClass: "flag-uk" },
+    { name: "India", code: "IN", flagClass: "flag-india" },
+    { name: "United States", code: "US", flagClass: "flag-usa" },
+    { name: "Germany", code: "DE", flagClass: "flag-germany" },
   ];
 
   // Close dropdowns when clicking outside
@@ -133,7 +133,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-app-primary text-white backdrop-blur-sm ${className}`} >
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-white/95 text-slate-900 backdrop-blur-sm border-b border-slate-200 ${className}`} >
         <div className="container-inner">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
@@ -144,7 +144,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     R
                   </div>
                 </div>
-                <div className="font-h5-h5-bold text-white text-2xl sm:text-2xl lg:text-2xl xl:text-[length:var(--h5-h5-bold-font-size)] leading-tight tracking-[var(--h5-h5-bold-letter-spacing)]">
+                <div className="font-h5-h5-bold text-slate-900 text-2xl sm:text-2xl lg:text-2xl xl:text-[length:var(--h5-h5-bold-font-size)] leading-tight tracking-[var(--h5-h5-bold-letter-spacing)]">
                   RedGirraffe
                 </div>
               </div>
@@ -157,7 +157,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     className="p-0 h-auto hover:bg-transparent btn-touch"
                     onClick={() => scrollToSection(item.sectionId)}
                   >
-                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-white hover:text-[#00d959]">
+                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-slate-700 hover:text-indigo-600">
                       {item.label}
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <X className="w-6 h-6 text-white group-hover:text-app-primary" />
+                      <X className="w-6 h-6 text-slate-700 group-hover:text-indigo-600" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -205,10 +205,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                 <div className="relative" ref={flagDropdownRef}>
                   <Button
                     variant="ghost"
-                    className="w-10 h-10 p-1.5 rounded-full hover:bg-gray-300 transition-colors btn-touch"
+                    className="w-10 h-10 p-1.5 rounded-full hover:bg-slate-100 transition-colors btn-touch"
                     onClick={() => setShowFlagDropdown(!showFlagDropdown)}
                   >
-                    <span className="text-2xl">{flags[selectedFlag].flag}</span>
+                    <div className={`flag-round flag-round-sm ${flags[selectedFlag].flagClass}`}></div>
                   </Button>
 
                   {/* Flag Dropdown Menu */}
@@ -230,7 +230,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                             }`}
                             whileHover={{ backgroundColor: '#f9fafb' }}
                           >
-                            <span className="text-xl">{flag.flag}</span>
+                            <div className={`flag-round flag-round-sm ${flag.flagClass}`}></div>
                             <span className="font-body-medium-body-medium-regular text-black text-sm">
                               {flag.code}
                             </span>
