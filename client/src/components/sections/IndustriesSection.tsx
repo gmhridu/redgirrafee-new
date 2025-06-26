@@ -118,10 +118,10 @@ export const IndustriesSection = () => {
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             Industries{" "}
             <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-600 bg-clip-text text-transparent">
               we serve
@@ -133,11 +133,11 @@ export const IndustriesSection = () => {
         </div>
 
         {/* Industries Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
+        <div className="grid-responsive-2-4 gap-responsive-sm mb-12 sm:mb-16">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className={`${industry.color} p-8 rounded-3xl transition-all duration-200 group cursor-pointer border border-slate-100 hover:shadow-lg hover:border-slate-200`}
+              className={`${industry.color} padding-responsive-sm rounded-2xl sm:rounded-3xl transition-all duration-200 group cursor-pointer border border-slate-100 hover:shadow-lg hover:border-slate-200`}
             >
               <div className="text-center">
                 <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:shadow-md transition-shadow duration-200">
