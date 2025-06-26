@@ -49,8 +49,11 @@ export const CallToActionSection = () => {
   return (
     <section className="section-fullscreen">
       <div className="text-center mb-12 animate-on-scroll">
-        <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
-          Choose Your Plan
+        <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-slate-800 mb-6">
+          Choose Your{" "}
+          <span className="bg-gradient-to-r from-pink-600 via-rose-500 to-red-600 bg-clip-text text-transparent">
+            Plan
+          </span>
         </h2>
         <p className="text-lg text-neutral-50 max-w-2xl mx-auto">
           Flexible pricing options designed to grow with your business. Start free or choose a plan that fits your needs.
