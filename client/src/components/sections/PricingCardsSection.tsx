@@ -97,7 +97,7 @@ export const PricingCardsSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid-responsive-1-2-3 gap-responsive max-w-6xl mx-auto">
           {pricingOptions.map((option, index) => (
             <div
               key={index}
