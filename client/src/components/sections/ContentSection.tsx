@@ -218,9 +218,6 @@ export const ContentSection = () => {
             <span>Request a Demo</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </Button>
-          <p className="text-slate-500 mt-4 text-sm">
-            Join thousands of enterprises already transforming their payments
-          </p>
         </div>
 
         {/* Business Operations Section */}
