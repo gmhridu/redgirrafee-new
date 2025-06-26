@@ -35,6 +35,11 @@ export const TailoredSuccessSection = () => {
           icon: DollarSign,
           title: "Cost Efficiency",
           subtitle: "Reduce fees"
+        },
+        {
+          icon: UserCheck,
+          title: "Customer Loyalty",
+          subtitle: "Build stickiness"
         }
       ]
     },
@@ -75,11 +80,6 @@ export const TailoredSuccessSection = () => {
           icon: Banknote,
           title: "Cash Flow Boost",
           subtitle: "Bill discounting benefits"
-        },
-        {
-          icon: UserCheck,
-          title: "Customer Loyalty",
-          subtitle: "Build stickiness"
         }
       ]
     }
