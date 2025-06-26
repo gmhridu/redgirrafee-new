@@ -8,10 +8,10 @@
 }
 
 :root {
-  --abu-bg: hsl(210, 20%, 98%);
-  --abu-stroke: hsl(210, 16%, 93%);
-  --app-primary: hsl(220, 20%, 20%);
-  --app-secondary: hsl(215, 25%, 27%);
+  --abu-bg: hsl(220, 14%, 96%);
+  --abu-stroke: hsl(220, 13%, 91%);
+  --app-primary: hsl(231, 48%, 48%);
+  --app-secondary: hsl(220, 9%, 46%);
   --black: hsl(220, 13%, 9%);
   --body-large-body-large-regular-font-family: "Inter", Helvetica;
   --body-large-body-large-regular-font-size: 16px;

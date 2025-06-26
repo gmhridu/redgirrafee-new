@@ -86,11 +86,11 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 to-slate-50 py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 py-16 sm:py-20 lg:py-28 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-3">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gray-200 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -120,7 +120,7 @@ export const HeroSection = () => {
               >
                 Platforms
               </Button>
-              <div className="ml-4 bg-slate-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+              <div className="ml-4 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-medium">
                 Click to change
               </div>
             </motion.div>
@@ -252,8 +252,8 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <div className="flex items-center gap-2 text-slate-600 font-medium">
-                  <div className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center gap-2 text-indigo-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></div>
                   organized
                 </div>
               </motion.div>
