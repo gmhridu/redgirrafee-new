@@ -126,7 +126,7 @@ export const SophisticatedContactSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 relative overflow-hidden">
+    <section ref={sectionRef} className="section-spacing-contact bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 relative overflow-hidden">
       {/* Sophisticated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/5 via-transparent to-slate-500/5"></div>

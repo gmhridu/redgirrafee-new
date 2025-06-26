@@ -88,62 +88,17 @@ export default function Homepage() {
       <div className="w-full">
         <NavigationBar navItems={navItems} onNavigate={scrollToSection} />
         <HeroSection />
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <LayoutSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <MainContentSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <TailoredSuccessSection />
-          </div>
-        </section>
-
-        <section id="industries" className="section-fullscreen">
-          <div className="container-inner">
-            <IndustriesSection />
-          </div>
-        </section>
-        <section id="features" className="section-fullscreen">
-          <div className="container-inner">
-            <FeatureHighlightSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <UserTestimonialsSection />
-          </div>
-        </section>
-        <section id="how-it-works" className="section-fullscreen">
-          <div className="container-inner">
-            <HowItWorksSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <StatisticsSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <ProcessSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <PricingCardsSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <SophisticatedContactSection />
-          </div>
-        </section>
+        <LayoutSection />
+        <MainContentSection />
+        <TailoredSuccessSection />
+        <IndustriesSection />
+        <FeatureHighlightSection />
+        <UserTestimonialsSection />
+        <HowItWorksSection />
+        <StatisticsSection />
+        <ProcessSection />
+        <PricingCardsSection />
+        <SophisticatedContactSection />
         <section id="pricing" className="section-fullscreen">
           <div className="container-inner">
             <CallToActionSection />

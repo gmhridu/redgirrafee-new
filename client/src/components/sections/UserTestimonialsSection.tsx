@@ -23,7 +23,7 @@ export const UserTestimonialsSection = () => {
   ];
 
   return (
-    <section className="section-fullscreen">
+    <section className="section-spacing bg-slate-50/30 relative overflow-hidden">
       <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
           What Our Customers Say
