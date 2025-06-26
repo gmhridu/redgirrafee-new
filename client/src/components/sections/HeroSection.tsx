@@ -100,40 +100,35 @@ export const HeroSection = () => {
       }
     };
 
+    const handleVideoProgress = () => {
+      if (videoRef.current) {
+        const { currentTime, duration } = videoRef.current;
+        setCurrentTime(currentTime);
+        setDuration(duration);
+        setProgress((currentTime / duration) * 100);
+      }
+    };
+
     document.addEventListener('fullscreenchange', handleFullscreenChange);
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener('timeupdate', handleVideoProgress);
+      video.addEventListener('loadedmetadata', handleVideoProgress);
+    }
+
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      if (video) {
+        video.removeEventListener('timeupdate', handleVideoProgress);
+        video.removeEventListener('loadedmetadata', handleVideoProgress);
+      }
     };
   }, []);
 
+  // Auto-play video when component mounts
   useEffect(() => {
-    // Auto-play video when component mounts
     if (videoRef.current) {
       videoRef.current.play().catch(console.log);
-      
-      // Add progress tracking
-      const updateProgress = () => {
-        if (videoRef.current) {
-          const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-          setProgress(currentProgress || 0);
-          setCurrentTime(videoRef.current.currentTime);
-        }
-      };
-      
-      const updateDuration = () => {
-        if (videoRef.current) {
-          setDuration(videoRef.current.duration);
-        }
-      };
-      
-      videoRef.current.addEventListener('timeupdate', updateProgress);
-      videoRef.current.addEventListener('loadedmetadata', updateDuration);
-      
-      return () => {
-        if (videoRef.current) {
-          videoRef.current.removeEventListener('timeupdate', updateProgress);
-        }
-      };
     }
   }, []);
 
@@ -160,203 +155,148 @@ export const HeroSection = () => {
               initial="hidden"
               animate="visible"
             >
-            {/* Commercial/Platforms Slider Switch */}
-            <motion.div 
-              className="flex flex-col items-start gap-2"
-              variants={itemVariants}
-            >
-              {/* Click to Change Button with Arrow positioned above */}
-              <div className="flex items-center gap-1 ml-8">
-                <motion.button
-                  onClick={handleToggleSwitch}
-                  className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Click to change
-                </motion.button>
-              </div>
-              
-              {/* Arrow pointing down to slider */}
-              <div className="text-green-500 text-lg ml-16">▼</div>
-              
-              {/* Slider Switch Container */}
-              <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-72">
-                {/* Sliding Background */}
-                <motion.div
-                  className="absolute top-1 bottom-1 bg-slate-800 rounded-full shadow-md"
-                  animate={{
-                    left: isCommercial ? "4px" : "50%",
-                    width: "calc(50% - 4px)"
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                />
-                
-                {/* Switch Options */}
-                <div className="relative flex">
-                  <button
-                    onClick={() => setIsCommercial(true)}
-                    className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
-                      isCommercial ? 'text-white' : 'text-slate-600'
-                    }`}
+              {/* Commercial/Platforms Slider Switch */}
+              <motion.div 
+                className="flex flex-col items-start gap-2"
+                variants={itemVariants}
+              >
+                {/* Click to Change Button with Arrow positioned above */}
+                <div className="flex items-center gap-1 ml-8">
+                  <motion.button
+                    onClick={handleToggleSwitch}
+                    className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    Commercial
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (isCommercial) {
-                        window.location.href = "https://redgirraffe.com/in/b2b-saas";
-                      } else {
-                        setIsCommercial(false);
-                      }
-                    }}
-                    className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
-                      !isCommercial ? 'text-white' : 'text-slate-600'
-                    }`}
-                  >
-                    Platforms
-                  </button>
+                    Click to change
+                  </motion.button>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.h1 
-              className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
-              variants={itemVariants}
-            >
-              RedGirraffe Global
-              <br />
-              <span className="text-slate-700">Commercial Card</span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p 
-              className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
-              variants={itemVariants}
-            >
-              Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
-            </motion.p>
-
-            {/* Action Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
-              variants={itemVariants}
-            >
-              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
-                  <ArrowRight className="w-5 h-5" />
-                  Request a Demo
-                </Button>
+                
+                {/* Arrow pointing down to slider */}
+                <div className="text-green-500 text-lg ml-16">▼</div>
+                
+                {/* Slider Switch Container */}
+                <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-72">
+                  {/* Sliding Background */}
+                  <motion.div
+                    className="absolute top-1 bottom-1 bg-slate-800 rounded-full shadow-md"
+                    animate={{
+                      left: isCommercial ? "4px" : "50%",
+                      width: "calc(50% - 4px)"
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Switch Options */}
+                  <div className="relative flex">
+                    <button
+                      onClick={() => setIsCommercial(true)}
+                      className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                        isCommercial ? 'text-white' : 'text-slate-600'
+                      }`}
+                    >
+                      Commercial
+                    </button>
+                    <button
+                      onClick={handleToggleSwitch}
+                      className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                        !isCommercial ? 'text-white' : 'text-slate-600'
+                      }`}
+                    >
+                      Platforms
+                    </button>
+                  </div>
+                </div>
               </motion.div>
-              <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                <Button 
-                  variant="outline"
-                  className="bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-slate-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:border-purple-400 hover:text-slate-800 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
-                >
-                  <ArrowRight className="w-5 h-5" />
-                  Contact Sales
-                </Button>
+
+              {/* Main Heading */}
+              <motion.h1 
+                className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
+                variants={itemVariants}
+              >
+                RedGiraffe Global
+                <br />
+                <span className="text-slate-700">Commercial Card</span>
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p 
+                className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
+                variants={itemVariants}
+              >
+                Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                variants={itemVariants}
+              >
+                <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                  <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                    <ArrowRight className="w-5 h-5" />
+                    Request a Demo
+                  </Button>
+                </motion.div>
+                <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
+                  <Button 
+                    variant="outline"
+                    className="bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-slate-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:border-purple-400 hover:text-slate-800 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                    Contact Sales
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+              {/* Stats */}
+              <motion.div 
+                className="pt-4"
+                variants={itemVariants}
+              >
+                <p className="text-lg font-semibold text-slate-700">
+                  <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
+                </p>
               </motion.div>
             </motion.div>
 
-            {/* Stats */}
+            {/* Right Video Section */}
             <motion.div 
-              className="pt-4"
-              variants={itemVariants}
+              className="relative w-full order-1 lg:order-2"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <p className="text-lg font-semibold text-slate-700">
-                <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
-              </p>
-            </motion.div>
-          </motion.div>
+              <div className="relative group" ref={containerRef}>
+                <div className="aspect-video w-full bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 backdrop-blur-sm">
+                  <video
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
 
-          {/* Right Video Section */}
-          <motion.div 
-            className="relative w-full order-1 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div 
-              ref={containerRef}
-              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl sm:rounded-3xl p-2 sm:p-3 shadow-2xl w-full ${
-                isFullscreen ? 'bg-black' : ''
-              }`}
-            >
-              {/* Video Container */}
-              <div className="relative bg-black rounded-xl sm:rounded-2xl overflow-hidden aspect-video group">
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  muted={isMuted}
-                  loop
-                  autoPlay
-                  playsInline
-                  onEnded={() => {
-                    if (isFullscreen) {
-                      document.exitFullscreen().then(() => {
-                        setIsFullscreen(false);
-                        if (videoRef.current) {
-                          videoRef.current.play();
-                        }
-                      });
-                    }
-                  }}
-                >
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                {/* YouTube-style Video Controls - Only visible in fullscreen */}
-                {isFullscreen && (
-                  <div className="absolute bottom-0 left-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Progress Bar */}
-                    <div className="w-full bg-white/30 h-1 hover:h-2 transition-all duration-200 cursor-pointer group/progress">
-                      <div 
-                        className="bg-red-600 h-full transition-all duration-100 ease-out relative"
-                        style={{ width: `${progress}%` }}
-                      >
-                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-red-600 rounded-full opacity-0 group-hover/progress:opacity-100 transition-opacity duration-200"></div>
+                {/* YouTube-style Controls */}
+                {!isFullscreen && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-4">
+                      {/* Progress Bar */}
+                      <div className="flex-1 bg-white/30 rounded-full h-1 overflow-hidden">
+                        <div 
+                          className="bg-red-500 h-full transition-all duration-300"
+                          style={{ width: `${progress}%` }}
+                        ></div>
                       </div>
-                    </div>
-                    
-                    {/* Control Bar */}
-                    <div className="bg-gradient-to-t from-black/90 to-transparent px-4 py-3">
-                      <div className="flex items-center justify-between text-white">
-                        {/* Left Controls */}
-                        <div className="flex items-center gap-3">
-                          <motion.button
-                            onClick={toggleMute}
-                            className="hover:bg-white/20 p-2 rounded transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                          </motion.button>
-                          <span className="text-sm font-medium">
-                            {formatTime(currentTime)} / {formatTime(duration)}
-                          </span>
-                        </div>
-
-                        {/* Right Controls */}
-                        <div className="flex items-center gap-2">
-                          <motion.button
-                            className="hover:bg-white/20 p-2 rounded transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Settings className="w-5 h-5" />
-                          </motion.button>
-                          <motion.button
-                            onClick={toggleFullscreen}
-                            className="hover:bg-white/20 p-2 rounded transition-colors duration-200"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Square className="w-5 h-5" />
-                          </motion.button>
-                        </div>
+                      
+                      {/* Time Display */}
+                      <div className="text-white text-sm font-medium">
+                        {formatTime(currentTime)} / {formatTime(duration)}
                       </div>
                     </div>
                   </div>
@@ -389,33 +329,30 @@ export const HeroSection = () => {
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-40 animate-pulse"></div>
               <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
               <div className="absolute -top-2 -right-8 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
-              
-
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
       {/* WhatsApp Contact Button - Floating */}
-        <motion.div
-          className="fixed bottom-6 left-6 z-50"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
+      <motion.div
+        className="fixed bottom-6 left-6 z-50"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 1.5 }}
+      >
+        <motion.a
+          href="https://wa.me/your-whatsapp-number"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          title="Contact us on WhatsApp"
         >
-          <motion.a
-            href="https://wa.me/your-whatsapp-number"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            title="Contact us on WhatsApp"
-          >
-            <MessageCircle className="w-7 h-7" />
-          </motion.a>
-        </motion.div>
-      </div>
+          <MessageCircle className="w-7 h-7" />
+        </motion.a>
+      </motion.div>
     </section>
   );
 };
