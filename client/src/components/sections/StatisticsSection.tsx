@@ -103,9 +103,9 @@ export const StatisticsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-            Scale globally with unmatched{" "}
+            Scale globally with{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
-              reliability
+              unmatched reliability
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">

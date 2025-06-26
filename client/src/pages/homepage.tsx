@@ -103,16 +103,7 @@ export default function Homepage() {
             <TailoredSuccessSection />
           </div>
         </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <PaymentCategoriesSection />
-          </div>
-        </section>
-        <section className="section-fullscreen">
-          <div className="container-inner">
-            <ContentSection />
-          </div>
-        </section>
+
         <section id="industries" className="section-fullscreen">
           <div className="container-inner">
             <IndustriesSection />

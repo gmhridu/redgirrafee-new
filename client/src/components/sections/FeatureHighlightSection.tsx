@@ -5,7 +5,10 @@ export const FeatureHighlightSection = () => {
     <section className="section-fullscreen-bg-alt">
       <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
-          Powerful Features
+          Powered by{" "}
+          <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
+            smart infrastructure
+          </span>
         </h2>
         <p className="text-lg text-neutral-50 max-w-2xl mx-auto">
           Everything you need to streamline operations, boost productivity, and scale your business effectively.

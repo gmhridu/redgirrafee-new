@@ -98,9 +98,9 @@ export const TailoredSuccessSection = () => {
         {/* Sophisticated Header */}
         <div className="text-center mb-24">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
-            Tailored for Your{" "}
+            Tailored for{" "}
             <span className="bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 bg-clip-text text-transparent">
-              Success
+              Your Success
             </span>
           </h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full mb-8"></div>
