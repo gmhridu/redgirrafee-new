@@ -92,7 +92,37 @@ export const LayoutSection = () => {
                 </div>
               </motion.div>
               
-
+              {/* Orbiting Problem Indicators */}
+              {[0, 1, 2, 3, 4, 5].map((index) => {
+                const angle = (index * 60) * (Math.PI / 180);
+                const radius = 140;
+                const x = Math.cos(angle) * radius + 192;
+                const y = Math.sin(angle) * radius + 192;
+                
+                // Skip the dot that would be positioned over the center circle (around 270 degrees)
+                if (index === 4) return null; // This removes the bottom dot that overlaps with center
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="absolute w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
+                    style={{
+                      left: x - 12,
+                      top: y - 12,
+                    }}
+                    animate={{
+                      scale: [1, 1.3, 1],
+                      opacity: [0.7, 1, 0.7],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                      ease: "easeInOut"
+                    }}
+                  />
+                );
+              })}
 
               {/* Rotating Problem Ring */}
               <motion.div
