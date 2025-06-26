@@ -44,7 +44,7 @@ export const HowItWorksSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-            Powered by smart <span className="text-indigo-600">infrastructure</span>.
+            Powered by smart <span className="text-green-600">infrastructure</span>.
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             More than a card—an intelligent spend management platform.
@@ -59,7 +59,7 @@ export const HowItWorksSection = () => {
                 <h3 className="text-3xl font-bold text-slate-900 mb-4">
                   {advantage.category}
                 </h3>
-                <div className="w-20 h-1 bg-indigo-600 mx-auto"></div>
+                <div className="w-20 h-1 bg-green-600 mx-auto"></div>
               </div>
 
               <div className="space-y-6">
@@ -67,12 +67,12 @@ export const HowItWorksSection = () => {
                   <div
                     key={featureIndex}
                     className={`bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 group ${
-                      feature.highlight ? 'border-2 border-indigo-200 bg-indigo-50' : 'border border-slate-100'
+                      feature.highlight ? 'border-2 border-green-200 bg-green-50' : 'border border-slate-100'
                     }`}
                   >
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${
-                        feature.highlight ? 'bg-indigo-600' : 'bg-slate-600'
+                        feature.highlight ? 'bg-green-600' : 'bg-slate-600'
                       } flex-shrink-0`}>
                         <feature.icon className="w-6 h-6 text-white" />
                       </div>
