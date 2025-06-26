@@ -202,10 +202,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                 <div className="relative" ref={flagDropdownRef}>
                   <Button
                     variant="ghost"
-                    className="w-10 h-10 p-1.5 rounded-full hover:bg-gray-300 transition-colors btn-touch"
+                    className="w-12 h-12 p-0 rounded-full hover:bg-gray-300 transition-colors btn-touch flex items-center justify-center"
                     onClick={() => setShowFlagDropdown(!showFlagDropdown)}
                   >
-                    <span className="text-2xl">{flags[selectedFlag].flag}</span>
+                    <span className="text-3xl leading-none">{flags[selectedFlag].flag}</span>
                   </Button>
 
                   {/* Flag Dropdown Menu */}
