@@ -8,11 +8,11 @@
 }
 
 :root {
-  --abu-bg: hsl(0, 0%, 96%);
-  --abu-stroke: hsl(0, 0%, 92%);
-  --app-primary: hsl(160, 39%, 15%);
-  --app-secondary: hsl(160, 25%, 42%);
-  --black: hsl(0, 0%, 11%);
+  --abu-bg: hsl(210, 20%, 98%);
+  --abu-stroke: hsl(210, 16%, 93%);
+  --app-primary: hsl(221, 83%, 53%);
+  --app-secondary: hsl(262, 83%, 58%);
+  --black: hsl(220, 13%, 9%);
   --body-large-body-large-regular-font-family: "Inter", Helvetica;
   --body-large-body-large-regular-font-size: 16px;
   --body-large-body-large-regular-font-style: normal;
@@ -37,7 +37,7 @@
   --body-medium-body-medium-regular-font-weight: 400;
   --body-medium-body-medium-regular-letter-spacing: 0px;
   --body-medium-body-medium-regular-line-height: 20px;
-  --dark-green: hsl(159, 68%, 20%);
+  --dark-blue: hsl(221, 39%, 11%);
   --h1-h1-semibold-font-family: "SF Pro Display", Helvetica;
   --h1-h1-semibold-font-size: 64px;
   --h1-h1-semibold-font-style: normal;
@@ -86,15 +86,15 @@
   --h6-h6-semibold-font-weight: 600;
   --h6-h6-semibold-letter-spacing: 0px;
   --h6-h6-semibold-line-height: 26px;
-  --highlight-c1: hsl(186, 14%, 64%);
-  --logo-color: hsla(0, 0%, 11%, 0.16);
-  --neutral-100: hsl(0, 0%, 4%);
-  --neutral-50: hsl(0, 0%, 45%);
+  --highlight-c1: hsl(221, 39%, 58%);
+  --logo-color: hsla(220, 13%, 9%, 0.16);
+  --neutral-100: hsl(220, 13%, 9%);
+  --neutral-50: hsl(220, 9%, 46%);
   --neutralwhite: hsl(0, 0%, 100%);
-  --tag-green: hsl(145, 55%, 82%);
-  --text: hsl(0, 0%, 34%);
-  --textblack: hsl(0, 0%, 11%);
-  --texthighlight: hsl(145, 55%, 82%);
+  --tag-blue: hsl(221, 83%, 95%);
+  --text: hsl(220, 9%, 46%);
+  --textblack: hsl(220, 13%, 9%);
+  --texthighlight: hsl(221, 83%, 95%);
   --textwhite: hsl(0, 0%, 100%);
   --white: hsl(0, 0%, 100%);
 }
