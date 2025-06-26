@@ -50,10 +50,10 @@ export const LayoutSection = () => {
       <div className="container-inner relative">
         {/* Header */}
         <div className="text-center mb-20 lg:mb-24">
-          <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
             Traditional B2B payouts fail —
           </h2>
-          <p className="text-2xl lg:text-4xl text-emerald-600 font-semibold tracking-tight">
+          <p className="text-xl lg:text-2xl text-emerald-600 font-semibold tracking-tight">
             and what we fix.
           </p>
         </div>
