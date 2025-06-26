@@ -123,43 +123,33 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               {/* Slider Switch Container */}
-              <div className="relative bg-gradient-to-r from-slate-700 to-slate-800 rounded-full p-1 shadow-lg">
-                <div className="flex relative">
-                  {/* Slider Background */}
-                  <motion.div
-                    className="absolute top-1 bottom-1 bg-gradient-to-r from-slate-800 to-slate-900 rounded-full shadow-md"
-                    initial={false}
-                    animate={{
-                      left: isCommercial ? "4px" : "calc(50% + 2px)",
-                      width: isCommercial ? "calc(50% - 6px)" : "calc(50% - 6px)"
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  />
-                  
-                  {/* Switch Options */}
-                  <button
-                    onClick={() => setIsCommercial(true)}
-                    className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      isCommercial ? 'text-white' : 'text-slate-300'
-                    }`}
-                  >
-                    Commercial
-                  </button>
-                  <button
-                    onClick={() => setIsCommercial(false)}
-                    className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      !isCommercial ? 'text-white' : 'text-slate-300'
-                    }`}
-                  >
-                    Platforms
-                  </button>
-                </div>
+              <div className="inline-flex bg-gray-200 rounded-full p-1 shadow-inner">
+                <button
+                  onClick={() => setIsCommercial(true)}
+                  className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                    isCommercial 
+                      ? 'bg-slate-800 text-white shadow-md' 
+                      : 'text-slate-600 hover:text-slate-800'
+                  }`}
+                >
+                  Commercial
+                </button>
+                <button
+                  onClick={() => setIsCommercial(false)}
+                  className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                    !isCommercial 
+                      ? 'bg-slate-800 text-white shadow-md' 
+                      : 'text-slate-600 hover:text-slate-800'
+                  }`}
+                >
+                  Platforms
+                </button>
               </div>
 
               {/* Click to Change Button */}
               <motion.button
                 onClick={handleToggleSwitch}
-                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
