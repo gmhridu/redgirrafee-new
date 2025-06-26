@@ -175,23 +175,14 @@ export const HeroSection = () => {
               </p>
             </motion.div>
 
-            {/* Global Reach Indicator */}
+            {/* Global Reach Text Only */}
             <motion.div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-6"
+              className="pt-6"
               variants={itemVariants}
             >
-              <span className="text-slate-600 font-medium text-sm">Trusted globally in</span>
-              <div className="flex gap-2 flex-wrap">
-                <div className="flag-round flag-india" title="India"></div>
-                <div className="flag-round flag-usa" title="United States"></div>
-                <div className="flag-round flag-uk" title="United Kingdom"></div>
-                <div className="flag-round flag-germany" title="Germany"></div>
-                <div className="flag-round flag-singapore" title="Singapore"></div>
-                <div className="flag-round flag-japan" title="Japan"></div>
-                <div className="flag-round flag-france" title="France"></div>
-                <div className="flag-round flag-canada" title="Canada"></div>
-              </div>
-              <span className="text-slate-600 font-medium text-sm">97+ countries</span>
+              <p className="text-slate-600 font-medium text-sm">
+                Trusted globally in 97+ countries
+              </p>
             </motion.div>
           </motion.div>
 

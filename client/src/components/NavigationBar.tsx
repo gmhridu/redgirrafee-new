@@ -133,7 +133,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-white/95 text-slate-900 backdrop-blur-sm border-b border-slate-200 ${className}`} >
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-slate-800 text-white backdrop-blur-sm ${className}`} >
         <div className="container-inner">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
@@ -144,7 +144,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     R
                   </div>
                 </div>
-                <div className="font-h5-h5-bold text-slate-900 text-2xl sm:text-2xl lg:text-2xl xl:text-[length:var(--h5-h5-bold-font-size)] leading-tight tracking-[var(--h5-h5-bold-letter-spacing)]">
+                <div className="font-h5-h5-bold text-white text-2xl sm:text-2xl lg:text-2xl xl:text-[length:var(--h5-h5-bold-font-size)] leading-tight tracking-[var(--h5-h5-bold-letter-spacing)]">
                   RedGirraffe
                 </div>
               </div>
