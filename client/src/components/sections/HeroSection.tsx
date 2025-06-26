@@ -86,11 +86,11 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-white to-slate-50/30 py-16 sm:py-20 lg:py-28 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-[0.015]">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -173,6 +173,25 @@ export const HeroSection = () => {
               <p className="text-lg font-semibold text-slate-700">
                 <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
               </p>
+            </motion.div>
+
+            {/* Global Reach Indicator */}
+            <motion.div
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-6"
+              variants={itemVariants}
+            >
+              <span className="text-slate-600 font-medium text-sm">Trusted globally in</span>
+              <div className="flex gap-2 flex-wrap">
+                <div className="flag-round flag-india" title="India"></div>
+                <div className="flag-round flag-usa" title="United States"></div>
+                <div className="flag-round flag-uk" title="United Kingdom"></div>
+                <div className="flag-round flag-germany" title="Germany"></div>
+                <div className="flag-round flag-singapore" title="Singapore"></div>
+                <div className="flag-round flag-japan" title="Japan"></div>
+                <div className="flag-round flag-france" title="France"></div>
+                <div className="flag-round flag-canada" title="Canada"></div>
+              </div>
+              <span className="text-slate-600 font-medium text-sm">97+ countries</span>
             </motion.div>
           </motion.div>
 

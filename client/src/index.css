@@ -10,7 +10,7 @@
 :root {
   --abu-bg: hsl(220, 14%, 96%);
   --abu-stroke: hsl(220, 13%, 91%);
-  --app-primary: hsl(231, 48%, 48%);
+  --app-primary: hsl(220, 14%, 20%);
   --app-secondary: hsl(220, 9%, 46%);
   --black: hsl(220, 13%, 9%);
   --body-large-body-large-regular-font-family: "Inter", Helvetica;
@@ -465,4 +465,172 @@
   .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
   .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
   .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Rounded Flag Classes */
+  .flag-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+  }
+
+  .flag-round-lg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .flag-round-sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Flag designs */
+  .flag-india {
+    background: linear-gradient(to bottom, #ff9933 0%, #ff9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%, #138808 100%);
+  }
+
+  .flag-india::after {
+    content: '⚪';
+    position: absolute;
+    color: #000080;
+    font-size: 12px;
+    transform: translateY(0px);
+  }
+
+  .flag-usa {
+    background: linear-gradient(to bottom, #b22234 0%, #b22234 7.7%, #ffffff 7.7%, #ffffff 15.4%, #b22234 15.4%, #b22234 23.1%, #ffffff 23.1%, #ffffff 30.8%, #b22234 30.8%, #b22234 38.5%, #ffffff 38.5%, #ffffff 46.2%, #b22234 46.2%);
+  }
+
+  .flag-usa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 46.2%;
+    background: #3c3b6e;
+  }
+
+  .flag-uk {
+    background: #012169;
+    position: relative;
+  }
+
+  .flag-uk::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 20%;
+    background: white;
+  }
+
+  .flag-uk::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 100%;
+    background: white;
+  }
+
+  .flag-germany {
+    background: linear-gradient(to bottom, #000000 0%, #000000 33%, #dd0000 33%, #dd0000 66%, #ffce00 66%, #ffce00 100%);
+  }
+
+  .flag-france {
+    background: linear-gradient(to right, #002395 0%, #002395 33%, #ffffff 33%, #ffffff 66%, #ed2939 66%, #ed2939 100%);
+  }
+
+  .flag-japan {
+    background: #ffffff;
+    position: relative;
+  }
+
+  .flag-japan::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: #bc002d;
+    border-radius: 50%;
+  }
+
+  .flag-china {
+    background: #de2910;
+    position: relative;
+  }
+
+  .flag-china::after {
+    content: '⭐';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    color: #ffde00;
+    font-size: 16px;
+  }
+
+  .flag-singapore {
+    background: linear-gradient(to bottom, #ed2939 0%, #ed2939 50%, #ffffff 50%, #ffffff 100%);
+  }
+
+  .flag-australia {
+    background: #012169;
+    position: relative;
+  }
+
+  .flag-australia::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Cpath fill='%23012169' d='M0 0h60v30H0z'/%3E%3C/svg%3E");
+  }
+
+  .flag-canada {
+    background: linear-gradient(to right, #ff0000 0%, #ff0000 25%, #ffffff 25%, #ffffff 75%, #ff0000 75%, #ff0000 100%);
+    position: relative;
+  }
+
+  .flag-canada::after {
+    content: '🍁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #ff0000;
+  }
+
+  @media (max-width: 768px) {
+    .flag-round {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .flag-round-lg {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .flag-round-sm {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
