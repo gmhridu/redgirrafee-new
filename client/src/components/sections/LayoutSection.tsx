@@ -1,42 +1,42 @@
 import { motion } from "framer-motion";
-import { Clock, AlertTriangle, DollarSign, TrendingDown, Zap, Shield, X } from "lucide-react";
+import { Clock, AlertTriangle, DollarSign, TrendingDown, Zap, Shield, X, Users, Puzzle } from "lucide-react";
 
 export const LayoutSection = () => {
   const problemCards = [
     {
-      title: "Payment Delays",
-      description: "40% of transactions take 30+ days, stalling operations.",
-      icon: Clock,
-    },
-    {
-      title: "Manual Processes", 
-      description: "Lack of automation leads to errors and inefficiencies.",
-      icon: AlertTriangle,
-    },
-    {
-      title: "High Costs",
-      description: "Traditional methods (e.g., checks, wire transfers) incur high fees.",
-      icon: DollarSign,
-    },
-    {
-      title: "Cash Flow Bottlenecks",
-      description: "Delayed payouts tie up working capital.",
+      title: "Cash Flow Constraints",
+      description: "Immediate payment needs drain liquidity, limiting flexibility for growth and operations.",
       icon: TrendingDown,
     },
     {
-      title: "Lack of Integration",
-      description: "Disconnected systems create inefficiencies.",
-      icon: Zap,
+      title: "Payment Delays", 
+      description: "Slow payment cycles stall critical transactions and disrupt business continuity.",
+      icon: Clock,
     },
     {
-      title: "Fraud Risks",
-      description: "Limited security controls expose all entities to fraud.",
-      icon: Shield,
-    },
-    {
-      title: "Inflexible Terms",
-      description: "Rigid payment terms hinder cash flow predictability.",
+      title: "Manual Workflows",
+      description: "Legacy processes lead to errors, delays, and increased operational effort.",
       icon: AlertTriangle,
+    },
+    {
+      title: "Hidden Costs",
+      description: "Traditional methods often include opaque fees, poor visibility, and inefficient use of capital.",
+      icon: DollarSign,
+    },
+    {
+      title: "Supplier Friction",
+      description: "Lack of payment flexibility weakens vendor relationships and reduces negotiation leverage.",
+      icon: Users,
+    },
+    {
+      title: "Disconnected Systems",
+      description: "Fragmented finance tools cause inefficiencies and limit real-time decision-making.",
+      icon: Puzzle,
+    },
+    {
+      title: "Security Gaps",
+      description: "Inadequate controls expose payments to fraud, errors, and compliance risks.",
+      icon: Shield,
     },
   ];
 
