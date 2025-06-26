@@ -133,8 +133,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-transparent backdrop-blur-sm ${className}`} >
-        <div className="container-inner">
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 relative ${className}`} >
+        {/* Sophisticated Gradient Overlay - Same as hero */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
+        <div className="container-inner relative z-10">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
               {/* Logo */}
