@@ -157,7 +157,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     className="p-0 h-auto hover:bg-transparent btn-touch"
                     onClick={() => scrollToSection(item.sectionId)}
                   >
-                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-slate-700 hover:text-indigo-600">
+                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-white hover:text-[#00d959]">
                       {item.label}
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <X className="w-6 h-6 text-slate-700 group-hover:text-indigo-600" />
+                      <X className="w-6 h-6 text-white group-hover:text-[#00d959]" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -193,7 +193,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <Menu className="w-6 h-6 text-slate-700 group-hover:text-indigo-600" />
+                      <Menu className="w-6 h-6 text-white group-hover:text-[#00d959]" />
                     </motion.div>
                   )}
                 </motion.div>
