@@ -195,7 +195,7 @@ export const MainContentSection = () => {
         {/* Call to Action */}
         <div className="text-center">
           <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full px-12 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto group">
-            <span>Get Started Today</span>
+            <span>Request a Demo</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
           </Button>
           <p className="text-slate-500 mt-4 text-sm">
