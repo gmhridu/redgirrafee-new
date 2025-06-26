@@ -86,11 +86,11 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-50 to-slate-50 py-16 sm:py-20 lg:py-28 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-400 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gray-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -120,7 +120,7 @@ export const HeroSection = () => {
               >
                 Platforms
               </Button>
-              <div className="ml-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+              <div className="ml-4 bg-slate-600 text-white text-xs px-3 py-1 rounded-full font-medium">
                 Click to change
               </div>
             </motion.div>
@@ -185,7 +185,7 @@ export const HeroSection = () => {
           >
             <div 
               ref={containerRef}
-              className={`relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-6 shadow-2xl ${
+              className={`relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-2 shadow-2xl ${
                 isFullscreen ? 'bg-black' : ''
               }`}
             >
@@ -245,15 +245,15 @@ export const HeroSection = () => {
               <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-indigo-400 rounded-full opacity-30"></div>
               <div className="absolute -top-2 -right-8 w-6 h-6 bg-blue-300 rounded-full opacity-40"></div>
               
-              {/* Floating Text */}
+              {/* Floating Text - Positioned better */}
               <motion.div 
-                className="absolute -right-8 top-1/2 transform -translate-y-1/2 bg-white px-6 py-3 rounded-full shadow-lg hidden lg:block"
+                className="absolute -right-4 top-8 bg-white px-4 py-2 rounded-full shadow-lg text-sm hidden lg:block"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <div className="flex items-center gap-2 text-blue-600 font-medium">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center gap-2 text-slate-600 font-medium">
+                  <div className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-pulse"></div>
                   organized
                 </div>
               </motion.div>

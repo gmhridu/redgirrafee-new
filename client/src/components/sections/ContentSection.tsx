@@ -154,9 +154,9 @@ export const ContentSection = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-purple-300 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-slate-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-gray-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -171,7 +171,7 @@ export const ContentSection = () => {
           <h2 className="text-5xl lg:text-6xl font-bold text-slate-800 mb-6">
             Pay everything that matters.
           </h2>
-          <p className="text-2xl lg:text-3xl text-blue-500 font-medium">
+          <p className="text-2xl lg:text-3xl text-slate-600 font-medium">
             At the speed of now.
           </p>
         </motion.div>
@@ -194,7 +194,7 @@ export const ContentSection = () => {
                 <h3 className="text-3xl font-bold text-slate-800 mb-4">
                   {category.title}
                 </h3>
-                <div className="w-16 h-1 bg-blue-500 mx-auto"></div>
+                <div className="w-16 h-1 bg-slate-600 mx-auto"></div>
                 {category.description && (
                   <p className="text-gray-600 mt-4">{category.description}</p>
                 )}
