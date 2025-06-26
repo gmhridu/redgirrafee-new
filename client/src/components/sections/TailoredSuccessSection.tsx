@@ -47,6 +47,11 @@ export const TailoredSuccessSection = () => {
       title: "For Cardholding Enterprises", 
       features: [
         {
+          icon: Banknote,
+          title: "Cash Flow Boost",
+          subtitle: "Bill discounting benefits"
+        },
+        {
           icon: CreditCard,
           title: "Bill Discounting",
           subtitle: "Offer early payments with MDR fully absorbed—zero-cost"
@@ -75,11 +80,6 @@ export const TailoredSuccessSection = () => {
           icon: FileText,
           title: "Compliance Ease",
           subtitle: "Embedded tax data"
-        },
-        {
-          icon: Banknote,
-          title: "Cash Flow Boost",
-          subtitle: "Bill discounting benefits"
         }
       ]
     }
@@ -127,25 +127,30 @@ export const TailoredSuccessSection = () => {
               {/* Static Features Grid */}
               <div className="p-10">
                 <div className={`grid ${categoryIndex === 1 ? 'grid-cols-2' : 'grid-cols-2'} gap-4`}>
-                  {category.features.map((feature, featureIndex) => (
-                    <div
-                      key={featureIndex}
-                      className="bg-slate-50/50 rounded-xl p-6 hover:bg-slate-50 transition-all duration-300 group/item"
-                    >
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mx-auto mb-4">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
-                          <feature.icon className="w-6 h-6 text-white relative z-10" />
+                  {category.features.map((feature, featureIndex) => {
+                    if (!feature.icon || !feature.title) return null;
+                    
+                    const IconComponent = feature.icon;
+                    return (
+                      <div
+                        key={featureIndex}
+                        className="bg-slate-50/50 rounded-xl p-6 hover:bg-slate-50 transition-all duration-300 group/item"
+                      >
+                        <div className="text-center">
+                          <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mx-auto mb-4">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
+                            <IconComponent className="w-6 h-6 text-white relative z-10" />
+                          </div>
+                          <h4 className="font-semibold text-lg text-slate-800 mb-3 leading-tight group-hover/item:text-emerald-700 transition-colors duration-300">
+                            {feature.title}
+                          </h4>
+                          <p className="text-slate-600 leading-relaxed text-sm">
+                            {feature.subtitle}
+                          </p>
                         </div>
-                        <h4 className="font-semibold text-lg text-slate-800 mb-3 leading-tight group-hover/item:text-emerald-700 transition-colors duration-300">
-                          {feature.title}
-                        </h4>
-                        <p className="text-slate-600 leading-relaxed text-sm">
-                          {feature.subtitle}
-                        </p>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
