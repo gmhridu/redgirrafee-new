@@ -5,7 +5,7 @@ export const ContentSection = () => {
   const featureCategories = [
     {
       title: "For Banks",
-      description: "Unlock smarter payments for banks and enterprises with RedGirraffe.",
+      description: "",
       features: [
         {
           icon: TrendingUp,
@@ -29,6 +29,24 @@ export const ContentSection = () => {
           icon: Clock,
           title: "Real-Time Insights",
           subtitle: "Monitor transactions",
+          bgColor: "bg-slate-50"
+        },
+        {
+          icon: Zap,
+          title: "Scalable Solutions",
+          subtitle: "Support growth",
+          bgColor: "bg-slate-50"
+        },
+        {
+          icon: DollarSign,
+          title: "Cost Efficiency",
+          subtitle: "Reduce fees",
+          bgColor: "bg-slate-50"
+        },
+        {
+          icon: Users,
+          title: "Customer Loyalty",
+          subtitle: "Build stickiness",
           bgColor: "bg-slate-50"
         }
       ]
@@ -62,21 +80,15 @@ export const ContentSection = () => {
           bgColor: "bg-slate-50"
         },
         {
-          icon: Zap,
-          title: "Scalable Solutions",
-          subtitle: "Support growth",
-          bgColor: "bg-slate-50"
-        },
-        {
           icon: TrendingUp,
           title: "Real-Time Analytics",
           subtitle: "Support growth",
           bgColor: "bg-slate-50"
         },
         {
-          icon: Users,
-          title: "Customer Loyalty",
-          subtitle: "Build stickiness",
+          icon: Building2,
+          title: "Compliance Ease",
+          subtitle: "Embedded tax data",
           bgColor: "bg-slate-50"
         },
         {
@@ -145,7 +157,10 @@ export const ContentSection = () => {
           <p className="text-xl lg:text-2xl text-green-600 font-medium mb-6">
             At the speed of now.
           </p>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full mb-8"></div>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Unlock smarter payments for banks and enterprises with RedGirraffe.
+          </p>
         </div>
 
         {/* Static Feature Categories */}
@@ -171,7 +186,7 @@ export const ContentSection = () => {
                 {category.description && (
                   <p className="text-slate-600 text-center mb-8 leading-relaxed">{category.description}</p>
                 )}
-                <div className={`grid ${categoryIndex === 1 ? 'grid-cols-2' : 'grid-cols-2'} gap-4`}>
+                <div className={`grid ${categoryIndex === 1 ? 'grid-cols-2 md:grid-cols-2' : 'grid-cols-2'} gap-4`}>
                   {category.features.map((feature, featureIndex) => (
                     <div
                       key={featureIndex}
