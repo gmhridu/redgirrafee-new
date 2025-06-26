@@ -50,12 +50,10 @@ export const LayoutSection = () => {
       <div className="container-inner relative">
         {/* Header */}
         <div className="text-center mb-20 lg:mb-24">
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
             Traditional B2B payouts fail —
+            <span className="text-emerald-600"> and what we fix.</span>
           </h2>
-          <p className="text-xl lg:text-2xl text-emerald-600 font-semibold tracking-tight">
-            and what we fix.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
