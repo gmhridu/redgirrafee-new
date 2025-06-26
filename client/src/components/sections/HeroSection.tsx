@@ -3,11 +3,19 @@ import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Volume2, VolumeX, Maximize, Minimize } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
+const formatTime = (time: number): string => {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+};
+
 export const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isCommercial, setIsCommercial] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -108,10 +116,18 @@ export const HeroSection = () => {
         if (videoRef.current) {
           const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
           setProgress(currentProgress || 0);
+          setCurrentTime(videoRef.current.currentTime);
+        }
+      };
+      
+      const updateDuration = () => {
+        if (videoRef.current) {
+          setDuration(videoRef.current.duration);
         }
       };
       
       videoRef.current.addEventListener('timeupdate', updateProgress);
+      videoRef.current.addEventListener('loadedmetadata', updateDuration);
       
       return () => {
         if (videoRef.current) {
@@ -290,17 +306,18 @@ export const HeroSection = () => {
                   Your browser does not support the video tag.
                 </video>
 
-                {/* Progress Bar - Only visible in fullscreen */}
+                {/* Standard Video Progress Bar - Only visible in fullscreen */}
                 {isFullscreen && (
-                  <div className="absolute bottom-16 left-4 right-4">
-                    <div className="bg-black/40 backdrop-blur-sm rounded-full h-2 overflow-hidden">
-                      <div 
-                        className="bg-white h-full transition-all duration-300 ease-out"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                    <div className="text-white text-sm mt-1 text-center">
-                      {Math.round(progress)}% Complete
+                  <div className="absolute bottom-16 left-4 right-4 bg-gradient-to-t from-black/80 to-transparent p-4">
+                    <div className="flex items-center gap-4 text-white text-sm">
+                      <span className="font-mono">{formatTime(currentTime)}</span>
+                      <div className="flex-1 bg-white/20 rounded-full h-1 overflow-hidden cursor-pointer">
+                        <div 
+                          className="bg-white h-full transition-all duration-100 ease-out"
+                          style={{ width: `${progress}%` }}
+                        />
+                      </div>
+                      <span className="font-mono">{formatTime(duration)}</span>
                     </div>
                   </div>
                 )}
