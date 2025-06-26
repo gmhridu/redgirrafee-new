@@ -8,12 +8,15 @@ export const HowItWorksSection = () => {
       features: [
         {
           icon: Shield,
-          title: "Capture low-risk B2B card spend, reduce fraud with PSP-backed security, and scale globally.",
-          highlight: true
+          title: "Capture low-risk B2B card spend, reduce fraud with PSP-backed security, and scale globally."
         },
         {
           icon: TrendingUp,
-          title: "Increase Revenue Streams: Earn higher transaction fees"
+          title: "Increase Revenue Streams: Earn higher transaction fees with secure, high-volume B2B payments."
+        },
+        {
+          icon: Globe,
+          title: "Enhanced Reporting: Access detailed analytics to optimize operations and compliance."
         }
       ]
     },
@@ -26,7 +29,11 @@ export const HowItWorksSection = () => {
         },
         {
           icon: TrendingUp,
-          title: "Expand Market Reach: Tap into RedGirraffe's global network"
+          title: "Expand Market Reach: Tap into RedGiraffe's global network of 97+ countries."
+        },
+        {
+          icon: Shield,
+          title: "Reduce Operational Costs: Streamline payment processing with integrated APIs."
         }
       ]
     }
@@ -69,14 +76,10 @@ export const HowItWorksSection = () => {
                 {advantage.features.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
-                    className={`bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 group ${
-                      feature.highlight ? 'border-2 border-green-200 bg-green-50' : 'border border-slate-100'
-                    }`}
+                    className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 group border border-slate-100"
                   >
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${
-                        feature.highlight ? 'bg-green-600' : 'bg-slate-600'
-                      } flex-shrink-0`}>
+                      <div className="p-3 rounded-xl bg-green-600 flex-shrink-0">
                         <feature.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
