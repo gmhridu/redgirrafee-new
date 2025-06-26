@@ -246,7 +246,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     Get Demo
                   </span>
                 </Button>
-                <Button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Button className="bg-slate-700/20 hover:bg-slate-800/30 backdrop-blur-sm border border-slate-400/40 text-slate-800 hover:text-slate-900 font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <span className="text-sm font-medium">
                     Login
                   </span>

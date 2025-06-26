@@ -97,7 +97,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-16 sm:pb-20 lg:pb-28 overflow-hidden -mt-20">
       {/* Sophisticated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
       
@@ -108,7 +108,7 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-inner relative pt-24 sm:pt-28 lg:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <motion.div
@@ -123,11 +123,11 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               {/* Slider Switch Container */}
-              <div className="relative bg-gray-200 rounded-full p-1 shadow-inner">
+              <div className="relative bg-gradient-to-r from-slate-700 to-slate-800 rounded-full p-1 shadow-lg">
                 <div className="flex relative">
                   {/* Slider Background */}
                   <motion.div
-                    className="absolute top-1 bottom-1 bg-white rounded-full shadow-md"
+                    className="absolute top-1 bottom-1 bg-gradient-to-r from-slate-800 to-slate-900 rounded-full shadow-md"
                     initial={false}
                     animate={{
                       left: isCommercial ? "4px" : "calc(50% + 2px)",
@@ -140,7 +140,7 @@ export const HeroSection = () => {
                   <button
                     onClick={() => setIsCommercial(true)}
                     className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      isCommercial ? 'text-slate-800' : 'text-slate-500'
+                      isCommercial ? 'text-white' : 'text-slate-300'
                     }`}
                   >
                     Commercial
@@ -148,7 +148,7 @@ export const HeroSection = () => {
                   <button
                     onClick={() => setIsCommercial(false)}
                     className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      !isCommercial ? 'text-slate-800' : 'text-slate-500'
+                      !isCommercial ? 'text-white' : 'text-slate-300'
                     }`}
                   >
                     Platforms
@@ -159,7 +159,7 @@ export const HeroSection = () => {
               {/* Click to Change Button */}
               <motion.button
                 onClick={handleToggleSwitch}
-                className="bg-gradient-to-r from-lime-400 to-green-500 hover:from-lime-500 hover:to-green-600 text-white text-xs px-4 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
