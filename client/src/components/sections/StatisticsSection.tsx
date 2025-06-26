@@ -99,10 +99,10 @@ export const StatisticsSection = () => {
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-emerald-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             Scale globally with{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
               unmatched reliability
@@ -115,7 +115,7 @@ export const StatisticsSection = () => {
         </div>
 
         {/* Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid-responsive-1-2-3 gap-responsive max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <div
               key={index}

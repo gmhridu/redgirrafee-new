@@ -68,10 +68,10 @@ export const PricingCardsSection = () => {
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             RedGiraffe Global{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
               Commercial Card Pricing
