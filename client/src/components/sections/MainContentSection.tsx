@@ -24,7 +24,22 @@ export const MainContentSection = () => {
         {
           icon: Globe,
           title: "Real-Time Monitoring",
-          description: "Track transactions with instant visibility."
+          description: "Lower risk exposure with live tracking."
+        },
+        {
+          icon: Building2,
+          title: "Scalable Infrastructure",
+          description: "Support growing transaction volumes."
+        },
+        {
+          icon: TrendingUp,
+          title: "Cost Efficiency",
+          description: "Lower processing costs compared to traditional methods."
+        },
+        {
+          icon: Globe,
+          title: "Global Reach",
+          description: "Facilitate payments in 97+ countries."
         }
       ]
     },
@@ -33,23 +48,38 @@ export const MainContentSection = () => {
       features: [
         {
           icon: CreditCard,
-          title: "Employee Spend Management",
-          description: "Control and monitor corporate card usage."
+          title: "Bill Discounting",
+          description: "Offer early payments to vendors with MDR fully absorbed—zero-cost for you, faster cash flow for them."
         },
         {
           icon: Shield,
-          title: "Fraud Protection",
-          description: "Advanced security with real-time alerts."
+          title: "Maker Checker",
+          description: "Secure, multi-approval workflows for error-free transactions."
         },
         {
           icon: TrendingUp,
-          title: "Expense Automation",
-          description: "Streamline reporting and reconciliation."
+          title: "Pre-Approved Limits",
+          description: "Set spend caps for vendors, rent, and utilities."
         },
         {
           icon: Building2,
-          title: "Multi-location Support",
-          description: "Centralized control across all offices."
+          title: "ERP Integration",
+          description: "Seamlessly sync with 50+ business tools for efficiency."
+        },
+        {
+          icon: Globe,
+          title: "Real-Time Analytics",
+          description: "Unified dashboards provide spend visibility."
+        },
+        {
+          icon: Users,
+          title: "Tax Metadata",
+          description: "Embedded tax data simplifies compliance."
+        },
+        {
+          icon: UserCheck,
+          title: "Customer Stickiness",
+          description: "Streamlined payments enhance vendor relationships."
         }
       ]
     },
@@ -58,23 +88,38 @@ export const MainContentSection = () => {
       features: [
         {
           icon: Globe,
-          title: "Instant Payments",
-          description: "Receive payments faster than traditional methods."
+          title: "Instant Settlements",
+          description: "Receive payments in real time, no waiting."
         },
         {
           icon: Shield,
-          title: "Secure Transactions",
-          description: "Bank-grade security for all payments."
+          title: "Global Support",
+          description: "Access funds in 150+ currencies."
         },
         {
           icon: Building,
-          title: "Easy Integration",
-          description: "Simple setup with existing systems."
+          title: "Auto Receipts",
+          description: "Generate receipts and tax mappings automatically."
         },
         {
           icon: TrendingUp,
-          title: "Cash Flow Optimization",
-          description: "Improve working capital management."
+          title: "Zero Delays",
+          description: "Eliminate payment holds, improving cash flow."
+        },
+        {
+          icon: CreditCard,
+          title: "Cost Savings",
+          description: "Choose cost-effective payment methods."
+        },
+        {
+          icon: Users,
+          title: "Self-Service Portal",
+          description: "Easily manage payment preferences."
+        },
+        {
+          icon: UserCheck,
+          title: "Customer Stickiness",
+          description: "Faster payments strengthen enterprise ties."
         }
       ]
     }
