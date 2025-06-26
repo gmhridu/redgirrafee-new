@@ -97,8 +97,11 @@ export const TailoredSuccessSection = () => {
       <div className="container-inner relative">
         {/* Sophisticated Header */}
         <div className="text-center mb-24">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent mb-8 tracking-tight">
-            Tailored for Your Success
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+            Tailored for Your{" "}
+            <span className="bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 bg-clip-text text-transparent">
+              Success
+            </span>
           </h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">

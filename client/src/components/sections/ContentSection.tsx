@@ -151,12 +151,12 @@ export const ContentSection = () => {
       <div className="container-inner relative">
         {/* Sophisticated Header */}
         <div className="text-center mb-24">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent mb-8 tracking-tight">
-            Pay everything that matters.
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+            Pay everything that matters. At the{" "}
+            <span className="bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-600 bg-clip-text text-transparent">
+              speed of now
+            </span>
           </h2>
-          <p className="text-xl lg:text-2xl text-green-600 font-medium mb-6">
-            At the speed of now.
-          </p>
           <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Unlock smarter payments for banks and enterprises with RedGirraffe.

@@ -137,8 +137,11 @@ export const MainContentSection = () => {
       <div className="container-inner relative">
         {/* Sophisticated Header */}
         <div className="text-center mb-24">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent mb-8 tracking-tight">
-            Our Solutions
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+            Our{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-sky-600 bg-clip-text text-transparent">
+              Solutions
+            </span>
           </h2>
           <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full"></div>
           <p className="text-xl text-slate-600 mt-8 max-w-3xl mx-auto leading-relaxed">

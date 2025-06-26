@@ -9,8 +9,8 @@ export const PaymentCategoriesSection = () => {
     vendor: [
       {
         icon: Users,
-        title: "Vendor/Contractor Payouts",
-        subtitle: "Pay freelancers and service partners",
+        title: "Vendor Payments",
+        subtitle: "Pay vendors on time and avail cash discounts on bills",
         color: "from-blue-500 to-blue-600"
       },
       {
