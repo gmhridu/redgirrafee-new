@@ -133,13 +133,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-app-primary text-white backdrop-blur-sm ${className}`} >
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-transparent backdrop-blur-sm ${className}`} >
         <div className="container-inner">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
               {/* Logo */}
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="font-bold text-white text-2xl sm:text-2xl lg:text-2xl tracking-tight">
+                <div className="font-bold text-black text-2xl sm:text-2xl lg:text-2xl tracking-tight">
                   RedGirraffe
                 </div>
               </div>
@@ -152,7 +152,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     className="p-0 h-auto hover:bg-transparent btn-touch"
                     onClick={() => scrollToSection(item.sectionId)}
                   >
-                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-white hover:text-[#00d959]">
+                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-slate-700 hover:text-emerald-600">
                       {item.label}
                     </div>
                   </div>

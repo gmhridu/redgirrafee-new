@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 export const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isCommercial, setIsCommercial] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -44,6 +45,16 @@ export const HeroSection = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  const handleToggleSwitch = () => {
+    if (isCommercial) {
+      // Switch to Platforms and redirect
+      window.location.href = "https://redgirraffe.com/in/b2b-saas";
+    } else {
+      // Switch to Commercial
+      setIsCommercial(true);
     }
   };
 
@@ -106,27 +117,54 @@ export const HeroSection = () => {
             initial="hidden"
             animate="visible"
           >
-            {/* Commercial/Platforms Toggle */}
+            {/* Commercial/Platforms Slider Switch */}
             <motion.div 
-              className="inline-flex items-center gap-2"
+              className="flex items-center gap-4"
               variants={itemVariants}
             >
-              <Button 
-                size="sm"
-                className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-6 py-2 text-sm font-medium shadow-lg transition-all duration-300"
-              >
-                Commercial
-              </Button>
-              <Button 
-                variant="ghost"
-                size="sm"
-                className="hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 rounded-full px-6 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 transition-all duration-300"
-              >
-                Platforms
-              </Button>
-              <div className="ml-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                Click to change
+              {/* Slider Switch Container */}
+              <div className="relative bg-gray-200 rounded-full p-1 shadow-inner">
+                <div className="flex relative">
+                  {/* Slider Background */}
+                  <motion.div
+                    className="absolute top-1 bottom-1 bg-white rounded-full shadow-md"
+                    initial={false}
+                    animate={{
+                      left: isCommercial ? "4px" : "calc(50% + 2px)",
+                      width: isCommercial ? "calc(50% - 6px)" : "calc(50% - 6px)"
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Switch Options */}
+                  <button
+                    onClick={() => setIsCommercial(true)}
+                    className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
+                      isCommercial ? 'text-slate-800' : 'text-slate-500'
+                    }`}
+                  >
+                    Commercial
+                  </button>
+                  <button
+                    onClick={() => setIsCommercial(false)}
+                    className={`relative z-10 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
+                      !isCommercial ? 'text-slate-800' : 'text-slate-500'
+                    }`}
+                  >
+                    Platforms
+                  </button>
+                </div>
               </div>
+
+              {/* Click to Change Button */}
+              <motion.button
+                onClick={handleToggleSwitch}
+                className="bg-gradient-to-r from-lime-400 to-green-500 hover:from-lime-500 hover:to-green-600 text-white text-xs px-4 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Click to change
+              </motion.button>
             </motion.div>
 
             {/* Main Heading */}
