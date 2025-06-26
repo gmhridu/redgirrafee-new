@@ -149,8 +149,8 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-inner relative pt-24 sm:pt-28 lg:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 relative pt-24 sm:pt-28 lg:pt-32 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full max-w-[95%] xl:max-w-[90%] mx-auto">
           {/* Left Content */}
           <motion.div
             className="space-y-8"
@@ -271,14 +271,14 @@ export const HeroSection = () => {
 
           {/* Right Video Section */}
           <motion.div 
-            className="relative"
+            className="relative w-full"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div 
               ref={containerRef}
-              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-3 shadow-2xl ${
+              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-2 lg:p-3 shadow-2xl w-full ${
                 isFullscreen ? 'bg-black' : ''
               }`}
             >
