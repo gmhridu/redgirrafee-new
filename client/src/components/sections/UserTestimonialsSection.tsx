@@ -37,7 +37,7 @@ export const UserTestimonialsSection = () => {
         <div className="grid-responsive-1-2-3 gap-responsive">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white padding-responsive rounded-xl shadow-lg card-hover animate-on-scroll">
-            <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4">
               <img 
                 src={testimonial.image} 
                 alt={`Professional headshot of ${testimonial.name}`} 
@@ -52,9 +52,9 @@ export const UserTestimonialsSection = () => {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-[#00d959] text-[#00d959]" />
               ))}
+              </div>
+              <p className="text-responsive-sm text-neutral-50 italic">"{testimonial.content}"</p>
             </div>
-            <p className="text-neutral-50 italic">"{testimonial.content}"</p>
-          </div>
           ))}
         </div>
       </div>
