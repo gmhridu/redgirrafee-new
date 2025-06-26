@@ -122,9 +122,9 @@ export const IndustriesSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-            Industries{" "}
+            Industries we{" "}
             <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-600 bg-clip-text text-transparent">
-              we serve
+              serve
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">

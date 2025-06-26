@@ -146,9 +146,9 @@ export const PaymentCategoriesSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
-            Pay Everything That Matters.{" "}
+            Pay Everything That Matters. At the{" "}
             <span className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-600 bg-clip-text text-transparent">
-              At the Speed of Now
+              Speed of Now
             </span>
           </h2>
         </div>

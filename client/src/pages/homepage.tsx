@@ -88,61 +88,66 @@ export default function Homepage() {
       <div className="w-full">
         <NavigationBar navItems={navItems} onNavigate={scrollToSection} />
         <HeroSection />
-        {/* 1. Traditional B2B payouts fail — and what we fix */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <LayoutSection />
           </div>
         </section>
-        {/* 2. Our solutions */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <MainContentSection />
           </div>
         </section>
-        {/* 3. Tailored for Your Success */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <TailoredSuccessSection />
           </div>
         </section>
-        {/* 4. Pay Everything That Matters. At the Speed of Now */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <PaymentCategoriesSection />
           </div>
         </section>
-        {/* 7. Industries we serve */}
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <ContentSection />
+          </div>
+        </section>
         <section id="industries" className="section-fullscreen">
           <div className="container-inner">
             <IndustriesSection />
           </div>
         </section>
-        {/* 8. Smart infrastructure */}
+        <section id="features" className="section-fullscreen">
+          <div className="container-inner">
+            <FeatureHighlightSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <UserTestimonialsSection />
+          </div>
+        </section>
         <section id="how-it-works" className="section-fullscreen">
           <div className="container-inner">
             <HowItWorksSection />
           </div>
         </section>
-        {/* 9. Unmatched reliability */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <StatisticsSection />
           </div>
         </section>
-        {/* 10. RedGiraffe works */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <ProcessSection />
           </div>
         </section>
-        {/* 11. Commercial card pricing */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <PricingCardsSection />
           </div>
         </section>
-        {/* 12. Business payments */}
         <section className="section-fullscreen">
           <div className="container-inner">
             <SophisticatedContactSection />
