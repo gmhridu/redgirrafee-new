@@ -184,9 +184,9 @@ export const SophisticatedContactSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-5xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight">
-            Ready to transform your business{" "}
+            Ready to transform your{" "}
             <span className="bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400 bg-clip-text text-transparent">
-              payments?
+              business payments?
             </span>
           </h2>
           <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">

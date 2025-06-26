@@ -72,9 +72,9 @@ export const PricingCardsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-            RedGiraffe Global Commercial Card{" "}
+            RedGiraffe Global{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
-              Pricing
+              Commercial Card Pricing
             </span>
           </h2>
           <p className="text-lg text-slate-600 max-w-5xl mx-auto leading-relaxed mb-12">
