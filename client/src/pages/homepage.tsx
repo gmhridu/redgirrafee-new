@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FeatureHighlightSection } from "@/components/sections/FeatureHighlightSection";
 import { MainContentSection } from "@/components/sections/MainContentSection";
+import { TailoredSuccessSection } from "@/components/sections/TailoredSuccessSection";
 import { ContentSection } from "@/components/sections/ContentSection";
 import { LayoutSection } from "@/components/sections/LayoutSection";
 import { FooterSection } from "@/components/sections/FooterSection";
@@ -90,6 +91,11 @@ export default function Homepage() {
         <section className="section-fullscreen">
           <div className="container-inner">
             <MainContentSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <TailoredSuccessSection />
           </div>
         </section>
         <section className="section-fullscreen">
