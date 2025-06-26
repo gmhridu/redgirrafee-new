@@ -33,7 +33,7 @@ export const HowItWorksSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50/50 relative overflow-hidden">
+    <section className="py-20 bg-slate-50/50 relative overflow-hidden">
       {/* Minimal Background Pattern */}
       <div className="absolute inset-0 opacity-[0.015]">
         <div className="absolute top-20 right-20 w-96 h-96 bg-indigo-200 rounded-full blur-3xl"></div>

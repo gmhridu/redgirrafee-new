@@ -150,7 +150,7 @@ export const MainContentSection = () => {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-br from-slate-50 via-white to-green-50/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-green-50/30 relative overflow-hidden">
       {/* Sophisticated Background Elements */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-gradient-to-br from-emerald-300 via-green-200 to-teal-300 rounded-full blur-3xl"></div>
