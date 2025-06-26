@@ -149,11 +149,11 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-responsive relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
-        <div className="grid-responsive-1-2 gap-responsive items-center">
-          {/* Left Content */}
+      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
+          {/* Left Content - Wider Layout */}
           <motion.div
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
+            className="lg:col-span-7 xl:col-span-6 space-y-6 sm:space-y-8 order-2 lg:order-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
