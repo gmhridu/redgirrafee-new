@@ -11,6 +11,7 @@ import { SubscriptionFormSection } from "@/components/sections/SubscriptionFormS
 import { CallToActionSection } from "@/components/sections/CallToActionSection";
 import { IndustriesSection } from "@/components/sections/IndustriesSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
+import { StatisticsSection } from "@/components/sections/StatisticsSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -127,6 +128,11 @@ export default function Homepage() {
         <section id="how-it-works" className="section-fullscreen">
           <div className="container-inner">
             <HowItWorksSection />
+          </div>
+        </section>
+        <section className="section-fullscreen">
+          <div className="container-inner">
+            <StatisticsSection />
           </div>
         </section>
         <section id="pricing" className="section-fullscreen">
