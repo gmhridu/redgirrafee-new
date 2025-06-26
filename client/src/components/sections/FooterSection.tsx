@@ -37,11 +37,11 @@ export const FooterSection = () => {
   };
 
   return (
-    <footer className="bg-app-primary text-white relative overflow-hidden">
+    <footer className="bg-slate-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-slate-600 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-700 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -142,41 +142,50 @@ export const FooterSection = () => {
 
           {/* Our Offices */}
           <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Our Offices</h4>
-            <p className="text-orange-300 text-sm mb-4">Global presence, local impact</p>
+            <h4 className="text-indigo-400 font-semibold mb-6 text-sm uppercase tracking-wide">Our Offices</h4>
+            <p className="text-indigo-300 text-sm mb-4">Global presence, local impact</p>
             
             <div className="space-y-6">
               {/* United Kingdom */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">United Kingdom</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe Inc.</div>
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  Harben House, Harben Parade,<br />
-                  Finchley Road, London, NW3 6LH
-                </p>
+              <div className="flex items-start gap-3">
+                <div className="flag-round flag-uk flex-shrink-0 mt-1"></div>
+                <div>
+                  <h5 className="text-indigo-300 font-semibold mb-2 text-sm">United Kingdom</h5>
+                  <div className="text-white font-semibold text-sm mb-1">RedGirraffe Inc.</div>
+                  <p className="text-slate-300 text-xs leading-relaxed">
+                    Harben House, Harben Parade,<br />
+                    Finchley Road, London, NW3 6LH
+                  </p>
+                </div>
               </div>
 
               {/* Singapore */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">Singapore</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe Holdings</div>
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  3 Temasek Avenue, Centennial<br />
-                  Tower, #17-01, Singapore 039190.
-                </p>
+              <div className="flex items-start gap-3">
+                <div className="flag-round flag-singapore flex-shrink-0 mt-1"></div>
+                <div>
+                  <h5 className="text-indigo-300 font-semibold mb-2 text-sm">Singapore</h5>
+                  <div className="text-white font-semibold text-sm mb-1">RedGirraffe Holdings</div>
+                  <p className="text-slate-300 text-xs leading-relaxed">
+                    3 Temasek Avenue, Centennial<br />
+                    Tower, #17-01, Singapore 039190.
+                  </p>
+                </div>
               </div>
 
               {/* India */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">India</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe.com</div>
-                <div className="text-gray-300 text-xs leading-relaxed mb-2">
-                  904, Galleria Towers, DLF Phase<br />
-                  IV, Gurgaon, Haryana - 122002.
-                </div>
-                <div className="text-gray-300 text-xs leading-relaxed">
-                  507, Tulsiiani Chambers, Nariman<br />
-                  Point, Mumbai - 400021.
+              <div className="flex items-start gap-3">
+                <div className="flag-round flag-india flex-shrink-0 mt-1"></div>
+                <div>
+                  <h5 className="text-indigo-300 font-semibold mb-2 text-sm">India</h5>
+                  <div className="text-white font-semibold text-sm mb-1">RedGirraffe.com</div>
+                  <div className="text-slate-300 text-xs leading-relaxed mb-2">
+                    904, Galleria Towers, DLF Phase<br />
+                    IV, Gurgaon, Haryana - 122002.
+                  </div>
+                  <div className="text-slate-300 text-xs leading-relaxed">
+                    507, Tulsiiani Chambers, Nariman<br />
+                    Point, Mumbai - 400021.
+                  </div>
                 </div>
               </div>
             </div>

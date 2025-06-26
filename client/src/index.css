@@ -632,5 +632,36 @@
       width: 24px;
       height: 24px;
     }
+
+    .container-inner {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .flag-round {
+      width: 28px;
+      height: 28px;
+    }
+    
+    .flag-round-lg {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .flag-round-sm {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Responsive text sizing */
+    .text-5xl {
+      font-size: 2.5rem;
+    }
+    
+    .text-6xl {
+      font-size: 3rem;
+    }
   }
 }
