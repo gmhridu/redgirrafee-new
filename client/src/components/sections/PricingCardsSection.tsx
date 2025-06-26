@@ -61,15 +61,11 @@ export const PricingCardsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-spacing bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-50 relative overflow-hidden">
-      {/* Sophisticated Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-600/5 via-slate-500/3 to-zinc-400/5"></div>
-      
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-10 right-20 w-96 h-96 bg-gradient-to-br from-gray-300 to-slate-300 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-zinc-200 to-gray-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-slate-200 to-zinc-200 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section ref={sectionRef} className="section-spacing bg-gradient-to-br from-gray-50/40 via-slate-50/30 to-zinc-50/40 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">

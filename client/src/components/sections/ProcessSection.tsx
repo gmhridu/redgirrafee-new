@@ -38,10 +38,11 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-white relative overflow-hidden">
-      {/* Minimal elegant background */}
-      <div className="absolute inset-0 opacity-[0.02]">
+    <section className="section-spacing bg-gradient-to-br from-orange-50/30 via-amber-50/20 to-yellow-50/30 relative overflow-hidden">
+      {/* Minimal Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.015]">
         <div className="absolute top-20 right-20 w-96 h-96 bg-slate-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-gray-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">

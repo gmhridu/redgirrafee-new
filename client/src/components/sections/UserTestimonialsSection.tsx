@@ -23,11 +23,7 @@ export const UserTestimonialsSection = () => {
   ];
 
   return (
-    <section className="section-spacing-tight bg-white relative overflow-hidden">
-      {/* Minimal elegant background */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
-      </div>
+    <section className="section-spacing-tight bg-gradient-to-br from-purple-50/30 via-fuchsia-50/20 to-pink-50/30 relative overflow-hidden">
       <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
           What Our Customers Say

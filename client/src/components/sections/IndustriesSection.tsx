@@ -111,9 +111,9 @@ export const IndustriesSection = () => {
   ];
 
   return (
-    <section className="section-spacing-tight bg-white relative overflow-hidden">
-      {/* Minimal elegant background */}
-      <div className="absolute inset-0 opacity-[0.02]">
+    <section className="section-spacing-tight bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-lime-50/30 relative overflow-hidden">
+      {/* Minimal Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.015]">
         <div className="absolute top-20 left-20 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-200 rounded-full blur-3xl"></div>
       </div>

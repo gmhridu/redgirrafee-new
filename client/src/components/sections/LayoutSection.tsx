@@ -41,10 +41,10 @@ export const LayoutSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-white relative overflow-hidden">
-      {/* Minimal elegant background */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-slate-200 rounded-full blur-3xl"></div>
+    <section className="section-spacing bg-gradient-to-br from-rose-50/40 via-pink-50/30 to-orange-50/40 relative overflow-hidden">
+      {/* Minimal Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
