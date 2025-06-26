@@ -137,46 +137,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
         <div className="container-inner">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
-              {/* Logo with Flag Logos */}
-              <div className="flex flex-col items-start gap-1">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="relative w-8 h-8 sm:w-7 sm:h-7 lg:w-8 lg:h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center text-white font-bold text-lg">
-                      R
-                    </div>
-                  </div>
-                  <div className="font-bold text-white text-2xl sm:text-2xl lg:text-2xl tracking-tight">
-                    RedGirraffe
-                  </div>
-                </div>
-                {/* Flag Icons Row */}
-                <div className="flex items-center gap-2 ml-10 sm:ml-9 lg:ml-10">
-                  <div className="w-5 h-3 bg-gradient-to-r from-red-600 via-white to-red-600 rounded-sm shadow-sm border border-white/20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-red-500 to-red-600"></div>
-                    <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-r from-blue-800 to-blue-900"></div>
-                    <div className="absolute top-0 left-0 w-full h-1 bg-red-600"></div>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></div>
-                  </div>
-                  <div className="w-5 h-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-sm shadow-sm border border-white/20 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-3 h-2 bg-blue-600 rounded-full relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-5 h-3 bg-gradient-to-r from-blue-800 via-white to-red-600 rounded-sm shadow-sm border border-white/20 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-800"></div>
-                    <div className="absolute top-1 left-0 w-full h-1 bg-white"></div>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></div>
-                  </div>
-                  <div className="w-5 h-3 bg-gradient-to-b from-orange-500 via-white to-green-600 rounded-sm shadow-sm border border-white/20 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-orange-500"></div>
-                    <div className="absolute top-1 left-0 w-full h-1 bg-white"></div>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-green-600"></div>
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-blue-800 rounded-full"></div>
-                  </div>
+              {/* Logo */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="font-bold text-white text-2xl sm:text-2xl lg:text-2xl tracking-tight">
+                  RedGirraffe
                 </div>
               </div>
 
@@ -280,7 +244,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     Get Demo
                   </span>
                 </Button>
-                <Button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Button className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   <span className="text-sm font-medium">
                     Login
                   </span>
