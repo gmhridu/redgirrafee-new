@@ -35,22 +35,12 @@ export const TailoredSuccessSection = () => {
           icon: DollarSign,
           title: "Cost Efficiency",
           subtitle: "Reduce fees"
-        },
-        {
-          icon: UserCheck,
-          title: "Customer Loyalty",
-          subtitle: "Build stickiness"
         }
       ]
     },
     {
       title: "For Cardholding Enterprises", 
       features: [
-        {
-          icon: Banknote,
-          title: "Cash Flow Boost",
-          subtitle: "Bill discounting benefits"
-        },
         {
           icon: CreditCard,
           title: "Bill Discounting",
@@ -155,6 +145,45 @@ export const TailoredSuccessSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom Row - Cash Flow Boost and Customer Loyalty */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Side - Cash Flow Boost */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <div className="bg-slate-50/50 rounded-xl p-6 hover:bg-slate-50 transition-all duration-300 group/item text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mx-auto mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
+                  <Banknote className="w-6 h-6 text-white relative z-10" />
+                </div>
+                <h4 className="font-semibold text-lg text-slate-800 mb-3 leading-tight group-hover/item:text-emerald-700 transition-colors duration-300">
+                  Cash Flow Boost
+                </h4>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  Bill discounting benefits
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Customer Loyalty */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <div className="bg-slate-50/50 rounded-xl p-6 hover:bg-slate-50 transition-all duration-300 group/item text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mx-auto mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
+                  <UserCheck className="w-6 h-6 text-white relative z-10" />
+                </div>
+                <h4 className="font-semibold text-lg text-slate-800 mb-3 leading-tight group-hover/item:text-emerald-700 transition-colors duration-300">
+                  Customer Loyalty
+                </h4>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  Build stickiness
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Call to Action */}
