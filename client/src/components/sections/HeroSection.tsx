@@ -7,6 +7,7 @@ export const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isCommercial, setIsCommercial] = useState(true);
+  const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -101,6 +102,22 @@ export const HeroSection = () => {
     // Auto-play video when component mounts
     if (videoRef.current) {
       videoRef.current.play().catch(console.log);
+      
+      // Add progress tracking
+      const updateProgress = () => {
+        if (videoRef.current) {
+          const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+          setProgress(currentProgress || 0);
+        }
+      };
+      
+      videoRef.current.addEventListener('timeupdate', updateProgress);
+      
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('timeupdate', updateProgress);
+        }
+      };
     }
   }, []);
 
@@ -272,6 +289,21 @@ export const HeroSection = () => {
                   <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+
+                {/* Progress Bar - Only visible in fullscreen */}
+                {isFullscreen && (
+                  <div className="absolute bottom-16 left-4 right-4">
+                    <div className="bg-black/40 backdrop-blur-sm rounded-full h-2 overflow-hidden">
+                      <div 
+                        className="bg-white h-full transition-all duration-300 ease-out"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                    <div className="text-white text-sm mt-1 text-center">
+                      {Math.round(progress)}% Complete
+                    </div>
+                  </div>
+                )}
 
                 {/* Video Controls Overlay - Bottom Right */}
                 <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
