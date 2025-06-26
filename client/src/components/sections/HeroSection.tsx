@@ -149,15 +149,17 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-responsive relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
-        <div className="grid-responsive-1-2 gap-responsive items-center">
-          {/* Left Content */}
-          <motion.div
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
+        {/* Custom container with logo alignment and extra horizontal space */}
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 items-center">
+            {/* Left Content - Aligned with logo */}
+            <motion.div
+              className="space-y-6 sm:space-y-8 order-2 lg:order-1 lg:pl-4 xl:pl-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
             {/* Commercial/Platforms Slider Switch */}
             <motion.div 
               className="flex flex-col items-start gap-2"
@@ -392,8 +394,9 @@ export const HeroSection = () => {
             </div>
           </motion.div>
         </div>
+      </div>
 
-        {/* WhatsApp Contact Button - Floating */}
+      {/* WhatsApp Contact Button - Floating */}
         <motion.div
           className="fixed bottom-6 left-6 z-50"
           initial={{ opacity: 0, scale: 0 }}
