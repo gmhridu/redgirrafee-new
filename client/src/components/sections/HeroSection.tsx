@@ -220,20 +220,24 @@ export const HeroSection = () => {
 
             {/* Main Heading */}
             <motion.h1 
-              className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
               variants={itemVariants}
             >
-              RedGirraffe Global
-              <br />
-              <span className="text-slate-700">Commercial Card</span>
+              All{" "}
+              <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
+                Payments
+              </span>
+              , One<br className="hidden sm:block" />
+              Place, Big Rewards
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p 
-              className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-slate-600 leading-relaxed max-w-3xl text-center lg:text-left"
               variants={itemVariants}
             >
-              Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
+              Rent, Fees, Society Charges +<br />
+              Rs 3,000/Month in CASH Points
             </motion.p>
 
             {/* Action Buttons */}
@@ -242,9 +246,9 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
-                  <ArrowRight className="w-5 h-5" />
-                  Request a Demo
+                <Button className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 hover:from-yellow-500 hover:via-amber-500 hover:to-orange-600 text-slate-900 font-semibold px-10 py-5 lg:px-12 lg:py-6 rounded-full text-lg lg:text-xl xl:text-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0 flex items-center gap-3">
+                  Get Started
+                  <ArrowRight className="w-6 h-6 lg:w-7 lg:h-7" />
                 </Button>
               </motion.div>
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">

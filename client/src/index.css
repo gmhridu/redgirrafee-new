@@ -251,6 +251,10 @@
   .text-responsive-3xl {
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
   }
+  
+  .text-responsive-hero {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl;
+  }
 
   /* Responsive grid utilities */
   .grid-responsive-1-2 {
@@ -284,6 +288,14 @@
   
   .padding-responsive-sm {
     @apply p-3 sm:p-4 md:p-6 lg:p-8;
+  }
+  
+  .padding-responsive-lg {
+    @apply p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16;
+  }
+  
+  .grid-responsive-1-2-4 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
   }
 
   /* Improve form inputs on mobile */
