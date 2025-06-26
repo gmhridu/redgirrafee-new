@@ -2,7 +2,7 @@ import { BarChart3, Users, Check } from "lucide-react";
 
 export const FeatureHighlightSection = () => {
   return (
-    <section className="section-fullscreen-bg-alt">
+    <section className="section-spacing bg-slate-50 relative overflow-hidden">
       <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
           Powered by{" "}

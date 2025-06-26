@@ -41,7 +41,7 @@ export const LayoutSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="section-spacing bg-white relative overflow-hidden">
       {/* Minimal Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl"></div>
