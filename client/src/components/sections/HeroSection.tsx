@@ -86,11 +86,15 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 py-16 sm:py-20 lg:py-28 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+    <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 py-16 sm:py-20 lg:py-28 overflow-hidden">
+      {/* Sophisticated Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
+      
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-amber-300 to-orange-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container-inner relative">
@@ -120,7 +124,7 @@ export const HeroSection = () => {
               >
                 Platforms
               </Button>
-              <div className="ml-4 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+              <div className="ml-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
                 Click to change
               </div>
             </motion.div>
@@ -185,7 +189,7 @@ export const HeroSection = () => {
           >
             <div 
               ref={containerRef}
-              className={`relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-2 shadow-2xl ${
+              className={`relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-3 shadow-2xl ${
                 isFullscreen ? 'bg-black' : ''
               }`}
             >
@@ -241,9 +245,9 @@ export const HeroSection = () => {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-400 rounded-full opacity-30"></div>
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-indigo-400 rounded-full opacity-30"></div>
-              <div className="absolute -top-2 -right-8 w-6 h-6 bg-blue-300 rounded-full opacity-40"></div>
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-40 animate-pulse"></div>
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute -top-2 -right-8 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
               
               {/* Floating Text - Positioned better */}
               <motion.div 
