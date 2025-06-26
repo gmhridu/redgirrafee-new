@@ -243,26 +243,15 @@ export const FooterSection = () => {
               </a>
             </div>
 
-            {/* Social Media */}
-            <div className="flex gap-3">
-              {[
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Music, href: "#", label: "TikTok" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Facebook, href: "#", label: "Facebook" }
-              ].map(({ icon: Icon, href, label }, index) => (
-                <motion.a
-                  key={index}
-                  href={href}
-                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={label}
-                >
-                  <Icon className="w-4 h-4 text-white" />
-                </motion.a>
-              ))}
+            {/* Professional Contact Info */}
+            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+              <h5 className="text-white font-semibold mb-3 text-sm">Professional Services</h5>
+              <div className="space-y-2 text-xs text-gray-300">
+                <div>Global Payment Processing</div>
+                <div>Enterprise Solutions</div>
+                <div>Compliance & Security</div>
+                <div>24/7 Support Available</div>
+              </div>
             </div>
           </motion.div>
         </motion.div>
