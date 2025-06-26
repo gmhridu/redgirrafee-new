@@ -99,6 +99,9 @@ export const LayoutSection = () => {
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
                 
+                // Skip the dot that would be positioned inside the Legacy Issues circle (bottom right area)
+                if (index === 1) return null; // Remove the problematic dot
+                
                 return (
                   <motion.div
                     key={index}
