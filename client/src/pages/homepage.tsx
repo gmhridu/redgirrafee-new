@@ -99,16 +99,6 @@ export default function Homepage() {
         <ProcessSection />
         <PricingCardsSection />
         <SophisticatedContactSection />
-        <section id="pricing" className="section-fullscreen">
-          <div className="container-inner">
-            <CallToActionSection />
-          </div>
-        </section>
-        <section id="contact" className="section-fullscreen">
-          <div className="container-inner">
-            <SubscriptionFormSection />
-          </div>
-        </section>
       </div>
       <FooterSection />
       <AnimatePresence>
