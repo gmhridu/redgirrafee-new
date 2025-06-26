@@ -86,11 +86,11 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-white to-slate-50/30 py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 py-16 sm:py-20 lg:py-28 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-slate-200 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-300 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -172,16 +172,6 @@ export const HeroSection = () => {
             >
               <p className="text-lg font-semibold text-slate-700">
                 <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
-              </p>
-            </motion.div>
-
-            {/* Global Reach Text Only */}
-            <motion.div
-              className="pt-6"
-              variants={itemVariants}
-            >
-              <p className="text-slate-600 font-medium text-sm">
-                Trusted globally in 97+ countries
               </p>
             </motion.div>
           </motion.div>

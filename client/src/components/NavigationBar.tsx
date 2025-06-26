@@ -22,17 +22,17 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showFlagDropdown, setShowFlagDropdown] = useState(false);
-  const [selectedFlag, setSelectedFlag] = useState(2); // USA is default (index 2)
+  const [selectedFlag, setSelectedFlag] = useState(0); // UK is default (index 0)
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const flagDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Flag data with CSS classes
+  // Flag data
   const flags = [
-    { name: "United Kingdom", code: "UK", flagClass: "flag-uk" },
-    { name: "India", code: "IN", flagClass: "flag-india" },
-    { name: "United States", code: "US", flagClass: "flag-usa" },
-    { name: "Germany", code: "DE", flagClass: "flag-germany" },
+    { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
+    { name: "India", code: "IN", flag: "🇮🇳" },
+    { name: "United States", code: "US", flag: "🇺🇸" },
+    { name: "European Union", code: "EU", flag: "🇪🇺" },
   ];
 
   // Close dropdowns when clicking outside
@@ -133,7 +133,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-slate-800 text-white backdrop-blur-sm ${className}`} >
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-app-primary text-white backdrop-blur-sm ${className}`} >
         <div className="container-inner">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-4 lg:gap-12 xl:gap-20">
@@ -185,7 +185,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <X className="w-6 h-6 text-white group-hover:text-[#00d959]" />
+                      <X className="w-6 h-6 text-white group-hover:text-app-primary" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -193,7 +193,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <Menu className="w-6 h-6 text-white group-hover:text-[#00d959]" />
+                      <Menu className="w-6 h-6 text-white group-hover:text-app-primary" />
                     </motion.div>
                   )}
                 </motion.div>
@@ -205,10 +205,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                 <div className="relative" ref={flagDropdownRef}>
                   <Button
                     variant="ghost"
-                    className="w-10 h-10 p-1.5 rounded-full hover:bg-slate-700 transition-colors btn-touch"
+                    className="w-10 h-10 p-1.5 rounded-full hover:bg-gray-300 transition-colors btn-touch"
                     onClick={() => setShowFlagDropdown(!showFlagDropdown)}
                   >
-                    <div className={`flag-round flag-round-sm ${flags[selectedFlag].flagClass}`}></div>
+                    <span className="text-2xl">{flags[selectedFlag].flag}</span>
                   </Button>
 
                   {/* Flag Dropdown Menu */}
@@ -230,7 +230,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                             }`}
                             whileHover={{ backgroundColor: '#f9fafb' }}
                           >
-                            <div className={`flag-round flag-round-sm ${flag.flagClass}`}></div>
+                            <span className="text-xl">{flag.flag}</span>
                             <span className="font-body-medium-body-medium-regular text-black text-sm">
                               {flag.code}
                             </span>
@@ -243,13 +243,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
                 <Button
                   variant="outline"
-                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-white/30 text-sm btn-touch hover:bg-white/10"
+                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-abu-stroke text-sm btn-touch"
                 >
-                  <span className="font-body-medium-body-medium-regular text-white text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
+                  <span className="font-body-medium-body-medium-regular text-black text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Get Demo
                   </span>
                 </Button>
-                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-[#00d959] hover:bg-[#00c251] rounded-[64px] text-sm btn-touch">
+                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-app-secondary rounded-[64px] text-sm btn-touch">
                   <span className="font-body-medium-body-medium-regular text-white tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Login
                   </span>
