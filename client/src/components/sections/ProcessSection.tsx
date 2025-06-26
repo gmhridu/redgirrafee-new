@@ -45,16 +45,16 @@ export const ProcessSection = () => {
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-gray-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             How{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
               RedGiraffe works
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-responsive-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Simplify your payments in three seamless steps.
           </p>
         </div>
