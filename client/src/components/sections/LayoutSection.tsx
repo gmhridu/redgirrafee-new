@@ -88,13 +88,13 @@ export const LayoutSection = () => {
                 <div className="text-center">
                   <X className="w-8 h-8 text-white mx-auto mb-2" />
                   <p className="text-xs text-white font-medium">Legacy</p>
-                  <p className="text-sm font-bold text-white">Problems</p>
+                  <p className="text-sm font-bold text-white">Issues</p>
                 </div>
               </motion.div>
               
               {/* Orbiting Problem Indicators */}
-              {[0, 1, 2, 3, 4, 5].map((index) => {
-                const angle = (index * 60) * (Math.PI / 180);
+              {[0, 1, 2, 3, 4].map((index) => {
+                const angle = (index * 72 + 36) * (Math.PI / 180); // Start at 36 degrees to avoid center overlap
                 const radius = 140;
                 const x = Math.cos(angle) * radius + 192;
                 const y = Math.sin(angle) * radius + 192;
@@ -157,7 +157,7 @@ export const LayoutSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1 }}
               >
-                The Problem Ecosystem
+                The Problem
               </motion.div>
             </div>
           </motion.div>
