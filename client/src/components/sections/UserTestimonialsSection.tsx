@@ -24,18 +24,19 @@ export const UserTestimonialsSection = () => {
 
   return (
     <section className="section-spacing-tight bg-gradient-to-br from-purple-50/30 via-fuchsia-50/20 to-pink-50/30 relative overflow-hidden">
-      <div className="text-center mb-12 animate-on-scroll">
-        <h2 className="text-h2-mobile sm:text-3xl lg:text-5xl font-bold text-textblack mb-6">
-          What Our Customers Say
-        </h2>
-        <p className="text-lg text-neutral-50 max-w-2xl mx-auto">
-          Don't just take our word for it. Here's what industry leaders have to say about RedGirraffe.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className="bg-white p-8 rounded-xl shadow-lg card-hover animate-on-scroll">
+      <div className="container-responsive relative">
+        <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
+          <h2 className="text-responsive-xl font-bold text-textblack mb-4 sm:mb-6">
+            What Our Customers Say
+          </h2>
+          <p className="text-responsive-base text-neutral-50 max-w-2xl mx-auto">
+            Don't just take our word for it. Here's what industry leaders have to say about RedGirraffe.
+          </p>
+        </div>
+        
+        <div className="grid-responsive-1-2-3 gap-responsive">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white padding-responsive rounded-xl shadow-lg card-hover animate-on-scroll">
             <div className="flex items-center mb-4">
               <img 
                 src={testimonial.image} 
@@ -54,7 +55,8 @@ export const UserTestimonialsSection = () => {
             </div>
             <p className="text-neutral-50 italic">"{testimonial.content}"</p>
           </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

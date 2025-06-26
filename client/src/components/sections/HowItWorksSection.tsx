@@ -90,10 +90,10 @@ export const HowItWorksSection = () => {
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             Powered by smart{" "}
             <span className="bg-gradient-to-r from-teal-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
               infrastructure
@@ -105,7 +105,7 @@ export const HowItWorksSection = () => {
         </div>
 
         {/* Partnership Advantages */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid-responsive-1-2 gap-responsive mb-12 sm:mb-16 md:mb-20">
           {advantages.map((advantage, advantageIndex) => (
             <div key={advantageIndex} className="space-y-8">
               <div className="text-center">
