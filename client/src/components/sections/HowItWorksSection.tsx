@@ -60,8 +60,8 @@ export const HowItWorksSection = () => {
     <section className="py-24 bg-gray-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-green-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-300 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-purple-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -73,8 +73,8 @@ export const HowItWorksSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Powered by smart <span className="text-green-500">infrastructure</span>.
+          <h2 className="text-5xl lg:text-6xl font-bold text-slate-800 mb-6">
+            Powered by smart <span className="text-blue-500">infrastructure</span>.
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             More than a card—an intelligent spend management platform.
@@ -96,10 +96,10 @@ export const HowItWorksSection = () => {
               variants={itemVariants}
             >
               <div className="text-center">
-                <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                <h3 className="text-3xl font-bold text-slate-800 mb-4">
                   {advantage.category}
                 </h3>
-                <div className="w-20 h-1 bg-green-500 mx-auto"></div>
+                <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
               </div>
 
               <div className="space-y-6">

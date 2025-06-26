@@ -139,7 +139,7 @@ export const IndustriesSection = () => {
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-green-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container-inner relative">
@@ -151,8 +151,8 @@ export const IndustriesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
-            Industries we <span className="text-green-500">serve</span>.
+          <h2 className="text-5xl lg:text-6xl font-bold text-slate-800 mb-6">
+            Industries we <span className="text-blue-500">serve</span>.
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Tailored solutions for diverse business sectors.
