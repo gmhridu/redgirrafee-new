@@ -138,7 +138,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-16 sm:pb-20 lg:pb-28 overflow-hidden -mt-20">
+    <section className="relative min-h-screen lg:min-h-[100vh] xl:min-h-[98vh] bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-8 sm:pb-12 lg:pb-16 overflow-hidden -mt-20">
       {/* Sophisticated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
       
@@ -149,11 +149,11 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container-responsive relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
-        <div className="grid-responsive-1-2 gap-responsive items-center">
+      <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 mx-auto max-w-screen-2xl relative pt-16 sm:pt-20 md:pt-24 lg:pt-28 xl:pt-32 min-h-screen flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center w-full">
           {/* Left Content */}
           <motion.div
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
+            className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 order-2 lg:order-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
