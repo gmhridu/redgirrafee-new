@@ -193,7 +193,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <Menu className="w-6 h-6 text-white group-hover:text-app-primary" />
+                      <Menu className="w-6 h-6 text-slate-700 group-hover:text-indigo-600" />
                     </motion.div>
                   )}
                 </motion.div>
@@ -243,13 +243,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
                 <Button
                   variant="outline"
-                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-abu-stroke text-sm btn-touch"
+                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-slate-300 text-sm btn-touch hover:bg-slate-50"
                 >
-                  <span className="font-body-medium-body-medium-regular text-black text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
+                  <span className="font-body-medium-body-medium-regular text-slate-700 text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Get Demo
                   </span>
                 </Button>
-                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-app-secondary rounded-[64px] text-sm btn-touch">
+                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-slate-700 hover:bg-slate-800 rounded-[64px] text-sm btn-touch">
                   <span className="font-body-medium-body-medium-regular text-white tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Login
                   </span>
