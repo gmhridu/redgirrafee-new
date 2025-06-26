@@ -52,7 +52,7 @@ export const LayoutSection = () => {
         <div className="text-center mb-20 lg:mb-24">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
             Traditional B2B payouts fail —
-            <span className="text-emerald-600"> and what we fix.</span>
+            <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent"> and what we fix.</span>
           </h2>
         </div>
 
