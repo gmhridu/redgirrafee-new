@@ -22,7 +22,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showFlagDropdown, setShowFlagDropdown] = useState(false);
-  const [selectedFlag, setSelectedFlag] = useState(0); // UK is default (index 0)
+  const [selectedFlag, setSelectedFlag] = useState(2); // USA is default (index 2)
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const flagDropdownRef = useRef<HTMLDivElement>(null);
@@ -205,7 +205,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                 <div className="relative" ref={flagDropdownRef}>
                   <Button
                     variant="ghost"
-                    className="w-10 h-10 p-1.5 rounded-full hover:bg-slate-100 transition-colors btn-touch"
+                    className="w-10 h-10 p-1.5 rounded-full hover:bg-slate-700 transition-colors btn-touch"
                     onClick={() => setShowFlagDropdown(!showFlagDropdown)}
                   >
                     <div className={`flag-round flag-round-sm ${flags[selectedFlag].flagClass}`}></div>
@@ -243,13 +243,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
                 <Button
                   variant="outline"
-                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-slate-300 text-sm btn-touch hover:bg-slate-50"
+                  className="w-20 sm:w-20 lg:w-24 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 rounded-[64px] border border-solid border-white/30 text-sm btn-touch hover:bg-white/10"
                 >
-                  <span className="font-body-medium-body-medium-regular text-slate-700 text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
+                  <span className="font-body-medium-body-medium-regular text-white text-center tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Get Demo
                   </span>
                 </Button>
-                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-slate-700 hover:bg-slate-800 rounded-[64px] text-sm btn-touch">
+                <Button className="w-16 sm:w-16 lg:w-20 xl:w-[110px] h-10 sm:h-10 lg:h-10 px-3 sm:px-3 lg:px-6 py-2 lg:py-3 bg-[#00d959] hover:bg-[#00c251] rounded-[64px] text-sm btn-touch">
                   <span className="font-body-medium-body-medium-regular text-white tracking-[var(--body-medium-body-medium-regular-letter-spacing)] leading-[var(--body-medium-body-medium-regular-line-height)]">
                     Login
                   </span>
