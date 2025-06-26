@@ -61,7 +61,7 @@ export const PricingCardsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-spacing bg-slate-100/50 relative overflow-hidden">
+    <section ref={sectionRef} className="section-spacing bg-gradient-to-br from-gray-50/40 via-slate-50/30 to-zinc-50/40 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute top-20 left-20 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>

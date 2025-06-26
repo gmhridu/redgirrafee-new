@@ -92,7 +92,7 @@ export const StatisticsSection = () => {
   ];
 
   return (
-    <section className="section-spacing bg-slate-50/50 relative overflow-hidden">
+    <section className="section-spacing bg-gradient-to-br from-green-50/30 via-emerald-50/20 to-lime-50/30 relative overflow-hidden">
       {/* Minimal Background Pattern */}
       <div className="absolute inset-0 opacity-[0.015]">
         <div className="absolute top-20 right-20 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>
