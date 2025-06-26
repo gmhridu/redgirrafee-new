@@ -211,7 +211,7 @@ export const SophisticatedContactSection = () => {
         </motion.div>
 
         {/* Enhanced Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {/* Contact Information Cards */}
           <motion.div 
             className="lg:col-span-1 space-y-6"
@@ -251,16 +251,16 @@ export const SophisticatedContactSection = () => {
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 shadow-2xl">
+            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-2xl">
               <div className="mb-8">
-                <h3 className="text-3xl font-bold text-white mb-4">Start Your Journey</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Start Your Journey</h3>
                 <p className="text-slate-300 leading-relaxed">
                   Schedule a personalized demo and discover how RedGiraffe can revolutionize your payment infrastructure.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {/* Enhanced Form Fields */}
                   {[
                     { field: "name", label: "Full Name", type: "text", placeholder: "Enter Your Name" },
@@ -299,7 +299,7 @@ export const SophisticatedContactSection = () => {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {[
                     { field: "email", label: "Business Email Address", type: "email", placeholder: "Enter Your Email" },
                     { field: "phone", label: "Phone Number", type: "tel", placeholder: "Enter Your Phone" }
