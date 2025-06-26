@@ -138,7 +138,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen lg:min-h-[100vh] xl:min-h-[98vh] bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-8 sm:pb-12 lg:pb-16 overflow-hidden -mt-20">
+    <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-16 sm:pb-20 lg:pb-28 overflow-hidden -mt-20">
       {/* Sophisticated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
       
@@ -149,11 +149,11 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 mx-auto max-w-screen-2xl relative pt-16 sm:pt-20 md:pt-24 lg:pt-28 xl:pt-32 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center w-full">
+      <div className="container-responsive relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
+        <div className="grid-responsive-1-2 gap-responsive items-center">
           {/* Left Content */}
           <motion.div
-            className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 order-2 lg:order-1"
+            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -220,24 +220,20 @@ export const HeroSection = () => {
 
             {/* Main Heading */}
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
+              className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
               variants={itemVariants}
             >
-              All{" "}
-              <span className="bg-gradient-to-r from-yellow-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
-                Payments
-              </span>
-              , One<br className="hidden sm:block" />
-              Place, Big Rewards
+              RedGirraffe Global
+              <br />
+              <span className="text-slate-700">Commercial Card</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p 
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-slate-600 leading-relaxed max-w-3xl text-center lg:text-left"
+              className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
               variants={itemVariants}
             >
-              Rent, Fees, Society Charges +<br />
-              Rs 3,000/Month in CASH Points
+              Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
             </motion.p>
 
             {/* Action Buttons */}
@@ -246,9 +242,9 @@ export const HeroSection = () => {
               variants={itemVariants}
             >
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                <Button className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-500 hover:from-yellow-500 hover:via-amber-500 hover:to-orange-600 text-slate-900 font-semibold px-10 py-5 lg:px-12 lg:py-6 rounded-full text-lg lg:text-xl xl:text-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-0 flex items-center gap-3">
-                  Get Started
-                  <ArrowRight className="w-6 h-6 lg:w-7 lg:h-7" />
+                <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                  <ArrowRight className="w-5 h-5" />
+                  Request a Demo
                 </Button>
               </motion.div>
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
