@@ -142,10 +142,10 @@ export const PaymentCategoriesSection = () => {
         <div className="absolute bottom-40 left-40 w-[600px] h-[600px] bg-gradient-to-br from-slate-300 via-gray-200 to-zinc-300 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-inner relative">
+      <div className="container-responsive relative">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8 tracking-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-responsive-xl font-bold text-slate-800 mb-6 sm:mb-8 tracking-tight">
             Pay Everything That Matters. At the{" "}
             <span className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-600 bg-clip-text text-transparent">
               Speed of Now
@@ -154,7 +154,7 @@ export const PaymentCategoriesSection = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-col lg:flex-row justify-center mb-12 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-slate-200/50 max-w-4xl mx-auto">
+        <div className="flex flex-col lg:flex-row justify-center mb-8 sm:mb-12 bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 shadow-lg border border-slate-200/50 max-w-4xl mx-auto">
           {tabConfig.map((tab) => (
             <button
               key={tab.id}
