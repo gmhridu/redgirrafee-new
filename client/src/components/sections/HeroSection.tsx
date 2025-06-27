@@ -144,7 +144,7 @@ export const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 w-full">
+      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
         {/* World-class full-width container - Maximum screen coverage with classy edge margins */}
         <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
           <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto">
@@ -210,18 +210,14 @@ export const HeroSection = () => {
                   </div>
                 </motion.div>
 
-                {/* Main Heading - Enhanced for expanded layout */}
+                {/* Main Heading */}
                 <motion.h1 
                   className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
                   variants={itemVariants}
                 >
-                  <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
-                    RedGiraffe Global
-                  </span>
+                  RedGiraffe Global
                   <br />
-                  <span className="text-slate-700 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    Commercial Card
-                  </span>
+                  <span className="text-slate-700">Commercial Card</span>
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -254,25 +250,25 @@ export const HeroSection = () => {
                   </motion.div>
                 </motion.div>
 
-                {/* Stats - Enhanced with premium styling */}
+                {/* Stats */}
                 <motion.div 
                   className="pt-4"
                   variants={itemVariants}
                 >
-                  <p className="text-lg font-semibold text-slate-700 text-center lg:text-left">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">$20B+</span> processed annually
+                  <p className="text-lg font-semibold text-slate-700">
+                    <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
                   </p>
                 </motion.div>
               </motion.div>
 
-              {/* Right Video Section - Enhanced for expanded layout */}
+              {/* Right Video Section */}
               <motion.div 
-                className="relative w-full order-1 lg:order-2 px-2 lg:px-0"
+                className="relative w-full order-1 lg:order-2"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <div className="relative group max-w-lg mx-auto lg:max-w-none" ref={containerRef}>
+                <div className="relative group" ref={containerRef}>
                   <div className="aspect-video w-full bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 backdrop-blur-sm">
                     <video
                       ref={videoRef}
