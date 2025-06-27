@@ -48,8 +48,8 @@ export const ProcessSection = () => {
       {/* World-class full-width container aligned with hero section */}
       <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 w-full">
         <div className="w-full max-w-[95%] xl:max-w-[90%] mx-auto relative">
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             How{" "}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
@@ -111,6 +111,7 @@ export const ProcessSection = () => {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
