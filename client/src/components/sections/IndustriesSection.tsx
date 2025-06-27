@@ -118,7 +118,9 @@ export const IndustriesSection = () => {
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-responsive relative">
+      {/* World-class full-width container aligned with hero section */}
+      <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 w-full">
+        <div className="w-full max-w-[95%] xl:max-w-[90%] mx-auto relative">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
@@ -160,6 +162,7 @@ export const IndustriesSection = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             Request a Demo
           </Button>
+        </div>
         </div>
       </div>
     </section>

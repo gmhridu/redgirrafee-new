@@ -57,6 +57,7 @@ export const UserTestimonialsSection = () => {
             </div>
           ))}
         </div>
+        </div>
       </div>
     </section>
   );
