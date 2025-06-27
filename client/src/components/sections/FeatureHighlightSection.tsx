@@ -3,7 +3,9 @@ import { BarChart3, Users, Check } from "lucide-react";
 export const FeatureHighlightSection = () => {
   return (
     <section className="section-spacing-tight bg-gradient-to-br from-slate-50/60 via-gray-50/40 to-zinc-50/60 relative overflow-hidden">
-      <div className="container-responsive relative">
+      {/* World-class full-width container aligned with hero section */}
+      <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 w-full">
+        <div className="w-full max-w-[95%] xl:max-w-[90%] mx-auto relative">
         <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
           <h2 className="text-responsive-xl font-bold text-textblack mb-4 sm:mb-6">
             Powered by{" "}
