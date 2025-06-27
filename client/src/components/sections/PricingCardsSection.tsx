@@ -163,7 +163,6 @@ export const PricingCardsSection = () => {
             </div>
           ))}
         </div>
-          </div>
         </div>
       </div>
     </section>
