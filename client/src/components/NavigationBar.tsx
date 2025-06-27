@@ -136,12 +136,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 relative ${className}`} >
         {/* Sophisticated Gradient Overlay - Same as hero */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
-        <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 relative z-10 w-full">
-          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[95%] xl:max-w-[90%] mx-auto py-4 sm:py-4 lg:py-6">
+        <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 relative z-10 w-full">
+          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[98%] xl:max-w-[96%] mx-auto py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-3 lg:gap-8 xl:gap-12">
-              {/* Logo */}
+              {/* Logo - Enhanced for premium synergy */}
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="font-bold text-black text-2xl sm:text-2xl lg:text-2xl tracking-tight">
+                <div className="font-bold text-slate-900 text-2xl sm:text-2xl lg:text-3xl xl:text-3xl tracking-tight bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 bg-clip-text text-transparent hover:from-emerald-700 hover:via-slate-900 hover:to-emerald-700 transition-all duration-300">
                   RedGirraffe
                 </div>
               </div>

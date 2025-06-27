@@ -145,13 +145,13 @@ export const HeroSection = () => {
       </div>
 
       <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
-        {/* World-class full-width container aligned with navigation */}
-        <div className="max-w-none px-2 sm:px-4 lg:px-6 xl:px-8 w-full">
-          <div className="w-full max-w-[95%] xl:max-w-[90%] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 xl:gap-16 2xl:gap-20 items-center">
-              {/* Left Content - Perfectly aligned with RedGiraffe logo */}
+        {/* World-class full-width container - Maximum screen coverage with classy edge margins */}
+        <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+          <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
+              {/* Left Content - Perfectly synergized with enhanced RedGiraffe logo */}
               <motion.div
-                className="space-y-6 sm:space-y-8 order-2 lg:order-1"
+                className="space-y-6 sm:space-y-8 order-2 lg:order-1 px-2 lg:px-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
