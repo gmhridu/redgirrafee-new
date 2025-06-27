@@ -50,7 +50,7 @@ export const LayoutSection = () => {
       {/* Aligned with Hero section margins for perfect consistency */}
       <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
-        {/* Header */}
+          {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24">
           <h2 className="text-responsive-xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
             Traditional B2B payouts fail —
@@ -184,6 +184,7 @@ export const LayoutSection = () => {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
