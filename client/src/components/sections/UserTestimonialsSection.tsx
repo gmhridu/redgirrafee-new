@@ -24,8 +24,10 @@ export const UserTestimonialsSection = () => {
 
   return (
     <section className="section-spacing-tight bg-gradient-to-br from-purple-50/30 via-fuchsia-50/20 to-pink-50/30 relative overflow-hidden">
-      <div className="container-responsive relative">
-        <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
+      {/* Synchronized with Hero section margins for perfect consistency */}
+      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+        <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
+          <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
           <h2 className="text-responsive-xl font-bold text-textblack mb-4 sm:mb-6">
             What Our Customers Say
           </h2>
@@ -56,6 +58,7 @@ export const UserTestimonialsSection = () => {
               <p className="text-responsive-sm text-neutral-50 italic">"{testimonial.content}"</p>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
