@@ -90,8 +90,10 @@ export const HowItWorksSection = () => {
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-responsive relative">
-        {/* Header */}
+      {/* Synchronized with Hero section margins for perfect consistency */}
+      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+        <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
+          {/* Header */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
             Powered by smart{" "}

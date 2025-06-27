@@ -94,8 +94,10 @@ export const TailoredSuccessSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container-responsive relative">
-        {/* Sophisticated Header */}
+      {/* Synchronized with Hero section margins for perfect consistency */}
+      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+        <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
+          {/* Sophisticated Header */}
         <div className="text-center mb-16 sm:mb-20 md:mb-24">
           <h2 className="text-responsive-xl font-bold text-slate-800 mb-6 sm:mb-8 tracking-tight">
             Tailored for{" "}
