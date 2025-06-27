@@ -83,7 +83,6 @@ export const FeatureHighlightSection = () => {
             </div>
           </div>
         </div>
-        </div>
       </div>
     </section>
   );

@@ -113,7 +113,6 @@ export const ProcessSection = () => {
             ))}
           </div>
         </div>
-        </div>
       </div>
     </section>
   );
