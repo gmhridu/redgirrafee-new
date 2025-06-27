@@ -169,6 +169,7 @@ export const HowItWorksSection = () => {
             Request a Demo
           </Button>
         </div>
+        </div>
       </div>
     </section>
   );

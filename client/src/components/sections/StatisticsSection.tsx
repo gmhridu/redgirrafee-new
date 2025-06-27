@@ -142,6 +142,7 @@ export const StatisticsSection = () => {
             </div>
           ))}
         </div>
+        </div>
       </div>
     </section>
   );
