@@ -276,9 +276,41 @@ export const HeroSection = () => {
                     muted
                     loop
                     playsInline
+                    onError={(e) => {
+                      console.log("Video error:", e);
+                      // Fallback to a different video source
+                      if (videoRef.current) {
+                        videoRef.current.src = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+                      }
+                    }}
                   >
-                    <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                    {/* Fallback content */}
+                    <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-emerald-100 to-teal-100 relative overflow-hidden">
+                      {/* Animated background */}
+                      <div className="absolute inset-0">
+                        <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-200 rounded-full blur-2xl animate-pulse"></div>
+                        <div className="absolute bottom-10 right-10 w-40 h-40 bg-teal-200 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                      </div>
+                      
+                      <div className="text-center relative z-10">
+                        <motion.div 
+                          className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          <Play className="w-8 h-8 text-white ml-1" />
+                        </motion.div>
+                        <h3 className="text-lg font-semibold text-slate-800 mb-2">RedGiraffe Demo</h3>
+                        <p className="text-slate-600">Global payment solutions</p>
+                        <div className="mt-4 flex justify-center space-x-1">
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                        </div>
+                      </div>
+                    </div>
                   </video>
                 </div>
 
