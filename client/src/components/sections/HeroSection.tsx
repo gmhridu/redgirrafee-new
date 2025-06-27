@@ -268,65 +268,51 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                {/* Floating Decorative Elements */}
-                <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-purple-300 to-purple-400 rounded-full blur-sm opacity-60 animate-pulse"></div>
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-emerald-300 to-emerald-400 rounded-full blur-sm opacity-60 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute -bottom-6 -right-8 w-20 h-20 bg-gradient-to-br from-amber-300 to-orange-400 rounded-full blur-sm opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
-                
                 <div className="relative group" ref={containerRef}>
-                  {/* Sophisticated TV Border Container */}
-                  <div className="relative p-4 bg-gradient-to-br from-slate-200 via-gray-100 to-slate-300 rounded-3xl shadow-2xl">
-                    {/* Inner metallic border */}
-                    <div className="relative bg-gradient-to-br from-gray-300 via-slate-200 to-gray-400 p-2 rounded-2xl shadow-inner">
-                      {/* Screen container with sophisticated border */}
-                      <div className="aspect-video w-full bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl shadow-xl overflow-hidden border-2 border-gray-300/50 relative">
-                        {/* Inner screen glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none"></div>
-                        <video
-                          ref={videoRef}
-                          className="w-full h-full object-cover relative z-10"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          onError={(e) => {
-                            console.log("Video error:", e);
-                            // Fallback to a different video source
-                            if (videoRef.current) {
-                              videoRef.current.src = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-                            }
-                          }}
-                        >
-                          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-                          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-                          {/* Fallback content */}
-                          <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-emerald-100 to-teal-100 relative overflow-hidden">
-                            {/* Animated background */}
-                            <div className="absolute inset-0">
-                              <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-200 rounded-full blur-2xl animate-pulse"></div>
-                              <div className="absolute bottom-10 right-10 w-40 h-40 bg-teal-200 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                            </div>
-                            
-                            <div className="text-center relative z-10">
-                              <motion.div 
-                                className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-                                animate={{ scale: [1, 1.1, 1] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                              >
-                                <Play className="w-8 h-8 text-white ml-1" />
-                              </motion.div>
-                              <h3 className="text-lg font-semibold text-slate-800 mb-2">RedGiraffe Demo</h3>
-                              <p className="text-slate-600">Global payment solutions</p>
-                              <div className="mt-4 flex justify-center space-x-1">
-                                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                              </div>
-                            </div>
+                  <div className="aspect-video w-full bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl shadow-2xl overflow-hidden border-4 border-white/50 backdrop-blur-sm">
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      onError={(e) => {
+                        console.log("Video error:", e);
+                        // Fallback to a different video source
+                        if (videoRef.current) {
+                          videoRef.current.src = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+                        }
+                      }}
+                    >
+                      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                      {/* Fallback content */}
+                      <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-emerald-100 to-teal-100 relative overflow-hidden">
+                        {/* Animated background */}
+                        <div className="absolute inset-0">
+                          <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-200 rounded-full blur-2xl animate-pulse"></div>
+                          <div className="absolute bottom-10 right-10 w-40 h-40 bg-teal-200 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                        </div>
+                        
+                        <div className="text-center relative z-10">
+                          <motion.div 
+                            className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
+                            <Play className="w-8 h-8 text-white ml-1" />
+                          </motion.div>
+                          <h3 className="text-lg font-semibold text-slate-800 mb-2">RedGiraffe Demo</h3>
+                          <p className="text-slate-600">Global payment solutions</p>
+                          <div className="mt-4 flex justify-center space-x-1">
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
                           </div>
-                        </video>
+                        </div>
                       </div>
-                    </div>
+                    </video>
                   </div>
 
                   {/* YouTube-style Controls */}
