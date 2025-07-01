@@ -1,30 +1,25 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 export default {
-  content: [
-    "./client/index.html", 
-    "./client/src/**/*.{js,jsx,ts,tsx}",
-    "app/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     // Mobile-first responsive breakpoints
     screens: {
-      'xs': '375px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      xs: '375px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
       '2xl': '1536px',
     },
     extend: {
       // Responsive font sizes for better mobile readability
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        xs: ['0.75rem', { lineHeight: '1rem' }],
+        sm: ['0.875rem', { lineHeight: '1.25rem' }],
+        base: ['1rem', { lineHeight: '1.5rem' }],
+        lg: ['1.125rem', { lineHeight: '1.75rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
         '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
@@ -51,78 +46,74 @@ export default {
         'mobile-xl': '2rem',
       },
       colors: {
-        "abu-bg": "var(--abu-bg)",
-        "abu-stroke": "var(--abu-stroke)",
-        "app-primary": "var(--app-primary)",
-        "app-secondary": "var(--app-secondary)",
-        black: "var(--black)",
-        "dark-green": "var(--dark-green)",
-        "highlight-c1": "var(--highlight-c1)",
-        "logo-color": "var(--logo-color)",
-        "neutral-100": "var(--neutral-100)",
-        "neutral-50": "var(--neutral-50)",
-        neutralwhite: "var(--neutralwhite)",
-        "tag-green": "var(--tag-green)",
-        text: "var(--text)",
-        textblack: "var(--textblack)",
-        texthighlight: "var(--texthighlight)",
-        textwhite: "var(--textwhite)",
-        white: "var(--white)",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        'abu-bg': 'var(--abu-bg)',
+        'abu-stroke': 'var(--abu-stroke)',
+        'app-primary': 'var(--app-primary)',
+        'app-secondary': 'var(--app-secondary)',
+        black: 'var(--black)',
+        'dark-green': 'var(--dark-green)',
+        'highlight-c1': 'var(--highlight-c1)',
+        'logo-color': 'var(--logo-color)',
+        'neutral-100': 'var(--neutral-100)',
+        'neutral-50': 'var(--neutral-50)',
+        neutralwhite: 'var(--neutralwhite)',
+        'tag-green': 'var(--tag-green)',
+        text: 'var(--text)',
+        textblack: 'var(--textblack)',
+        texthighlight: 'var(--texthighlight)',
+        textwhite: 'var(--textwhite)',
+        white: 'var(--white)',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
       },
       fontFamily: {
-        "body-large-body-large-regular":
-          "var(--body-large-body-large-regular-font-family)",
-        "body-large-body-large-semibold":
-          "var(--body-large-body-large-semibold-font-family)",
-        "body-medium-body-medium-bold":
-          "var(--body-medium-body-medium-bold-font-family)",
-        "body-medium-body-medium-regular":
-          "var(--body-medium-body-medium-regular-font-family)",
-        "h1-h1-semibold": "var(--h1-h1-semibold-font-family)",
-        "h2-h2-bold": "var(--h2-h2-bold-font-family)",
-        "h3-h3-semibold": "var(--h3-h3-semibold-font-family)",
-        "h4-h4-semibold": "var(--h4-h4-semibold-font-family)",
-        "h5-h5-bold": "var(--h5-h5-bold-font-family)",
-        "h5-h5-semibold": "var(--h5-h5-semibold-font-family)",
-        "h6-h6-regular": "var(--h6-h6-regular-font-family)",
-        "h6-h6-semibold": "var(--h6-h6-semibold-font-family)",
+        'body-large-body-large-regular': 'var(--body-large-body-large-regular-font-family)',
+        'body-large-body-large-semibold': 'var(--body-large-body-large-semibold-font-family)',
+        'body-medium-body-medium-bold': 'var(--body-medium-body-medium-bold-font-family)',
+        'body-medium-body-medium-regular': 'var(--body-medium-body-medium-regular-font-family)',
+        'h1-h1-semibold': 'var(--h1-h1-semibold-font-family)',
+        'h2-h2-bold': 'var(--h2-h2-bold-font-family)',
+        'h3-h3-semibold': 'var(--h3-h3-semibold-font-family)',
+        'h4-h4-semibold': 'var(--h4-h4-semibold-font-family)',
+        'h5-h5-bold': 'var(--h5-h5-bold-font-family)',
+        'h5-h5-semibold': 'var(--h5-h5-semibold-font-family)',
+        'h6-h6-regular': 'var(--h6-h6-regular-font-family)',
+        'h6-h6-semibold': 'var(--h6-h6-semibold-font-family)',
         sans: [
-          "ui-sans-serif",
-          "system-ui",
-          "sans-serif",
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
           '"Apple Color Emoji"',
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
@@ -130,84 +121,84 @@ export default {
         ],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        "fade-in-slow": {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        'fade-in-slow': {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        "slide-in-left": {
-          "0%": { opacity: "0", transform: "translateX(-30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+        'slide-in-left': {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
-        "slide-in-right": {
-          "0%": { opacity: "0", transform: "translateX(30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+        'slide-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
-        "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
+        'scale-in': {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
         },
-        "bounce-subtle": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5px)" },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
         },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(74, 139, 123, 0.4)" },
-          "50%": { boxShadow: "0 0 0 10px rgba(74, 139, 123, 0)" },
+        'pulse-glow': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(74, 139, 123, 0.4)' },
+          '50%': { boxShadow: '0 0 0 10px rgba(74, 139, 123, 0)' },
         },
-        "text-shimmer": {
-          "0%": { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition: "200% center" },
+        'text-shimmer': {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
-        "fade-in-slow": "fade-in-slow 1s ease-out",
-        "slide-in-left": "slide-in-left 0.8s ease-out",
-        "slide-in-right": "slide-in-right 0.8s ease-out",
-        "scale-in": "scale-in 0.5s ease-out",
-        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        "text-shimmer": "text-shimmer 3s ease-in-out infinite",
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.6s ease-out',
+        'fade-in-slow': 'fade-in-slow 1s ease-out',
+        'slide-in-left': 'slide-in-left 0.8s ease-out',
+        'slide-in-right': 'slide-in-right 0.8s ease-out',
+        'scale-in': 'scale-in 0.5s ease-out',
+        'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'text-shimmer': 'text-shimmer 3s ease-in-out infinite',
       },
     },
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "2rem",
-        lg: "4rem",
-        xl: "5rem",
-        "2xl": "6rem",
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
       },
       screens: {
-        "2xl": "1400px"
-      }
+        '2xl': '1400px',
+      },
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
     // Add custom utilities for mobile responsiveness
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       const newUtilities = {
         // Touch-friendly button sizes
         '.btn-touch': {
@@ -310,9 +301,9 @@ export default {
           paddingTop: '5rem',
           paddingBottom: '5rem',
         },
-      }
-      addUtilities(newUtilities)
-    }
+      };
+      addUtilities(newUtilities);
+    },
   ],
-  darkMode: ["class"],
+  darkMode: ['class'],
 } satisfies Config;

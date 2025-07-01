@@ -1,11 +1,11 @@
 # B2B Global - Vite + React + TypeScript
 
-A modern full-stack application built with Vite, React, TypeScript, and Express.
+A modern frontend application built with Vite, React, TypeScript, and deployed on Vercel with serverless API functions.
 
 ## 🚀 Features
 
 - **Frontend**: React 18 + TypeScript + Vite
-- **Backend**: Express.js + TypeScript
+- **API**: Vercel Serverless Functions
 - **Database**: PostgreSQL with Drizzle ORM
 - **UI**: Radix UI + Tailwind CSS + shadcn/ui
 - **State Management**: TanStack Query
@@ -20,23 +20,11 @@ npm install
 
 ## 🛠️ Development
 
-### Run Full Development Environment (Recommended)
+### Run Development Server
 ```bash
-npm run dev:full
-```
-This runs both frontend (port 3000) and backend (port 5000) concurrently.
-
-### Run Frontend Only
-```bash
-npm run dev:frontend
+npm run dev
 ```
 Starts Vite dev server on port 3000.
-
-### Run Backend Only
-```bash
-npm run dev:backend
-```
-Starts Express server on port 5000.
 
 ## 🏗️ Build
 
@@ -55,16 +43,19 @@ Runs the production build.
 ## 📁 Project Structure
 
 ```
-├── client/                 # Frontend React app
-│   ├── src/               # React source code
-│   ├── index.html         # HTML entry point
-│   └── public/            # Static assets
-├── server/                # Backend Express app
-├── shared/                # Shared types and utilities
-├── dist/                  # Production build output
-├── vite.config.ts         # Vite configuration
-├── tailwind.config.ts     # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
+├── src/                   # React source code
+│   ├── components/        # React components
+│   ├── pages/            # Page components
+│   ├── lib/              # Utility libraries
+│   └── hooks/            # Custom React hooks
+├── api/                  # Vercel serverless functions
+├── shared/               # Shared types and utilities
+├── public/               # Static assets
+├── dist/                 # Production build output
+├── index.html            # HTML entry point
+├── vite.config.ts        # Vite configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+└── tsconfig.json         # TypeScript configuration
 ```
 
 ## 🔧 Configuration
@@ -89,11 +80,8 @@ npm run db:push
 
 ## 🎯 Scripts
 
-- `npm run dev:full` - Run both frontend and backend
-- `npm run dev:frontend` - Run Vite dev server only
-- `npm run dev:backend` - Run Express server only
+- `npm run dev` - Start Vite development server
 - `npm run build` - Build for production
-- `npm start` - Start production server
 - `npm run preview` - Preview production build
 - `npm run check` - Type check
 - `npm run db:push` - Push database schema
@@ -104,7 +92,7 @@ npm run db:push
 - 📦 Optimized build with code splitting
 - 🔧 TypeScript support out of the box
 - 🎨 CSS preprocessing with PostCSS
-- 🔀 API proxy for seamless development
+- 🌐 Serverless API functions for Vercel
 - 📱 Mobile-first responsive design
 
 ## 🌐 Deployment

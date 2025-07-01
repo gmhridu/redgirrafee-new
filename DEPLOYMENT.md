@@ -32,20 +32,21 @@ Click "Deploy" and Vercel will:
 ## 📁 Project Structure for Vercel
 
 ```
-├── api/                    # Vercel serverless functions
-│   └── contact.ts         # Contact form API endpoint
-├── client/                # Frontend React app
-├── dist/
-│   ├── public/           # Built frontend (served by Vercel)
-│   └── index.js          # Built backend (not used in Vercel)
-├── server/               # Original server code
-└── vercel.json           # Vercel configuration
+├── api/                  # Vercel serverless functions
+│   ├── contact.ts       # Contact form API endpoint
+│   └── contacts.ts      # Get contacts API endpoint
+├── src/                 # React source code
+├── dist/                # Built frontend (served by Vercel)
+├── shared/              # Shared types and utilities
+├── lib/                 # Utility libraries
+├── index.html           # HTML entry point
+└── vercel.json          # Vercel configuration
 ```
 
 ## 🔧 How It Works
 
 ### Frontend
-- Built with Vite to `dist/public/`
+- Built with Vite to `dist/`
 - Served as static files by Vercel's CDN
 - Optimized with code splitting and compression
 
