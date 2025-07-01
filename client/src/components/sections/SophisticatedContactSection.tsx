@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Phone, MessageCircle, Mail, ArrowRight, Sparkles, Send } from 'lucide-react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
+import { ArrowRight, Mail, MessageCircle, Phone, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 
 interface ContactFormData {
   name: string;
@@ -28,7 +27,7 @@ export const SophisticatedContactSection = () => {
 
   const contactMutation = useMutation({
     mutationFn: async (data: ContactFormData) => {
-      const response = await fetch('/api/contacts', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +50,7 @@ export const SophisticatedContactSection = () => {
         description: "We'll get in touch with you soon to schedule your demo.",
       });
       setFormData({ name: '', email: '', company: '', phone: '' });
-      queryClient.invalidateQueries({ queryKey: ['/api/contacts'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/contact'] });
     },
     onError: () => {
       toast({

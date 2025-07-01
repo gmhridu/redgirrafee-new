@@ -109,7 +109,19 @@ npm run db:push
 
 ## 🌐 Deployment
 
-The app is configured for deployment on Replit and other platforms. The build process creates optimized static assets and a bundled server.
+### Vercel (Recommended)
+The app is optimized for Vercel deployment with serverless functions:
+
+```bash
+# Deploy to Vercel
+npm install -g vercel
+vercel
+```
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Vercel deployment guide.
+
+### Other Platforms
+The app can also be deployed on Replit, Railway, or any Node.js hosting platform. The build process creates optimized static assets and a bundled server.
 
 ## 📝 License
 

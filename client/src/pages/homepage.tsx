@@ -87,6 +87,7 @@ export default function Homepage() {
         <IndustriesSection />
         {/* <FeatureHighlightSection /> */}
         {/* <UserTestimonialsSection /> */}
+        {/* test */}
         <HowItWorksSection />
         <StatisticsSection />
         <ProcessSection />
