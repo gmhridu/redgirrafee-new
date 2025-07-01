@@ -1,8 +1,8 @@
-import { Menu, ChevronDown, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { durations, easings } from "@/utils/animations";
+import { Button } from '@/components/ui/button';
+import { durations, easings } from '@/utils/animations';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface NavigationItem {
   label: string;
@@ -18,7 +18,7 @@ interface NavigationBarProps {
 export const NavigationBar: React.FC<NavigationBarProps> = ({
   navItems,
   onNavigate,
-  className = "",
+  className = '',
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showFlagDropdown, setShowFlagDropdown] = useState(false);
@@ -29,10 +29,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
   // Flag data
   const flags = [
-    { name: "United States", code: "US", flag: "🇺🇸" },
-    { name: "India", code: "IN", flag: "🇮🇳" },
-    { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
-    { name: "European Union", code: "EU", flag: "🇪🇺" },
+    { name: 'United Kingdom', code: 'UK', flag: '🇬🇧' },
+    { name: 'United States', code: 'US', flag: '🇺🇸' },
+    { name: 'India', code: 'IN', flag: '🇮🇳' },
+    { name: 'European Union', code: 'EU', flag: '🇪🇺' },
   ];
 
   // Close dropdowns when clicking outside
@@ -73,8 +73,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
     setShowFlagDropdown(false);
 
     // Navigate to India site if IN flag is selected
-    if (flags[index].code === "IN") {
-      window.location.href = "https://redgirraffe.com/in/";
+    if (flags[index].code === 'IN') {
+      window.location.href = 'https://redgirraffe.com/in/';
     }
   };
 
@@ -132,16 +132,16 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
   return (
     <>
-      {/* Navigation Bar - Sticky */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 relative ${className}`} >
-        {/* Sophisticated Gradient Overlay - Same as hero */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
+      {/* Navigation Bar - Sticky with Glass Morphism Effect */}
+      <div className={`sticky top-0 z-50 flex items-center justify-center w-full ${className}`}>
+        {/* Glass Morphism Background - Stripe-like transparent overlay */}
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-lg "></div>
         <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 relative z-10 w-full">
           <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[98%] xl:max-w-[96%] mx-auto py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-3 lg:gap-8 xl:gap-12">
               {/* Logo - Enhanced for premium synergy */}
               <div className="flex items-center gap-2 sm:gap-3">
-                <div className="font-bold text-slate-900 text-2xl sm:text-2xl lg:text-3xl xl:text-3xl tracking-tight bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 bg-clip-text text-transparent hover:from-emerald-700 hover:via-slate-900 hover:to-emerald-700 transition-all duration-300">
+                <div className="font-bold text-slate-900 text-2xl sm:text-2xl lg:text-3xl xl:text-3xl tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent hover:from-emerald-700 hover:via-slate-900 hover:to-emerald-700 transition-all duration-300 drop-shadow-sm">
                   RedGirraffe
                 </div>
               </div>
@@ -154,7 +154,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                     className="p-0 h-auto hover:bg-transparent btn-touch"
                     onClick={() => scrollToSection(item.sectionId)}
                   >
-                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-slate-700 hover:text-emerald-600">
+                    <div className="font-body-large-body-large-semibold text-sm lg:text-base xl:text-[length:var(--body-large-body-large-semibold-font-size)] text-center tracking-[var(--body-large-body-large-semibold-letter-spacing)] leading-[var(--body-large-body-large-semibold-line-height)] transition-colors cursor-pointer text-slate-800 hover:text-emerald-600 font-medium drop-shadow-sm">
                       {item.label}
                     </div>
                   </div>
@@ -182,7 +182,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <X className="w-6 h-6 text-white group-hover:text-app-primary" />
+                      <X className="w-6 h-6 text-slate-800 group-hover:text-emerald-600" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -190,7 +190,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: durations.fast }}
                     >
-                      <Menu className="w-6 h-6 text-white group-hover:text-app-primary" />
+                      <Menu className="w-6 h-6 text-slate-800 group-hover:text-emerald-600" />
                     </motion.div>
                   )}
                 </motion.div>
@@ -242,14 +242,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                   variant="outline"
                   className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 border-0 text-white font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
-                  <span className="text-sm font-medium">
-                    Get Demo
-                  </span>
+                  <span className="text-sm font-medium">Get Demo</span>
                 </Button>
-                <Button className="bg-slate-700/20 hover:bg-slate-800/30 backdrop-blur-sm border border-slate-400/40 text-slate-800 hover:text-slate-900 font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  <span className="text-sm font-medium">
-                    Login
-                  </span>
+                <Button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 text-slate-800 hover:text-slate-900 font-semibold px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                  <span className="text-sm font-medium">Login</span>
                 </Button>
               </div>
             </div>
@@ -262,9 +258,9 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
         {showMobileMenu && (
           <motion.div
             ref={mobileMenuRef}
-            className="lg:hidden w-full bg-white border-b border-abu-stroke px-4 py-4 sticky top-[80px] z-40"
+            className="lg:hidden w-full bg-white/90 backdrop-blur-lg border-b border-white/30 px-4 py-4 sticky top-[80px] z-40 shadow-lg"
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: durations.fast }}
           >

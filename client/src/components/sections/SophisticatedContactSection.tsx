@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Phone, MessageCircle, Mail, ArrowRight, CheckCircle, Globe, Shield, Zap } from "lucide-react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Phone, MessageCircle, Mail, ArrowRight, Sparkles, Send } from 'lucide-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useToast } from '@/hooks/use-toast';
+import { motion } from 'framer-motion';
 
 interface ContactFormData {
   name: string;
@@ -15,78 +15,60 @@ interface ContactFormData {
 
 export const SophisticatedContactSection = () => {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    company: "",
-    phone: ""
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
   });
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const contactMutation = useMutation({
     mutationFn: async (data: ContactFormData) => {
-      const response = await fetch("/api/contacts", {
-        method: "POST",
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: data.name,
           email: data.email,
           company: data.company,
-          message: `Phone: ${data.phone}`
-        })
+          message: `Phone: ${data.phone}`,
+        }),
       });
       if (!response.ok) {
-        throw new Error("Failed to submit contact form");
+        throw new Error('Failed to submit contact form');
       }
       return response.json();
     },
     onSuccess: () => {
       toast({
-        title: "Demo Request Submitted!",
+        title: 'Demo Request Submitted!',
         description: "We'll get in touch with you soon to schedule your demo.",
       });
-      setFormData({ name: "", email: "", company: "", phone: "" });
-      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
+      setFormData({ name: '', email: '', company: '', phone: '' });
+      queryClient.invalidateQueries({ queryKey: ['/api/contacts'] });
     },
     onError: () => {
       toast({
-        title: "Submission Failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive",
+        title: 'Submission Failed',
+        description: 'Please try again or contact us directly.',
+        variant: 'destructive',
       });
-    }
+    },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.company) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
+        title: 'Missing Information',
+        description: 'Please fill in all required fields.',
+        variant: 'destructive',
       });
       return;
     }
@@ -100,268 +82,322 @@ export const SophisticatedContactSection = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "+44 330 113 1707",
-      subtitle: "The Best Way to get Faster Answer",
-      color: "from-blue-500 to-indigo-600"
+      title: '+44 330 113 1707',
+      subtitle: 'The Best Way to get Faster Answer',
+      gradient: 'from-green-600 to-emerald-600',
     },
     {
       icon: MessageCircle,
-      title: "+91 80 1019 1019",
-      subtitle: "WhatsApp Support Available",
-      color: "from-green-500 to-emerald-600"
+      title: '+91 80 1019 1019',
+      subtitle: 'WhatsApp Support Available',
+      gradient: 'from-emerald-600 to-teal-600',
     },
     {
       icon: Mail,
-      title: "connect@redgiraffe.com",
-      subtitle: "We Are Always Ready to Help",
-      color: "from-purple-500 to-violet-600"
-    }
+      title: 'connect@redgiraffe.com',
+      subtitle: 'We Are Always Ready to Help',
+      gradient: 'from-teal-600 to-cyan-600',
+    },
   ];
 
-  const benefits = [
-    { icon: Globe, text: "Global payment networks" },
-    { icon: Shield, text: "Enterprise-grade security" },
-    { icon: Zap, text: "Instant processing" },
-    { icon: CheckCircle, text: "99.9% uptime guarantee" }
-  ];
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  };
 
   return (
-    <section ref={sectionRef} className="section-spacing-contact bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 relative overflow-hidden">
-      {/* Sophisticated Background Elements */}
+    <section className="relative py-12 lg:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/5 via-transparent to-slate-500/5"></div>
-        <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-gradient-to-br from-emerald-400/10 to-green-300/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-slate-400/8 to-gray-300/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-400/5 via-purple-300/3 to-pink-400/5 rounded-full blur-3xl"></div>
-      </div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-green-400/10 to-emerald-400/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-teal-400/10 to-cyan-400/5 rounded-full blur-3xl" />
 
-      {/* Floating Geometric Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div 
-          className="absolute top-32 left-10 w-4 h-4 bg-emerald-400 rounded-full"
-          animate={{
-            y: [0, -20, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute top-64 right-32 w-6 h-6 bg-green-300 rotate-45"
-          animate={{
-            rotate: [45, 225, 45],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-48 left-1/4 w-3 h-3 bg-teal-400 rounded-full"
-          animate={{
-            x: [0, 30, 0],
-            opacity: [0.7, 1, 0.7],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut"
+        {/* Grid Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+            backgroundSize: '64px 64px',
           }}
         />
       </div>
 
-      <div className="container-inner relative">
-        {/* Premium Header */}
-        <motion.div 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-5xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight">
-            Ready to transform your{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400 bg-clip-text text-transparent">
-              business payments?
-            </span>
-          </h2>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
-            Join thousands of enterprises, banks, and PSPs simplifying payments with RedGiraffe's 
-            cutting-edge infrastructure and unmatched global reach.
-          </p>
-          
-          {/* Benefits Showcase */}
-          <motion.div 
-            className="flex flex-wrap justify-center gap-6 mb-16"
+      {/* Main Container */}
+      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+        <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
+          {/* Enhanced Header */}
+          <motion.div
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-                <benefit.icon className="w-4 h-4 text-emerald-400" />
-                <span className="text-white text-sm font-medium">{benefit.text}</span>
-              </div>
-            ))}
+            <motion.h2
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              Ready to transform your{' '}
+              <span className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                business payments?
+              </span>
+            </motion.h2>
+            <motion.p
+              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Join thousands of enterprises, banks, and PSPs simplifying payments with RedGiraffe's
+              cutting-edge infrastructure and unmatched global reach.
+            </motion.p>
           </motion.div>
-        </motion.div>
 
-        {/* Enhanced Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Contact Information Cards */}
-          <motion.div 
-            className="lg:col-span-1 space-y-6"
-            initial={{ opacity: 0, x: -30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          {/* Two-Card Layout */}
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
-            {contactInfo.map((contact, index) => (
-              <motion.div 
-                key={index} 
-                className="group bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer"
-                whileHover={{ scale: 1.02, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className={`w-14 h-14 bg-gradient-to-br ${contact.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                    <contact.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
-                      {contact.title}
-                    </h4>
-                    <p className="text-slate-300 text-sm leading-relaxed">
-                      {contact.subtitle}
-                    </p>
+            {/* Contact Information Card */}
+            <motion.div
+              className="relative group"
+              variants={itemVariants}
+              onMouseEnter={() => setHoveredCard(0)}
+              onMouseLeave={() => setHoveredCard(null)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            >
+              <div className="relative bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-gray-700 h-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-gray-600">
+                {/* Gradient Background Layer */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-green-600/5 to-emerald-600/5"
+                  animate={{ opacity: hoveredCard === 0 ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Sparkle Effect */}
+                <motion.div
+                  className="absolute top-4 right-4"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: hoveredCard === 0 ? 1 : 0,
+                    scale: hoveredCard === 0 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                >
+                  <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+                </motion.div>
+
+                <div className="relative">
+                  <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+                  <p className="text-gray-300 mb-8">
+                    Choose your preferred method to connect with our team.
+                  </p>
+
+                  <div className="space-y-6">
+                    {contactInfo.map((contact, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-start gap-4 group/item cursor-pointer"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div
+                          className={`w-12 h-12 bg-gradient-to-br ${contact.gradient} rounded-xl flex items-center justify-center shadow-lg group-hover/item:shadow-xl transition-shadow duration-300`}
+                        >
+                          <contact.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold text-white mb-1 group-hover/item:text-green-400 transition-colors duration-300">
+                            {contact.title}
+                          </h4>
+                          <p className="text-gray-400 text-sm">{contact.subtitle}</p>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Premium Contact Form */}
-          <motion.div 
-            className="lg:col-span-2"
-            initial={{ opacity: 0, x: 30 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 shadow-2xl">
-              <div className="mb-8">
-                <h3 className="text-3xl font-bold text-white mb-4">Start Your Journey</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Schedule a personalized demo and discover how RedGiraffe can revolutionize your payment infrastructure.
-                </p>
+                {/* Premium Border Glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredCard === 0 ? 1 : 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="absolute inset-[-1px] bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl opacity-20 blur-sm" />
+                </motion.div>
               </div>
+            </motion.div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Enhanced Form Fields */}
-                  {[
-                    { field: "name", label: "Full Name", type: "text", placeholder: "Enter Your Name" },
-                    { field: "company", label: "Company Name", type: "text", placeholder: "Enter Your Company" }
-                  ].map((input) => (
-                    <div key={input.field} className="relative">
-                      <label className="block text-sm font-medium text-slate-300 mb-3">
-                        {input.label}
-                      </label>
+            {/* Contact Form Card */}
+            <motion.div
+              className="relative group"
+              variants={itemVariants}
+              onMouseEnter={() => setHoveredCard(1)}
+              onMouseLeave={() => setHoveredCard(null)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            >
+              <div className="relative bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-gray-700 h-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-gray-600">
+                {/* Gradient Background Layer */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-teal-600/5"
+                  animate={{ opacity: hoveredCard === 1 ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Sparkle Effect */}
+                <motion.div
+                  className="absolute top-4 right-4"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: hoveredCard === 1 ? 1 : 0,
+                    scale: hoveredCard === 1 ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                >
+                  <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+                </motion.div>
+
+                <div className="relative">
+                  <h3 className="text-2xl font-bold text-white mb-6">Request a Demo</h3>
+
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="relative">
                         <Input
-                          type={input.type}
-                          placeholder={input.placeholder}
-                          value={formData[input.field as keyof ContactFormData]}
-                          onChange={(e) => handleInputChange(input.field as keyof ContactFormData, e.target.value)}
-                          onFocus={() => setFocusedField(input.field)}
+                          type="text"
+                          placeholder="Full Name"
+                          value={formData.name}
+                          onChange={e => handleInputChange('name', e.target.value)}
+                          onFocus={() => setFocusedField('name')}
                           onBlur={() => setFocusedField(null)}
-                          className={`w-full px-6 py-4 bg-white/10 border-2 rounded-xl text-white placeholder-slate-400 transition-all duration-300 focus:outline-none backdrop-blur-sm ${
-                            focusedField === input.field 
-                              ? 'border-emerald-400 bg-white/15 shadow-lg shadow-emerald-400/20' 
-                              : 'border-white/30 hover:border-white/50'
+                          className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg text-white placeholder-gray-400 transition-all duration-300 ${
+                            focusedField === 'name'
+                              ? 'border-green-500 bg-gray-700/70'
+                              : 'border-gray-600 hover:border-gray-500'
                           }`}
                           required
                         />
-                        {focusedField === input.field && (
-                          <motion.div
-                            className="absolute inset-0 rounded-xl border-2 border-emerald-400"
-                            initial={{ scale: 1.05, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 1.05, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          />
-                        )}
                       </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    { field: "email", label: "Business Email Address", type: "email", placeholder: "Enter Your Email" },
-                    { field: "phone", label: "Phone Number", type: "tel", placeholder: "Enter Your Phone" }
-                  ].map((input) => (
-                    <div key={input.field} className="relative">
-                      <label className="block text-sm font-medium text-slate-300 mb-3">
-                        {input.label}
-                      </label>
                       <div className="relative">
                         <Input
-                          type={input.type}
-                          placeholder={input.placeholder}
-                          value={formData[input.field as keyof ContactFormData]}
-                          onChange={(e) => handleInputChange(input.field as keyof ContactFormData, e.target.value)}
-                          onFocus={() => setFocusedField(input.field)}
+                          type="text"
+                          placeholder="Company Name"
+                          value={formData.company}
+                          onChange={e => handleInputChange('company', e.target.value)}
+                          onFocus={() => setFocusedField('company')}
                           onBlur={() => setFocusedField(null)}
-                          className={`w-full px-6 py-4 bg-white/10 border-2 rounded-xl text-white placeholder-slate-400 transition-all duration-300 focus:outline-none backdrop-blur-sm ${
-                            focusedField === input.field 
-                              ? 'border-emerald-400 bg-white/15 shadow-lg shadow-emerald-400/20' 
-                              : 'border-white/30 hover:border-white/50'
+                          className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg text-white placeholder-gray-400 transition-all duration-300 ${
+                            focusedField === 'company'
+                              ? 'border-green-500 bg-gray-700/70'
+                              : 'border-gray-600 hover:border-gray-500'
                           }`}
-                          required={input.field === "email"}
+                          required
                         />
-                        {focusedField === input.field && (
-                          <motion.div
-                            className="absolute inset-0 rounded-xl border-2 border-emerald-400"
-                            initial={{ scale: 1.05, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 1.05, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          />
-                        )}
                       </div>
                     </div>
-                  ))}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="relative">
+                        <Input
+                          type="email"
+                          placeholder="Business Email"
+                          value={formData.email}
+                          onChange={e => handleInputChange('email', e.target.value)}
+                          onFocus={() => setFocusedField('email')}
+                          onBlur={() => setFocusedField(null)}
+                          className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg text-white placeholder-gray-400 transition-all duration-300 ${
+                            focusedField === 'email'
+                              ? 'border-green-500 bg-gray-700/70'
+                              : 'border-gray-600 hover:border-gray-500'
+                          }`}
+                          required
+                        />
+                      </div>
+                      <div className="relative">
+                        <Input
+                          type="tel"
+                          placeholder="Phone Number"
+                          value={formData.phone}
+                          onChange={e => handleInputChange('phone', e.target.value)}
+                          onFocus={() => setFocusedField('phone')}
+                          onBlur={() => setFocusedField(null)}
+                          className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg text-white placeholder-gray-400 transition-all duration-300 ${
+                            focusedField === 'phone'
+                              ? 'border-green-500 bg-gray-700/70'
+                              : 'border-gray-600 hover:border-gray-500'
+                          }`}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <motion.div className="pt-2">
+                      <motion.button
+                        type="submit"
+                        disabled={contactMutation.isPending}
+                        className="relative w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full py-4 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-500 inline-flex items-center justify-center gap-3 group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                        whileHover={{ scale: contactMutation.isPending ? 1 : 1.02 }}
+                        whileTap={{ scale: contactMutation.isPending ? 1 : 0.98 }}
+                      >
+                        {/* Button Gradient Animation */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        {/* Button Shine Effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                        </div>
+
+                        <span className="relative z-10">
+                          {contactMutation.isPending ? 'Submitting...' : 'Request a Demo'}
+                        </span>
+                        {!contactMutation.isPending && (
+                          <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                        )}
+                      </motion.button>
+                    </motion.div>
+                  </form>
                 </div>
 
-                {/* Premium Submit Button */}
-                <motion.div className="pt-6">
-                  <motion.button
-                    type="submit"
-                    disabled={contactMutation.isPending}
-                    className="w-full bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white rounded-2xl py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/25 flex items-center justify-center gap-3 group disabled:opacity-50"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {contactMutation.isPending ? (
-                      <motion.div
-                        className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      />
-                    ) : (
-                      <>
-                        <span>Request a Demo</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-                      </>
-                    )}
-                  </motion.button>
+                {/* Premium Border Glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredCard === 1 ? 1 : 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="absolute inset-[-1px] bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl opacity-20 blur-sm" />
                 </motion.div>
-              </form>
-            </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

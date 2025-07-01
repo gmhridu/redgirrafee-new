@@ -1,32 +1,26 @@
-import { HeroSection } from "@/components/sections/HeroSection";
-import { FeatureHighlightSection } from "@/components/sections/FeatureHighlightSection";
-import { MainContentSection } from "@/components/sections/MainContentSection";
-import { TailoredSuccessSection } from "@/components/sections/TailoredSuccessSection";
-import { PaymentCategoriesSection } from "@/components/sections/PaymentCategoriesSection";
-import { ContentSection } from "@/components/sections/ContentSection";
-import { LayoutSection } from "@/components/sections/LayoutSection";
-import { FooterSection } from "@/components/sections/FooterSection";
-import { UserTestimonialsSection } from "@/components/sections/UserTestimonialsSection";
-import { SubscriptionFormSection } from "@/components/sections/SubscriptionFormSection";
-import { CallToActionSection } from "@/components/sections/CallToActionSection";
-import { IndustriesSection } from "@/components/sections/IndustriesSection";
-import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
-import { StatisticsSection } from "@/components/sections/StatisticsSection";
-import { ProcessSection } from "@/components/sections/ProcessSection";
-import { PricingCardsSection } from "@/components/sections/PricingCardsSection";
-import { SophisticatedContactSection } from "@/components/sections/SophisticatedContactSection";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp } from "lucide-react";
-import { useEffect, useState } from "react";
-import { NavigationBar, NavigationItem } from "@/components/NavigationBar";
+import { NavigationBar, NavigationItem } from '@/components/NavigationBar';
+import { FooterSection } from '@/components/sections/FooterSection';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { HowItWorksSection } from '@/components/sections/HowItWorksSection';
+import { IndustriesSection } from '@/components/sections/IndustriesSection';
+import { LayoutSection } from '@/components/sections/LayoutSection';
+import { MainContentSection } from '@/components/sections/MainContentSection';
+import { PricingCardsSection } from '@/components/sections/PricingCardsSection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
+import { SophisticatedContactSection } from '@/components/sections/SophisticatedContactSection';
+import { StatisticsSection } from '@/components/sections/StatisticsSection';
+import { TailoredSuccessSection } from '@/components/sections/TailoredSuccessSection';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronUp } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 // Navigation menu items with their corresponding section IDs
 const navItems: NavigationItem[] = [
-  { label: "Features", sectionId: "features" },
-  { label: "Industries", sectionId: "industries" },
-  { label: "How It Works", sectionId: "how-it-works" },
-  { label: "Pricing", sectionId: "pricing" },
-  { label: "Contact", sectionId: "contact" },
+  { label: 'Features', sectionId: 'features' },
+  { label: 'Industries', sectionId: 'industries' },
+  { label: 'How It Works', sectionId: 'how-it-works' },
+  { label: 'Pricing', sectionId: 'pricing' },
+  { label: 'Contact', sectionId: 'contact' },
 ];
 
 export default function Homepage() {
@@ -37,14 +31,14 @@ export default function Homepage() {
       setShowScrollTop(window.pageYOffset > 300);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -53,8 +47,7 @@ export default function Homepage() {
     if (element) {
       const headerOffset = 80; // Account for fixed header
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
       // Enhanced smooth scrolling with custom easing
       const startPosition = window.pageYOffset;
@@ -92,8 +85,8 @@ export default function Homepage() {
         <MainContentSection />
         <TailoredSuccessSection />
         <IndustriesSection />
-        <FeatureHighlightSection />
-        <UserTestimonialsSection />
+        {/* <FeatureHighlightSection /> */}
+        {/* <UserTestimonialsSection /> */}
         <HowItWorksSection />
         <StatisticsSection />
         <ProcessSection />
@@ -110,13 +103,13 @@ export default function Homepage() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0, y: 20 }}
             transition={{
-              type: "spring",
+              type: 'spring',
               stiffness: 400,
               damping: 17,
             }}
             whileHover={{
               scale: 1.1,
-              boxShadow: "0 10px 25px rgba(74, 139, 123, 0.3)",
+              boxShadow: '0 10px 25px rgba(74, 139, 123, 0.3)',
             }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll to top"

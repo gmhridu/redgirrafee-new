@@ -1,169 +1,310 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Building2, CreditCard, Users, Shield, Globe, TrendingUp, Zap, Clock, DollarSign, FileText, Banknote, UserCheck } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Banknote,
+  Clock,
+  CreditCard,
+  DollarSign,
+  FileText,
+  Globe,
+  Shield,
+  TrendingUp,
+  UserCheck,
+  Zap,
+} from 'lucide-react';
 
 export const TailoredSuccessSection = () => {
   const featureCategories = [
     {
-      title: "For Banks",
+      title: 'For Banks',
+      gradient: 'from-green-600 to-emerald-600',
+      lightGradient: 'from-green-50 to-emerald-50',
       features: [
         {
           icon: TrendingUp,
-          title: "Low-Risk Growth",
-          subtitle: "Capture B2B card spend"
+          title: 'Low-Risk Growth',
+          subtitle: 'Capture B2B card spend',
+          gradient: 'from-green-500 to-emerald-500',
+          lightGradient: 'from-green-50 to-emerald-50',
         },
         {
           icon: Shield,
-          title: "Fraud Prevention", 
-          subtitle: "Enterprise-grade security"
+          title: 'Fraud Prevention',
+          subtitle: 'Enterprise-grade security',
+          gradient: 'from-emerald-500 to-teal-500',
+          lightGradient: 'from-emerald-50 to-teal-50',
         },
         {
           icon: Globe,
-          title: "Global Expansion",
-          subtitle: "Pay in 97+ countries"
+          title: 'Global Expansion',
+          subtitle: 'Pay in 97+ countries',
+          gradient: 'from-teal-500 to-cyan-500',
+          lightGradient: 'from-teal-50 to-cyan-50',
         },
         {
           icon: Clock,
-          title: "Real-Time Insights",
-          subtitle: "Monitor transactions"
+          title: 'Real-Time Insights',
+          subtitle: 'Monitor transactions',
+          gradient: 'from-cyan-500 to-blue-500',
+          lightGradient: 'from-cyan-50 to-blue-50',
         },
         {
           icon: Zap,
-          title: "Scalable Solutions",
-          subtitle: "Support growth"
+          title: 'Scalable Solutions',
+          subtitle: 'Support growth',
+          gradient: 'from-green-500 to-lime-500',
+          lightGradient: 'from-green-50 to-lime-50',
         },
         {
           icon: DollarSign,
-          title: "Cost Efficiency",
-          subtitle: "Reduce fees"
+          title: 'Cost Efficiency',
+          subtitle: 'Reduce fees',
+          gradient: 'from-lime-500 to-yellow-500',
+          lightGradient: 'from-lime-50 to-yellow-50',
         },
         {
           icon: UserCheck,
-          title: "Customer Loyalty",
-          subtitle: "Build stickiness"
-        }
-      ]
+          title: 'Customer Loyalty',
+          subtitle: 'Build stickiness',
+          gradient: 'from-emerald-500 to-green-500',
+          lightGradient: 'from-emerald-50 to-green-50',
+        },
+      ],
     },
     {
-      title: "For Cardholding Enterprises", 
+      title: 'For Cardholding Enterprises',
+      gradient: 'from-emerald-600 to-teal-600',
+      lightGradient: 'from-emerald-50 to-teal-50',
       features: [
         {
           icon: CreditCard,
-          title: "Bill Discounting",
-          subtitle: "Offer early payments with MDR fully absorbed—zero-cost"
+          title: 'Bill Discounting',
+          subtitle: 'Offer early payments with MDR fully absorbed—zero-cost',
+          gradient: 'from-green-500 to-emerald-500',
+          lightGradient: 'from-green-50 to-emerald-50',
         },
         {
           icon: Shield,
-          title: "Enhanced Control",
-          subtitle: "Maker Checker workflows"
+          title: 'Enhanced Control',
+          subtitle: 'Maker Checker workflows',
+          gradient: 'from-emerald-500 to-teal-500',
+          lightGradient: 'from-emerald-50 to-teal-50',
         },
         {
           icon: DollarSign,
-          title: "Cost Savings",
-          subtitle: "Lower fees"
+          title: 'Cost Savings',
+          subtitle: 'Lower fees',
+          gradient: 'from-teal-500 to-cyan-500',
+          lightGradient: 'from-teal-50 to-cyan-50',
         },
         {
           icon: Globe,
-          title: "Global Reach",
-          subtitle: "97+ countries"
+          title: 'Global Reach',
+          subtitle: '97+ countries',
+          gradient: 'from-cyan-500 to-blue-500',
+          lightGradient: 'from-cyan-50 to-blue-50',
         },
         {
           icon: TrendingUp,
-          title: "Real-Time Analytics",
-          subtitle: "Support growth"
+          title: 'Real-Time Analytics',
+          subtitle: 'Support growth',
+          gradient: 'from-green-500 to-lime-500',
+          lightGradient: 'from-green-50 to-lime-50',
         },
         {
           icon: FileText,
-          title: "Compliance Ease",
-          subtitle: "Embedded tax data"
+          title: 'Compliance Ease',
+          subtitle: 'Embedded tax data',
+          gradient: 'from-lime-500 to-yellow-500',
+          lightGradient: 'from-lime-50 to-yellow-50',
         },
         {
           icon: Banknote,
-          title: "Cash Flow Boost",
-          subtitle: "Bill discounting benefits"
-        }
-      ]
-    }
+          title: 'Cash Flow Boost',
+          subtitle: 'Bill discounting benefits',
+          gradient: 'from-emerald-500 to-green-500',
+          lightGradient: 'from-emerald-50 to-green-50',
+        },
+      ],
+    },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
+  const featureVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
-    <section className="section-spacing bg-gradient-to-br from-blue-50/30 via-indigo-50/20 to-violet-50/30 relative overflow-hidden">
-      {/* Sophisticated Background Elements */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-gradient-to-br from-emerald-300 via-green-200 to-teal-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-gradient-to-br from-slate-300 via-gray-200 to-zinc-300 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-200 via-purple-100 to-pink-200 rounded-full blur-3xl"></div>
+    <section className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 overflow-hidden">
+      {/* Premium Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-emerald-50/20" />
+
+      {/* Subtle Pattern Overlay */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
       </div>
 
-      {/* Synchronized with Hero section margins for perfect consistency */}
-      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
-        <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
-          {/* Sophisticated Header */}
-        <div className="text-center mb-16 sm:mb-20 md:mb-24">
-          <h2 className="text-responsive-xl font-bold text-slate-800 mb-6 sm:mb-8 tracking-tight">
-            Tailored for{" "}
-            <span className="bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-600 bg-clip-text text-transparent">
-              Your Success
-            </span>
-          </h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Unlock smarter payments for banks and enterprises with RedGirraffe.
-          </p>
-        </div>
+      <div className="relative max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
+        <div className="max-w-[98%] xl:max-w-[96%] mx-auto">
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-responsive-xl font-bold text-gray-900 mb-4 leading-tight">
+              Tailored for{' '}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  Your Success
+                </span>
+                <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 rounded-full opacity-30"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+              </span>
+            </h2>
+            <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Unlock smarter payments for banks and enterprises with RedGirraffe.
+            </p>
+          </motion.div>
 
-        {/* Static Feature Categories */}
-        <div className="grid-responsive-1-2 gap-responsive mb-16 sm:mb-20">
-          {featureCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-slate-200/30 overflow-hidden relative group hover:shadow-2xl hover:border-emerald-200/40 transition-all duration-500"
-            >
-              {/* Premium Card Header */}
-              <div className="bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-md px-8 py-6 relative overflow-hidden border-b border-white/10">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/8 via-green-400/5 to-teal-500/8"></div>
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
-                <h3 className="text-xl font-semibold text-white text-center relative z-10 tracking-wide">
-                  {category.title}
-                </h3>
-                <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-emerald-400/15 to-green-400/10 rounded-full blur-lg"></div>
-                <div className="absolute -bottom-1 -left-1 w-12 h-12 bg-gradient-to-tl from-teal-400/10 to-green-500/5 rounded-full blur-md"></div>
-              </div>
+          {/* Feature Categories Grid */}
+          <motion.div
+            className="grid lg:grid-cols-2 gap-8 mb-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {featureCategories.map((category, categoryIndex) => (
+              <motion.div key={categoryIndex} variants={itemVariants} className="group relative">
+                <div className="relative h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                  {/* Card Header - No hover effects on main card */}
+                  <div
+                    className={`relative bg-gradient-to-r ${category.gradient} px-8 py-6 overflow-hidden`}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                    <h3 className="text-xl font-semibold text-white text-center relative z-10">
+                      {category.title}
+                    </h3>
+                  </div>
 
-              {/* Static Features Grid */}
-              <div className="p-10">
-                <div className={`grid ${categoryIndex === 1 ? 'grid-cols-2' : 'grid-cols-2'} gap-4`}>
-                  {category.features.map((feature, featureIndex) => (
-                    <div
-                      key={featureIndex}
-                      className="bg-slate-50/50 rounded-xl p-6 hover:bg-slate-50 transition-all duration-300 group/item"
+                  {/* Features Grid */}
+                  <div className="p-8">
+                    <motion.div
+                      className="grid grid-cols-2 gap-4"
+                      variants={containerVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
                     >
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 rounded-xl flex items-center justify-center shadow-sm relative overflow-hidden mx-auto mb-4">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
-                          <feature.icon className="w-6 h-6 text-white relative z-10" />
-                        </div>
-                        <h4 className="font-semibold text-lg text-slate-800 mb-3 leading-tight group-hover/item:text-emerald-700 transition-colors duration-300">
-                          {feature.title}
-                        </h4>
-                        <p className="text-slate-600 leading-relaxed text-sm">
-                          {feature.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                      {category.features.map((feature, featureIndex) => {
+                        const Icon = feature.icon;
+                        return (
+                          <motion.div
+                            key={featureIndex}
+                            variants={featureVariants}
+                            className="group/item relative"
+                            whileHover={{ scale: 1.05, y: -4 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <div className="bg-gray-50/50 rounded-xl p-5 hover:bg-white hover:shadow-xl transition-all duration-300 h-full border border-transparent hover:border-emerald-200/50 relative overflow-hidden">
+                              {/* Gradient Border Effect on Individual Card Hover */}
+                              <div
+                                className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-5 transition-opacity duration-500 rounded-xl`}
+                              />
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full px-12 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto group">
-            <span>Request a Demo</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-          </Button>
-        </div>
+                              <div className="text-center relative z-10">
+                                <div
+                                  className={`relative w-12 h-12 bg-gradient-to-br ${feature.lightGradient} rounded-xl flex items-center justify-center mx-auto mb-3 transform transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-3`}
+                                >
+                                  <div
+                                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-20 rounded-xl transition-opacity duration-500`}
+                                  />
+                                  <Icon className="w-6 h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
+                                </div>
+                                <h4 className="font-semibold text-base text-gray-900 mb-2 leading-tight group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-green-600 group-hover/item:to-emerald-600 group-hover/item:bg-clip-text transition-all duration-300">
+                                  {feature.title}
+                                </h4>
+                                <p className="text-gray-600 text-sm leading-relaxed group-hover/item:text-gray-700 transition-colors duration-300">
+                                  {feature.subtitle}
+                                </p>
+                              </div>
+
+                              {/* Premium Shine Effect on Individual Cards */}
+                              <div className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 pointer-events-none">
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover/item:translate-x-[200%] transition-transform duration-1000" />
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <Button className="relative bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-full px-12 py-6 text-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-500 flex items-center gap-3 mx-auto group overflow-hidden">
+              {/* Button Shine Effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+              </div>
+
+              <span className="relative z-10">Request a Demo</span>
+              <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>

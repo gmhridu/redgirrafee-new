@@ -1,19 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Volume2, VolumeX, Maximize, Minimize, Play, Pause, Settings, Square } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-
-const formatTime = (time: number): string => {
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time % 60);
-  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-};
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { ArrowRight, MessageCircle, Play } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export const HeroSection = () => {
-  const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isCommercial, setIsCommercial] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasCompletedCycle, setHasCompletedCycle] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -37,17 +33,22 @@ export const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
 
   const buttonVariants = {
-    hover: { 
+    hover: {
       scale: 1.05,
-      transition: { duration: 0.2 }
+      transition: { duration: 0.2 },
     },
-    tap: { scale: 0.95 }
+    tap: { scale: 0.95 },
+  };
+
+  const handleToggleSwitch = () => {
+    // Simply toggle between Commercial and Platforms without navigation
+    setIsCommercial(!isCommercial);
   };
 
   const toggleMute = () => {
@@ -57,13 +58,32 @@ export const HeroSection = () => {
     }
   };
 
-  const handleToggleSwitch = () => {
-    if (isCommercial) {
-      // Switch to Platforms and redirect
-      window.location.href = "https://redgirraffe.com/in/b2b-saas";
-    } else {
-      // Switch to Commercial
-      setIsCommercial(true);
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (videoRef.current) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const newTime = (clickX / width) * duration;
+      videoRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().catch(console.log);
+        setIsPlaying(true);
+      }
     }
   };
 
@@ -74,14 +94,14 @@ export const HeroSection = () => {
           await containerRef.current.requestFullscreen();
           setIsFullscreen(true);
         } catch (error) {
-          console.log("Fullscreen not supported");
+          console.log('Fullscreen not supported');
         }
       } else {
         try {
           await document.exitFullscreen();
           setIsFullscreen(false);
         } catch (error) {
-          console.log("Exit fullscreen failed");
+          console.log('Exit fullscreen failed');
         }
       }
     }
@@ -91,60 +111,97 @@ export const HeroSection = () => {
     const handleFullscreenChange = () => {
       const isCurrentlyFullscreen = !!document.fullscreenElement;
       setIsFullscreen(isCurrentlyFullscreen);
-      
-      // When exiting fullscreen, ensure video returns to muted state and continues playing
+
+      // Reset cycle tracking when entering fullscreen
+      if (isCurrentlyFullscreen) {
+        setHasCompletedCycle(false);
+      }
+
+      // When exiting fullscreen, ensure video continues playing and is muted
       if (!isCurrentlyFullscreen && videoRef.current) {
         videoRef.current.muted = true;
         setIsMuted(true);
         videoRef.current.play().catch(console.log);
-      }
-    };
-
-    const handleVideoProgress = () => {
-      if (videoRef.current) {
-        const { currentTime, duration } = videoRef.current;
-        setCurrentTime(currentTime);
-        setDuration(duration);
-        setProgress((currentTime / duration) * 100);
+        setHasCompletedCycle(false); // Reset cycle tracking
       }
     };
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('timeupdate', handleVideoProgress);
-      video.addEventListener('loadedmetadata', handleVideoProgress);
-    }
 
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
-      if (video) {
-        video.removeEventListener('timeupdate', handleVideoProgress);
-        video.removeEventListener('loadedmetadata', handleVideoProgress);
-      }
     };
   }, []);
 
-  // Auto-play video when component mounts
+  // Auto-play video when component mounts and add event listeners
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(console.log);
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(console.log);
+
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+      const handleTimeUpdate = () => setCurrentTime(video.currentTime);
+      const handleLoadedMetadata = () => setDuration(video.duration);
+
+      video.addEventListener('play', handlePlay);
+      video.addEventListener('pause', handlePause);
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+      // Set duration if already loaded
+      if (video.duration) {
+        setDuration(video.duration);
+      }
+
+      return () => {
+        video.removeEventListener('play', handlePlay);
+        video.removeEventListener('pause', handlePause);
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      };
     }
   }, []);
+
+  // Keyboard controls
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlayPause();
+      } else if (e.code === 'KeyM') {
+        e.preventDefault();
+        toggleMute();
+      }
+    };
+
+    if (isFullscreen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isFullscreen, isPlaying, isMuted]);
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-amber-50 pt-0 pb-16 sm:pb-20 lg:pb-28 overflow-hidden -mt-20">
       {/* Sophisticated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-pink-500/5 to-amber-400/10"></div>
-      
+
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 right-20 w-72 h-72 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-amber-300 to-orange-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-amber-300 to-orange-400 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: '1s' }}
+        ></div>
+        <div
+          className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: '2s' }}
+        ></div>
       </div>
 
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 w-full">
+      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-40 w-full">
         {/* World-class full-width container - Maximum screen coverage with classy edge margins */}
         <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
           <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto">
@@ -157,37 +214,41 @@ export const HeroSection = () => {
                 animate="visible"
               >
                 {/* Commercial/Platforms Slider Switch */}
-                <motion.div 
-                  className="flex flex-col items-start gap-2"
+                <motion.div
+                  className="flex flex-col items-start gap-2 relative"
                   variants={itemVariants}
                 >
-                  {/* Click to Change Button with Arrow positioned above */}
-                  <div className="flex items-center gap-1 ml-8">
-                    <motion.button
-                      onClick={handleToggleSwitch}
-                      className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Click to change
-                    </motion.button>
+                  {/* Click to Change Button with cursor icon */}
+                  <div className="block absolute md:w-[163px] w-[120px] md:h-[45px] h-[30px] md:top-[-45px] top-[-45px] md:left-[260px] left-[230px]">
+                    <div className="relative h-[45px]">
+                      <Card
+                        className="inline-flex items-center justify-center gap-2.5 px-3.5 py-1 absolute top-0 left-[31px] bg-[#00d959] rounded-[55px] overflow-hidden border-none cursor-pointer"
+                        onClick={handleToggleSwitch}
+                      >
+                        <span className="font-body-large-body-large-regular text-[#1b1b1b] text-[length:var(--body-large-body-large-regular-font-size)] text-center tracking-[var(--body-large-body-large-regular-letter-spacing)] leading-[var(--body-large-body-large-regular-line-height)] whitespace-nowrap text-sm sm:text-base ">
+                          Click to change
+                        </span>
+                      </Card>
+                      <img
+                        className="absolute w-8 h-8 top-[13px] left-0"
+                        alt="Cursor"
+                        src="/fluent_cursor-20-filled.svg"
+                      />
+                    </div>
                   </div>
-                  
-                  {/* Arrow pointing down to slider */}
-                  <div className="text-green-500 text-lg ml-16">▼</div>
-                  
+
                   {/* Slider Switch Container */}
                   <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-72">
                     {/* Sliding Background */}
                     <motion.div
                       className="absolute top-1 bottom-1 bg-slate-800 rounded-full shadow-md"
                       animate={{
-                        left: isCommercial ? "4px" : "50%",
-                        width: "calc(50% - 4px)"
+                        left: isCommercial ? '4px' : '50%',
+                        width: 'calc(50% - 4px)',
                       }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
                     />
-                    
+
                     {/* Switch Options */}
                     <div className="relative flex">
                       <button
@@ -199,7 +260,7 @@ export const HeroSection = () => {
                         Commercial
                       </button>
                       <button
-                        onClick={handleToggleSwitch}
+                        onClick={() => setIsCommercial(false)}
                         className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
                           !isCommercial ? 'text-white' : 'text-slate-600'
                         }`}
@@ -211,38 +272,42 @@ export const HeroSection = () => {
                 </motion.div>
 
                 {/* Main Heading */}
-                <motion.h1 
+                <motion.h1
                   className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
                   variants={itemVariants}
                 >
-                  RedGiraffe Global
+                  RedGirraffe Global
                   <br />
-                  <span className="text-slate-700">Commercial Card</span>
+                  <span className="text-slate-700">
+                    {isCommercial ? 'Commercial Card' : 'Platform Solutions'}
+                  </span>
                 </motion.h1>
 
                 {/* Subtitle */}
-                <motion.p 
+                <motion.p
                   className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
                   variants={itemVariants}
                 >
-                  Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.
+                  {isCommercial
+                    ? 'Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.'
+                    : 'Empower your business with comprehensive platform solutions for seamless integration and scalable growth across global markets.'}
                 </motion.p>
 
                 {/* Action Buttons */}
-                <motion.div 
+                <motion.div
                   className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
                   variants={itemVariants}
                 >
                   <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                    <Button className="bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                    <Button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
                       <ArrowRight className="w-5 h-5" />
                       Request a Demo
                     </Button>
                   </motion.div>
                   <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                    <Button 
+                    <Button
                       variant="outline"
-                      className="bg-white/80 backdrop-blur-sm border-2 border-purple-300 text-slate-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 hover:border-purple-400 hover:text-slate-800 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                      className="bg-white/80 backdrop-blur-sm border-2 border-emerald-300 text-slate-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50 hover:border-emerald-400 hover:text-emerald-700 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                     >
                       <ArrowRight className="w-5 h-5" />
                       Contact Sales
@@ -251,18 +316,16 @@ export const HeroSection = () => {
                 </motion.div>
 
                 {/* Stats */}
-                <motion.div 
-                  className="pt-4"
-                  variants={itemVariants}
-                >
+                <motion.div className="pt-4" variants={itemVariants}>
                   <p className="text-lg font-semibold text-slate-700">
-                    <span className="text-2xl font-bold text-slate-900">$20B+</span> processed annually
+                    <span className="text-2xl font-bold text-slate-900">$20B+</span> processed
+                    annually
                   </p>
                 </motion.div>
               </motion.div>
 
               {/* Right Video Section */}
-              <motion.div 
+              <motion.div
                 className="relative w-full order-1 lg:order-2"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -277,91 +340,318 @@ export const HeroSection = () => {
                       muted
                       loop
                       playsInline
-                      onError={(e) => {
-                        console.log("Video error:", e);
+                      controls={false}
+                      onTimeUpdate={() => {
+                        // Auto-collapse from fullscreen when video completes a cycle
+                        if (videoRef.current && isFullscreen && document.fullscreenElement) {
+                          const { currentTime, duration } = videoRef.current;
+                          // When video is near the end (within 0.5 seconds) and in fullscreen
+                          if (duration > 0 && currentTime >= duration - 0.5 && !hasCompletedCycle) {
+                            setHasCompletedCycle(true);
+                            // Exit fullscreen after a brief delay
+                            setTimeout(() => {
+                              document.exitFullscreen().catch(console.log);
+                              setHasCompletedCycle(false);
+                            }, 100);
+                          }
+                        }
+                      }}
+                      onEnded={() => {
+                        // Fallback for browsers that don't loop properly
+                        if (isFullscreen && document.fullscreenElement) {
+                          document.exitFullscreen().catch(console.log);
+                        }
+                      }}
+                      onError={e => {
+                        console.log('Video error:', e);
                         // Fallback to a different video source
                         if (videoRef.current) {
-                          videoRef.current.src = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+                          videoRef.current.src =
+                            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
                         }
                       }}
                     >
-                      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                      <source
+                        src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                        type="video/mp4"
+                      />
                       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
                       {/* Fallback content */}
                       <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-emerald-100 to-teal-100 relative overflow-hidden">
                         {/* Animated background */}
                         <div className="absolute inset-0">
                           <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-200 rounded-full blur-2xl animate-pulse"></div>
-                          <div className="absolute bottom-10 right-10 w-40 h-40 bg-teal-200 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                          <div
+                            className="absolute bottom-10 right-10 w-40 h-40 bg-teal-200 rounded-full blur-2xl animate-pulse"
+                            style={{ animationDelay: '1s' }}
+                          ></div>
                         </div>
-                        
+
                         <div className="text-center relative z-10">
-                          <motion.div 
+                          <motion.div
                             className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
                             animate={{ scale: [1, 1.1, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           >
                             <Play className="w-8 h-8 text-white ml-1" />
                           </motion.div>
-                          <h3 className="text-lg font-semibold text-slate-800 mb-2">RedGiraffe Demo</h3>
+                          <h3 className="text-lg font-semibold text-slate-800 mb-2">
+                            RedGiraffe Demo
+                          </h3>
                           <p className="text-slate-600">Global payment solutions</p>
                           <div className="mt-4 flex justify-center space-x-1">
                             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                            <div
+                              className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
+                              style={{ animationDelay: '0.2s' }}
+                            ></div>
+                            <div
+                              className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
+                              style={{ animationDelay: '0.4s' }}
+                            ></div>
                           </div>
                         </div>
                       </div>
                     </video>
                   </div>
 
-                  {/* YouTube-style Controls */}
+                  {/* Simple overlay for normal view - hover to show controls */}
                   {!isFullscreen && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="flex items-center gap-4">
-                        {/* Progress Bar */}
-                        <div className="flex-1 bg-white/30 rounded-full h-1 overflow-hidden">
-                          <div 
-                            className="bg-red-500 h-full transition-all duration-300"
-                            style={{ width: `${progress}%` }}
-                          ></div>
-                        </div>
-                        
-                        {/* Time Display */}
-                        <div className="text-white text-sm font-medium">
-                          {formatTime(currentTime)} / {formatTime(duration)}
+                    <div className="absolute inset-0 group/overlay">
+                      <div className="absolute inset-0 bg-black/0 group-hover/overlay:bg-black/20 transition-all duration-300">
+                        {/* Controls that appear on hover */}
+                        <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 group-hover/overlay:opacity-100 transition-opacity duration-300">
+                          <button
+                            onClick={toggleMute}
+                            className="text-white p-3 hover:scale-110 transition-transform duration-200"
+                          >
+                            {isMuted ? (
+                              <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                />
+                              </svg>
+                            )}
+                          </button>
+                          <button
+                            onClick={toggleFullscreen}
+                            className="text-white p-3 hover:scale-110 transition-transform duration-200"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                              />
+                            </svg>
+                          </button>
                         </div>
                       </div>
                     </div>
                   )}
 
-                  {/* Video Controls Overlay - Bottom Right */}
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex gap-2">
-                      <motion.button
-                        onClick={toggleMute}
-                        className="bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 shadow-lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                      </motion.button>
-                      <motion.button
-                        onClick={toggleFullscreen}
-                        className="bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 shadow-lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
-                      </motion.button>
+                  {/* Custom Fullscreen Controls */}
+                  {isFullscreen && (
+                    <div className="absolute inset-0">
+                      {/* Bottom controls bar */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        {/* Progress bar and time */}
+                        <div className="mb-4">
+                          {/* Time indicators with enhanced professional backgrounds */}
+                          <div className="flex justify-between text-white text-sm mb-2">
+                            <span className="bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-md drop-shadow-lg border border-white/10">
+                              {formatTime(currentTime)}
+                            </span>
+                            <span className="bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-md drop-shadow-lg border border-white/10">
+                              {formatTime(duration)}
+                            </span>
+                          </div>
+
+                          {/* Progress bar with professional background */}
+                          <div
+                            className="w-full bg-black/50 backdrop-blur-sm rounded-full cursor-pointer group relative overflow-hidden p-2 border border-white/10"
+                            onClick={handleProgressClick}
+                          >
+                            {/* Background track */}
+                            <div className="w-full h-1.5 bg-white/20 rounded-full relative">
+                              {/* Progress fill */}
+                              <div
+                                className="h-full bg-white rounded-full transition-all duration-150 relative z-10 shadow-sm"
+                                style={{
+                                  width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
+                                }}
+                              />
+
+                              {/* Hover indicator */}
+                              <div className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                              {/* Progress thumb */}
+                              <div
+                                className="absolute top-1/2 w-3 h-3 bg-white rounded-full shadow-lg transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 border border-white/20"
+                                style={{
+                                  left: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
+                                  transform: `translateX(-50%) translateY(-50%)`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Control buttons with professional backgrounds */}
+                        <div className="flex justify-between items-center">
+                          {/* Left side - Mute button */}
+                          <button
+                            onClick={toggleMute}
+                            className="text-white p-3 hover:scale-110 transition-transform duration-200 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-black/60"
+                          >
+                            {isMuted ? (
+                              <svg
+                                className="w-6 h-6 drop-shadow-lg"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                className="w-6 h-6 drop-shadow-lg"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                />
+                              </svg>
+                            )}
+                          </button>
+
+                          {/* Center - Play/Pause button */}
+                          <button
+                            onClick={togglePlayPause}
+                            className="text-white p-4 hover:scale-110 transition-transform duration-200 bg-black/60 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/70"
+                          >
+                            {isPlaying ? (
+                              <svg
+                                className="w-8 h-8 drop-shadow-lg"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                className="w-8 h-8 drop-shadow-lg"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                            )}
+                          </button>
+
+                          {/* Right side - Exit fullscreen button */}
+                          <button
+                            onClick={toggleFullscreen}
+                            className="text-white p-3 hover:scale-110 transition-transform duration-200 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-black/60"
+                          >
+                            <svg
+                              className="w-6 h-6 drop-shadow-lg"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M15 9h4.5M15 9V4.5M15 9l5.25-5.25M9 15H4.5M9 15v4.5M9 15l-5.25 5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Decorative Elements */}
                 <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-40 animate-pulse"></div>
-                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full opacity-40 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute -top-2 -right-8 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-50 animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div
+                  className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full opacity-40 animate-pulse"
+                  style={{ animationDelay: '1s' }}
+                ></div>
+                <div
+                  className="absolute -top-2 -right-8 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-50 animate-pulse"
+                  style={{ animationDelay: '2s' }}
+                ></div>
               </motion.div>
             </div>
           </div>
