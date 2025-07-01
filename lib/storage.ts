@@ -1,4 +1,19 @@
-import { type Contact, type InsertContact } from "@shared/schema";
+// Simple types for contact form
+export interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  company: string | null;
+  message: string;
+  createdAt: Date;
+}
+
+export interface InsertContact {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+}
 
 // Simple in-memory storage for demo purposes
 // In production, you'd use a real database
@@ -14,9 +29,11 @@ class MemStorage {
   async createContact(insertContact: InsertContact): Promise<Contact> {
     const id = this.currentContactId++;
     const contact: Contact = {
-      ...insertContact,
       id,
+      name: insertContact.name,
+      email: insertContact.email,
       company: insertContact.company ?? null,
+      message: insertContact.message,
       createdAt: new Date(),
     };
     this.contacts.set(id, contact);

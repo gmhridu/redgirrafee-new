@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
-import { storage } from '../lib/storage';
+import { storage } from '../lib/storage.js';
 
 const contactFormSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name is too long'),
@@ -29,7 +29,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const validatedData = contactFormSchema.parse(req.body);
 
       // Store the contact form submission
-      const contact = await storage.createContact(validatedData);
+      const contact = await storage.createContact({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.company,
+        message: validatedData.message,
+      });
 
       res.json({
         success: true,
