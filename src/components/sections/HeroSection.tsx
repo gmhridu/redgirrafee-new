@@ -179,7 +179,7 @@ export const HeroSection = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
               {/* Left Content - Perfectly synergized with enhanced RedGiraffe logo */}
               <motion.div
-                className="space-y-6 sm:space-y-8 order-2 lg:order-1 px-2 lg:px-0"
+                className="space-y-6 sm:space-y-8 order-1 lg:order-1 px-2 lg:px-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -294,7 +294,7 @@ export const HeroSection = () => {
 
               {/* Right Video Section */}
               <motion.div
-                className="relative w-full order-1 lg:order-2"
+                className="relative w-full order-2 lg:order-2"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}

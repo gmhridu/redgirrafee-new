@@ -162,7 +162,7 @@ export const SophisticatedContactSection = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               Ready to transform your{' '}
-              <span className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-600 via-emerald-600 to-green-700 bg-clip-text text-transparent">
                 business payments?
               </span>
             </motion.h2>

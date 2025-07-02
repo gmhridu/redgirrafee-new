@@ -208,16 +208,16 @@ export const TailoredSuccessSection = () => {
             <h2 className="text-responsive-xl font-bold text-gray-900 mb-4 leading-tight">
               Tailored for{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
                   Your Success
                 </span>
-                <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 rounded-full opacity-30"
+                {/* <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 rounded-full opacity-30"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                />
+                /> */}
               </span>
             </h2>
             <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">

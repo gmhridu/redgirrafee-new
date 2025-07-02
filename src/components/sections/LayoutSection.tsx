@@ -1,3 +1,4 @@
+import { useGradient } from '@/lib/gradients';
 import { motion } from 'framer-motion';
 import {
   AlertTriangle,
@@ -10,6 +11,8 @@ import {
 } from 'lucide-react';
 
 export const LayoutSection = () => {
+  // Get gradient configuration for this component
+  const gradient = useGradient('LayoutSection');
   const problemCards = [
     {
       title: 'Cash Flow Constraints',

@@ -89,7 +89,7 @@ export default function Homepage() {
         {/* <UserTestimonialsSection /> */}
         {/* test */}
         <HowItWorksSection />
-        <StatisticsSection />
+      <StatisticsSection />
         <ProcessSection />
         <PricingCardsSection />
         <SophisticatedContactSection />

@@ -104,16 +104,16 @@ export const MainContentSection = () => {
             <h2 className="text-responsive-xl font-bold text-gray-900 mb-6 leading-tight">
               <span className="inline-block">Global Recurring B2B Payments,</span>{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 bg-clip-text text-transparent">
                   Simplified
                 </span>
-                <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 rounded-full opacity-30"
+                {/* <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 rounded-full opacity-30"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                />
+                /> */}
               </span>
             </h2>
             <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">

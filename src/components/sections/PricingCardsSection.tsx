@@ -78,7 +78,7 @@ export const PricingCardsSection = () => {
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
               RedGiraffe Global{' '}
-              <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 bg-clip-text text-transparent">
                 Commercial Card Pricing
               </span>
             </h2>

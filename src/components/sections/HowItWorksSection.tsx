@@ -166,7 +166,7 @@ export const HowItWorksSection = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               Powered by{' '}
-              <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 bg-clip-text text-transparent">
                 smart infrastructure
               </span>
             </motion.h2>

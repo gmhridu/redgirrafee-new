@@ -160,7 +160,7 @@ export const StatisticsSection = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               Scale globally with{' '}
-              <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-700 bg-clip-text text-transparent">
                 unmatched reliability
               </span>
             </motion.h2>

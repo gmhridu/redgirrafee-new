@@ -378,6 +378,12 @@
     @apply shadow-sm hover:shadow-md transition-shadow;
   }
 
+  /* Equal height card grid utility */
+  .grid-equal-height {
+    display: grid;
+    grid-auto-rows: 1fr;
+  }
+
   /* Touch-friendly buttons */
   .btn-mobile {
     @apply btn-touch;

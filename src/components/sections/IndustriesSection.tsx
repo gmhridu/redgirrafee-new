@@ -157,16 +157,16 @@ export const IndustriesSection = () => {
             <h2 className="text-responsive-xl font-bold text-gray-900 mb-6 leading-tight">
               Industries{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-700 bg-clip-text text-transparent">
                   we serve
                 </span>
-                <motion.div
-                  className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 rounded-full"
+                {/* <motion.div
+                  className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 via-red-600 to-pink-700 rounded-full"
                   initial={{ scaleX: 0, opacity: 0 }}
                   whileInView={{ scaleX: 1, opacity: 0.3 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.3 }}
-                />
+                /> */}
               </span>
             </h2>
             <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
