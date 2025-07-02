@@ -29,8 +29,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
   // Flag data
   const flags = [
-    { name: 'United Kingdom', code: 'UK', flag: '🇬🇧' },
     { name: 'United States', code: 'US', flag: '🇺🇸' },
+    { name: 'United Kingdom', code: 'UK', flag: '🇬🇧' },
     { name: 'India', code: 'IN', flag: '🇮🇳' },
     { name: 'European Union', code: 'EU', flag: '🇪🇺' },
   ];
@@ -82,8 +82,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   const scrollToSection = (sectionId: string, closeMobileMenu: boolean = false) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Account for sticky navigation height
-      const headerOffset = 80;
+      // Account for sticky navigation height with better positioning
+      const headerOffset = 50;
 
       const performScroll = () => {
         const elementPosition = element.getBoundingClientRect().top;
@@ -133,7 +133,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   return (
     <>
       {/* Navigation Bar - Sticky with Glass Morphism Effect */}
-      <div className={`sticky top-0 z-50 flex items-center justify-center w-full ${className}`}>
+      <div className={`flex items-center justify-center w-full ${className}`}>
         {/* Glass Morphism Background - Stripe-like transparent overlay */}
         <div className="absolute inset-0 bg-white/20 backdrop-blur-lg "></div>
         <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 relative z-10 w-full">

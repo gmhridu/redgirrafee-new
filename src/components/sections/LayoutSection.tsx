@@ -207,7 +207,9 @@ export const LayoutSection = () => {
                       <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
                         {card.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed text-base">{card.description}</p>
+                      <p className="text-slate-600 leading-relaxed text-base md:line-clamp-1">
+                        {card.description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

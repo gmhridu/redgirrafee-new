@@ -1,273 +1,293 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Facebook, Linkedin, Twitter, Instagram, Youtube, Music } from "lucide-react";
-import { useState } from "react";
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
-export const FooterSection = () => {
-  const [email, setEmail] = useState("");
+// Data for important links
+const importantLinks = [
+  { label: 'The Journey', href: 'https://redgirraffe.com/in/app/thejourney' },
+  {
+    label: 'Board of Advisors',
+    href: 'https://redgirraffe.com/in/app/boardofadvisors',
+  },
+  {
+    label: 'Founding Team',
+    href: 'https://redgirraffe.com/in/app/foundingteam',
+  },
+  {
+    label: 'INDIA - S A & I Team',
+    href: 'https://redgirraffe.com/in/app/strategyadvisoryteam',
+  },
+  {
+    label: 'Media Relations',
+    href: 'https://redgirraffe.com/in/app/mediarelations',
+  },
+  { label: 'Higher Purpose', href: 'https://redgirraffe.com/in/app/purpose' },
+  { label: 'Our Values', href: 'https://redgirraffe.com/in/app/values' },
+  { label: 'RentPay™', href: 'https://redgirraffe.com/in/app/rentpay-details' },
+  { label: 'About Us', href: 'https://redgirraffe.com/in/app/aboutus' },
+  { label: 'Reviews', href: '#' },
+  { label: 'FAQs', href: 'https://redgirraffe.com/in/app/faqs' },
+  { label: 'Blog', href: 'https://redgirraffe.com/blog/' },
+  {
+    label: 'Press Releases',
+    href: 'https://redgirraffe.com/blog/media-corner/',
+  },
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+// Data for policies & compliance
+const policiesLinks = [
+  {
+    label: 'Fixed Deposit',
+    href: 'https://redgirraffe.com/in/app/fixed-deposit',
+  },
+  { label: 'Refer & Earn', href: 'https://redgirraffe.com/in/app/referrals' },
+  {
+    label: 'Privacy Policy',
+    href: 'https://redgirraffe.com/in/app/privacypolicy',
+  },
+  {
+    label: 'Refund/Cancellation Policy',
+    href: 'https://redgirraffe.com/in/app/refund',
+  },
+  {
+    label: 'Terms & Conditions',
+    href: 'https://redgirraffe.com/in/app/terms-and-conditions',
+  },
+  {
+    label: 'Anti corruption & Bribery Policy',
+    href: 'https://redgirraffe.com/in/app/anti-corruption-bribery',
+  },
+  {
+    label: 'Code of Business Conduct & Ethics',
+    href: 'https://redgirraffe.com/in/app/code-business-conduct-ethics',
+  },
+  {
+    label: 'Anti-Fraud Policy Investigation',
+    href: 'https://redgirraffe.com/in/app/anti-fraud-policy-investigation',
+  },
+  {
+    label: 'Anti-Money Laundering Policy',
+    href: 'https://redgirraffe.com/in/app/anti-money-laundering-policy',
+  },
+  {
+    label: 'Sanctions Compliance Statement',
+    href: 'https://redgirraffe.com/in/app/sanctions-compliance-statement',
+  },
+  {
+    label: 'Grievance Redressal Policy',
+    href: 'https://redgirraffe.com/in/app/grievance-redressal-policy',
+  },
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+// Data for business services
+const businessServices = [
+  {
+    label: 'List Your Property',
+    href: 'https://redgirraffe.com/in/app/list-property',
+  },
+  {
+    label: 'Register as Agent',
+    href: 'https://redgirraffe.com/in/app/register-as-agent',
+  },
+  {
+    label: 'Corporate Rental ERP',
+    href: 'https://redgirraffe.com/in/app/rentpay-erp',
+  },
+  { label: 'SME Loans', href: 'https://redgirraffe.com/in/app/sme-loans' },
+  {
+    label: 'Post Your Requirement',
+    href: 'https://redgirraffe.com/in/app/post-requirement',
+  },
+];
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription:", email);
-    setEmail("");
-  };
+// Data for office locations
+const officeLocations = [
+  {
+    country: 'United Kingdom',
+    company: 'RedGirraffe Inc.',
+    address: 'Harben House, Harben Parade, Finchley Road, London, NW3 6LH.',
+  },
+  {
+    country: 'Singapore',
+    company: 'RedGirraffe Holdings',
+    address: '3 Temasek Avenue, Centennial Tower, #17-01, Singapore 039190.',
+  },
+  {
+    country: 'India',
+    company: 'RedGirraffe.com',
+    addresses: [
+      '904, Galleria Towers, DLF Phase IV, Gurgaon, Haryana - 122002.',
+      '507, Tulsiani Chambers, Nariman Point, Mumbai - 400021.',
+    ],
+  },
+];
 
+export const FooterSection = (): JSX.Element => {
   return (
-    <footer className="bg-app-primary text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="container-inner relative">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 py-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+    <footer className="w-full bg-black text-white">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
           {/* Important Links */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Important Links</h4>
-            <p className="text-orange-300 text-sm mb-4">Quick access to essential pages</p>
-            <ul className="space-y-3">
-              {[
-                "The Journey",
-                "Board of Advisors", 
-                "Founding Team",
-                "INDIA - S A & I Team",
-                "Media Relations",
-                "Higher Purpose",
-                "Our Values",
-                "RentPay™",
-                "About Us",
-                "Reviews",
-                "FAQs",
-                "Press Releases"
-              ].map((link, index) => (
-                <motion.li 
+          <div className="space-y-3">
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Important Links</h3>
+            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+              Quick access to essential pages
+            </p>
+            <div className="space-y-1 sm:space-y-2">
+              {importantLinks.map(({ label, href }, index) => (
+                <a
                   key={index}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
                 >
-                  <a href="#" className="text-gray-300 hover:text-orange-300 transition-colors text-sm">
-                    {link}
-                  </a>
-                </motion.li>
+                  {label}
+                </a>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Policies & Compliance */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Policies & Compliance</h4>
-            <p className="text-orange-300 text-sm mb-4">Key policies for security and compliance</p>
-            <ul className="space-y-3">
-              {[
-                "Fixed Deposit",
-                "Refer & Earn",
-                "Privacy Policy",
-                "Refund/Cancellation Policy",
-                "Terms & Conditions",
-                "Anti corruption & Bribery Policy",
-                "Code of Business Conduct & Ethics",
-                "Anti-Fraud Policy Investigation",
-                "Anti-Money Laundering Policy",
-                "Sanctions Compliance Statement",
-                "Grievance Redressal Policy"
-              ].map((link, index) => (
-                <motion.li 
+          <div className="space-y-3">
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+              Policies & Compliance
+            </h3>
+            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+              Key policies for security and compliance
+            </p>
+            <div className="space-y-1 sm:space-y-2">
+              {policiesLinks.map(({ label, href }, index) => (
+                <a
                   key={index}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
                 >
-                  <a href="#" className="text-gray-300 hover:text-orange-300 transition-colors text-sm">
-                    {link}
-                  </a>
-                </motion.li>
+                  {label}
+                </a>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Business Services */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Business Services</h4>
-            <p className="text-orange-300 text-sm mb-4">Solutions for businesses & partners</p>
-            <ul className="space-y-3">
-              {[
-                "List Your Property",
-                "Register as Agent",
-                "Corporate Rental ERP",
-                "Self Storage",
-                "Post Your Requirement"
-              ].map((link, index) => (
-                <motion.li 
+          <div className="space-y-3">
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+              Business Services
+            </h3>
+            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+              Solutions for businesses & partners
+            </p>
+            <div className="space-y-1 sm:space-y-2">
+              {businessServices.map(({ label, href }, index) => (
+                <a
                   key={index}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
                 >
-                  <a href="#" className="text-gray-300 hover:text-orange-300 transition-colors text-sm">
-                    {link}
-                  </a>
-                </motion.li>
+                  {label}
+                </a>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Our Offices */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Our Offices</h4>
-            <p className="text-orange-300 text-sm mb-4">Global presence, local impact</p>
-            
-            <div className="space-y-6">
+          <div className="space-y-3">
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Our Offices</h3>
+            <p className="text-yellow-500 text-xs sm:text-sm mb-4">Global presence, local impact</p>
+            <div className="space-y-4 sm:space-y-6">
               {/* United Kingdom */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">United Kingdom</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe Inc.</div>
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  Harben House, Harben Parade,<br />
-                  Finchley Road, London, NW3 6LH
+              <div className="space-y-1">
+                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">United Kingdom</h4>
+                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Inc.</p>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                  Harben House, Harben Parade, Finchley Road, London, NW3 6LH.
                 </p>
               </div>
 
               {/* Singapore */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">Singapore</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe Holdings</div>
-                <p className="text-gray-300 text-xs leading-relaxed">
-                  3 Temasek Avenue, Centennial<br />
-                  Tower, #17-01, Singapore 039190.
+              <div className="space-y-1">
+                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">Singapore</h4>
+                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Holdings</p>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                  3 Temasek Avenue, Centennial Tower, #17-01, Singapore 039190.
                 </p>
               </div>
 
               {/* India */}
-              <div>
-                <h5 className="text-orange-300 font-semibold mb-2 text-sm">India</h5>
-                <div className="text-white font-semibold text-sm mb-1">RedGirraffe.com</div>
-                <div className="text-gray-300 text-xs leading-relaxed mb-2">
-                  904, Galleria Towers, DLF Phase<br />
-                  IV, Gurgaon, Haryana - 122002.
-                </div>
-                <div className="text-gray-300 text-xs leading-relaxed">
-                  507, Tulsiiani Chambers, Nariman<br />
-                  Point, Mumbai - 400021.
-                </div>
+              <div className="space-y-1">
+                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">India</h4>
+                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe.com</p>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                  904, Galleria Towers, DLF Phase IV, Gurgaon, Haryana - 122002.
+                </p>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                  507, Tulsiani Chambers, Nariman Point, Mumbai - 400021.
+                </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Stay Connected */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-orange-400 font-semibold mb-6 text-sm uppercase tracking-wide">Stay Connected</h4>
-            <p className="text-orange-300 text-sm mb-6">Never miss an update</p>
-            
-            {/* Newsletter Signup */}
-            <form onSubmit={handleSubscribe} className="mb-8">
-              <div className="flex gap-2">
+          <div className="space-y-3">
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Stay Connected</h3>
+            <p className="text-yellow-500 text-xs sm:text-sm mb-4">Never miss an update</p>
+
+            {/* Email Input */}
+            <div className="mb-6">
+              <div className="flex items-center bg-white rounded-full p-1 mb-3 max-w-xs">
                 <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 border-0 bg-transparent text-gray-600 placeholder:text-gray-400 text-xs sm:text-sm px-3 focus:outline-none"
                   placeholder="Enter your email"
-                  className="bg-white/10 border-white/20 text-white placeholder-gray-400 text-sm"
-                  required
                 />
-                <Button
-                  type="submit"
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 text-sm font-medium"
-                >
+                <Button className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-full px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium">
                   Subscribe
                 </Button>
               </div>
-            </form>
-
-            {/* RedGirraffe Logo & Flags */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-[#00d959] rounded overflow-hidden">
-                  <div className="w-full h-full bg-[#00d959] flex items-center justify-center text-white font-bold text-sm">R</div>
-                </div>
-                <span className="text-xl font-bold text-white">RedGirraffe</span>
-              </div>
-              
-              {/* Country Flags */}
-              <div className="flex gap-2 mb-4">
-                <div className="w-8 h-6 rounded-sm overflow-hidden bg-gray-200 flex items-center justify-center text-xs">🇺🇸</div>
-                <div className="w-8 h-6 rounded-sm overflow-hidden bg-gray-200 flex items-center justify-center text-xs">🇪🇺</div>
-                <div className="w-8 h-6 rounded-sm overflow-hidden bg-gray-200 flex items-center justify-center text-xs">🇬🇧</div>
-                <div className="w-8 h-6 rounded-sm overflow-hidden bg-gray-200 flex items-center justify-center text-xs">🇮🇳</div>
-              </div>
             </div>
 
-            {/* Business Info */}
-            <div className="text-xs text-orange-300 mb-4">
-              <div className="flex gap-2 mb-1">
-                <span className="text-orange-400">Payments</span>
+            {/* Company Info */}
+            <div className="space-y-3">
+              <div className="text-white text-lg sm:text-xl font-bold">RedGirraffe</div>
+
+              <div className="flex items-center gap-2 flex-wrap">
+                <img src="/falg_1.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
+                <img src="/falg_2.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
+                <img src="/falg_3.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
+                <img src="/falg_4.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-1 text-yellow-500 text-xs sm:text-sm">
+                <span>Payments</span>
                 <span>|</span>
-                <span className="text-orange-400">B2B SaaS</span>
+                <span>B2B SaaS</span>
                 <span>|</span>
-                <span className="text-orange-400">Real Estate</span>
+                <span>Real Estate</span>
+              </div>
+
+              <div>
+                <p className="text-yellow-500 text-xs sm:text-sm mb-1">Write to us at:</p>
+                <a
+                  href="mailto:connect@redgirraffe.com"
+                  className="text-white text-xs sm:text-sm hover:text-yellow-500 transition-colors"
+                >
+                  connect@redgirraffe.com
+                </a>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="text-xs text-gray-300 mb-6">
-              Write to us at:<br />
-              <a href="mailto:connect@redgirraffe.com" className="text-orange-300 hover:text-orange-400 transition-colors">
-                connect@redgirraffe.com
-              </a>
-            </div>
-
-            {/* Professional Contact Info */}
-            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-              <h5 className="text-white font-semibold mb-3 text-sm">Professional Services</h5>
-              <div className="space-y-2 text-xs text-gray-300">
-                <div>Global Payment Processing</div>
-                <div>Enterprise Solutions</div>
-                <div>Compliance & Security</div>
-                <div>24/7 Support Available</div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom Section */}
-        <motion.div
-          className="border-t border-white/10 pt-8 pb-8 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="text-gray-300 text-sm">
-            Copyright © 2025-2026 | RedGirraffe - All rights reserved
-          </p>
-        </motion.div>
+        {/* Footer Bottom */}
+        <div className="mt-8 pt-4 border-t border-yellow-600">
+          <div className="text-center">
+            <p className="text-white text-xs sm:text-sm font-medium">
+              Copyright © 2025-2026 | RedGirraffe - All rights reserved
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

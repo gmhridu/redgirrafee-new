@@ -160,20 +160,6 @@ export const MainContentSection = () => {
                       <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
                         {feature.description}
                       </p>
-
-                      {/* Sophisticated Hover Indicator */}
-                      <div className="flex items-center justify-between mt-auto">
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0">
-                          <span className="text-sm font-medium bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                            Learn more
-                          </span>
-                          <div className="relative w-5 h-5 flex items-center justify-center">
-                            <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full opacity-20 scale-0 group-hover:scale-100 transition-transform duration-500" />
-                            <ArrowRight className="w-4 h-4 text-emerald-600 relative z-10" />
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                     {/* Premium Shine Effect */}

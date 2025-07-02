@@ -29,6 +29,13 @@ export const TailoredSuccessSection = () => {
           lightGradient: 'from-green-50 to-emerald-50',
         },
         {
+          icon: UserCheck,
+          title: 'Customer Loyalty',
+          subtitle: 'Build stickiness',
+          gradient: 'from-emerald-500 to-green-500',
+          lightGradient: 'from-emerald-50 to-green-50',
+        },
+        {
           icon: Shield,
           title: 'Fraud Prevention',
           subtitle: 'Enterprise-grade security',
@@ -57,18 +64,19 @@ export const TailoredSuccessSection = () => {
           lightGradient: 'from-green-50 to-lime-50',
         },
         {
+          icon: null,
+          title: '',
+          subtitle: '',
+          gradient: '',
+          lightGradient: '',
+          isEmpty: true,
+        },
+        {
           icon: DollarSign,
           title: 'Cost Efficiency',
           subtitle: 'Reduce fees',
           gradient: 'from-lime-500 to-yellow-500',
           lightGradient: 'from-lime-50 to-yellow-50',
-        },
-        {
-          icon: UserCheck,
-          title: 'Customer Loyalty',
-          subtitle: 'Build stickiness',
-          gradient: 'from-emerald-500 to-green-500',
-          lightGradient: 'from-emerald-50 to-green-50',
         },
       ],
     },
@@ -83,6 +91,13 @@ export const TailoredSuccessSection = () => {
           subtitle: 'Offer early payments with MDR fully absorbed—zero-cost',
           gradient: 'from-green-500 to-emerald-500',
           lightGradient: 'from-green-50 to-emerald-50',
+        },
+        {
+          icon: Banknote,
+          title: 'Cash Flow Boost',
+          subtitle: 'Bill discounting benefits',
+          gradient: 'from-emerald-500 to-green-500',
+          lightGradient: 'from-emerald-50 to-green-50',
         },
         {
           icon: Shield,
@@ -113,18 +128,19 @@ export const TailoredSuccessSection = () => {
           lightGradient: 'from-green-50 to-lime-50',
         },
         {
+          icon: null,
+          title: '',
+          subtitle: '',
+          gradient: '',
+          lightGradient: '',
+          isEmpty: true,
+        },
+        {
           icon: FileText,
           title: 'Compliance Ease',
           subtitle: 'Embedded tax data',
           gradient: 'from-lime-500 to-yellow-500',
           lightGradient: 'from-lime-50 to-yellow-50',
-        },
-        {
-          icon: Banknote,
-          title: 'Cash Flow Boost',
-          subtitle: 'Bill discounting benefits',
-          gradient: 'from-emerald-500 to-green-500',
-          lightGradient: 'from-emerald-50 to-green-50',
         },
       ],
     },
@@ -165,7 +181,7 @@ export const TailoredSuccessSection = () => {
   };
 
   return (
-    <section className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 overflow-hidden">
+    <section id="features" className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 overflow-hidden">
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-emerald-50/20" />
 
@@ -241,6 +257,20 @@ export const TailoredSuccessSection = () => {
                     >
                       {category.features.map((feature, featureIndex) => {
                         const Icon = feature.icon;
+
+                        // Render empty placeholder for spacing
+                        if (feature.isEmpty) {
+                          return (
+                            <motion.div
+                              key={featureIndex}
+                              variants={featureVariants}
+                              className="invisible"
+                            >
+                              <div className="h-full" />
+                            </motion.div>
+                          );
+                        }
+
                         return (
                           <motion.div
                             key={featureIndex}
@@ -262,7 +292,9 @@ export const TailoredSuccessSection = () => {
                                   <div
                                     className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-20 rounded-xl transition-opacity duration-500`}
                                   />
-                                  <Icon className="w-6 h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
+                                  {Icon && (
+                                    <Icon className="w-6 h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
+                                  )}
                                 </div>
                                 <h4 className="font-semibold text-base text-gray-900 mb-2 leading-tight group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-green-600 group-hover/item:to-emerald-600 group-hover/item:bg-clip-text transition-all duration-300">
                                   {feature.title}

@@ -119,7 +119,7 @@ export const IndustriesSection = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
   return (
-    <section className="relative py-12 lg:py-20 overflow-hidden">
+    <section id="industries" className="relative py-12 lg:py-20 overflow-hidden">
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-gray-50" />
 

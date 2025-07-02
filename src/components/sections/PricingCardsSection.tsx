@@ -61,6 +61,7 @@ export const PricingCardsSection = () => {
 
   return (
     <section
+      id="pricing"
       ref={sectionRef}
       className="section-spacing bg-gradient-to-br from-gray-50/40 via-slate-50/30 to-zinc-50/40 relative overflow-hidden"
     >

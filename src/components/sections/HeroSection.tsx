@@ -10,8 +10,7 @@ export const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [hasCompletedCycle, setHasCompletedCycle] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -55,23 +54,6 @@ export const HeroSection = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
-    }
-  };
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (videoRef.current) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const width = rect.width;
-      const newTime = (clickX / width) * duration;
-      videoRef.current.currentTime = newTime;
-      setCurrentTime(newTime);
     }
   };
 
@@ -141,24 +123,13 @@ export const HeroSection = () => {
 
       const handlePlay = () => setIsPlaying(true);
       const handlePause = () => setIsPlaying(false);
-      const handleTimeUpdate = () => setCurrentTime(video.currentTime);
-      const handleLoadedMetadata = () => setDuration(video.duration);
 
       video.addEventListener('play', handlePlay);
       video.addEventListener('pause', handlePause);
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      video.addEventListener('loadedmetadata', handleLoadedMetadata);
-
-      // Set duration if already loaded
-      if (video.duration) {
-        setDuration(video.duration);
-      }
 
       return () => {
         video.removeEventListener('play', handlePlay);
         video.removeEventListener('pause', handlePause);
-        video.removeEventListener('timeupdate', handleTimeUpdate);
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       };
     }
   }, []);
@@ -278,9 +249,7 @@ export const HeroSection = () => {
                 >
                   RedGirraffe Global
                   <br />
-                  <span className="text-slate-700">
-                    {isCommercial ? 'Commercial Card' : 'Platform Solutions'}
-                  </span>
+                  <span className="text-slate-700">Commercial Card</span>
                 </motion.h1>
 
                 {/* Subtitle */}
@@ -288,9 +257,8 @@ export const HeroSection = () => {
                   className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
                   variants={itemVariants}
                 >
-                  {isCommercial
-                    ? 'Simplify payments, reduce costs, and unlock smarter cash flow with seamless recurring B2B payments in 97+ countries.'
-                    : 'Empower your business with comprehensive platform solutions for seamless integration and scalable growth across global markets.'}
+                  Simplify payments, reduce costs, and unlock smarter cash flow with seamless
+                  recurring B2B payments in 97+ countries.
                 </motion.p>
 
                 {/* Action Buttons */}
@@ -340,9 +308,9 @@ export const HeroSection = () => {
                       muted
                       loop
                       playsInline
-                      controls={false}
+                      controls={isFullscreen}
                       onTimeUpdate={() => {
-                        // Auto-collapse from fullscreen when video completes a cycle
+                        // Auto-exit fullscreen when video completes a cycle
                         if (videoRef.current && isFullscreen && document.fullscreenElement) {
                           const { currentTime, duration } = videoRef.current;
                           // When video is near the end (within 0.5 seconds) and in fullscreen
@@ -476,163 +444,6 @@ export const HeroSection = () => {
                                 strokeLinejoin="round"
                                 strokeWidth={2}
                                 d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                              />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Custom Fullscreen Controls */}
-                  {isFullscreen && (
-                    <div className="absolute inset-0">
-                      {/* Bottom controls bar */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        {/* Progress bar and time */}
-                        <div className="mb-4">
-                          {/* Time indicators with enhanced professional backgrounds */}
-                          <div className="flex justify-between text-white text-sm mb-2">
-                            <span className="bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-md drop-shadow-lg border border-white/10">
-                              {formatTime(currentTime)}
-                            </span>
-                            <span className="bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-md drop-shadow-lg border border-white/10">
-                              {formatTime(duration)}
-                            </span>
-                          </div>
-
-                          {/* Progress bar with professional background */}
-                          <div
-                            className="w-full bg-black/50 backdrop-blur-sm rounded-full cursor-pointer group relative overflow-hidden p-2 border border-white/10"
-                            onClick={handleProgressClick}
-                          >
-                            {/* Background track */}
-                            <div className="w-full h-1.5 bg-white/20 rounded-full relative">
-                              {/* Progress fill */}
-                              <div
-                                className="h-full bg-white rounded-full transition-all duration-150 relative z-10 shadow-sm"
-                                style={{
-                                  width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
-                                }}
-                              />
-
-                              {/* Hover indicator */}
-                              <div className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-
-                              {/* Progress thumb */}
-                              <div
-                                className="absolute top-1/2 w-3 h-3 bg-white rounded-full shadow-lg transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 z-20 border border-white/20"
-                                style={{
-                                  left: `${duration > 0 ? (currentTime / duration) * 100 : 0}%`,
-                                  transform: `translateX(-50%) translateY(-50%)`,
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Control buttons with professional backgrounds */}
-                        <div className="flex justify-between items-center">
-                          {/* Left side - Mute button */}
-                          <button
-                            onClick={toggleMute}
-                            className="text-white p-3 hover:scale-110 transition-transform duration-200 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-black/60"
-                          >
-                            {isMuted ? (
-                              <svg
-                                className="w-6 h-6 drop-shadow-lg"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                                />
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-6 h-6 drop-shadow-lg"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                                />
-                              </svg>
-                            )}
-                          </button>
-
-                          {/* Center - Play/Pause button */}
-                          <button
-                            onClick={togglePlayPause}
-                            className="text-white p-4 hover:scale-110 transition-transform duration-200 bg-black/60 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/70"
-                          >
-                            {isPlaying ? (
-                              <svg
-                                className="w-8 h-8 drop-shadow-lg"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-8 h-8 drop-shadow-lg"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                                />
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                              </svg>
-                            )}
-                          </button>
-
-                          {/* Right side - Exit fullscreen button */}
-                          <button
-                            onClick={toggleFullscreen}
-                            className="text-white p-3 hover:scale-110 transition-transform duration-200 bg-black/50 backdrop-blur-sm rounded-full border border-white/10 hover:bg-black/60"
-                          >
-                            <svg
-                              className="w-6 h-6 drop-shadow-lg"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M15 9h4.5M15 9V4.5M15 9l5.25-5.25M9 15H4.5M9 15v4.5M9 15l-5.25 5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25"
                               />
                             </svg>
                           </button>

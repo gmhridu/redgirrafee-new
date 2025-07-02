@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Cog, Rocket, Shield, Sparkles } from 'lucide-react';
+import { Settings, Sparkles, UserCheck, Zap } from 'lucide-react';
 import { useState } from 'react';
 
 export const ProcessSection = () => {
@@ -12,7 +12,7 @@ export const ProcessSection = () => {
       description:
         'Bank carries out KYC, due diligence and approves card limit. Use ERP or our interface. No code required.',
       features: ['KYC Verification', 'Instant Setup', 'Credit Assessment'],
-      icon: Shield,
+      icon: UserCheck,
       gradient: 'from-green-600 to-emerald-600',
       bgGradient: 'from-green-50 to-emerald-50',
     },
@@ -22,7 +22,7 @@ export const ProcessSection = () => {
       description:
         'Vendors are onboarded, payout types defined, caps configured. AI validates payees, documents and flow logic.',
       features: ['AI Validation', 'Smart Rules', 'Vendor Onboarding'],
-      icon: Cog,
+      icon: Settings,
       gradient: 'from-emerald-600 to-teal-600',
       bgGradient: 'from-emerald-50 to-teal-50',
     },
@@ -32,7 +32,7 @@ export const ProcessSection = () => {
       description:
         'Authorized checkers release payouts. API triggers and card executes. Instant payout. Global FX support. Fully auditable.',
       features: ['Full Audit Trail', 'Global FX', 'Instant Execution'],
-      icon: Rocket,
+      icon: Zap,
       gradient: 'from-teal-600 to-cyan-600',
       bgGradient: 'from-teal-50 to-cyan-50',
     },
@@ -272,19 +272,15 @@ export const ProcessSection = () => {
                         transition={{ duration: 0.8, ease: 'easeInOut' }}
                       >
                         <div
-                          className={`w-16 h-16 bg-gradient-to-br ${step.bgGradient} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                          className={`w-16 h-16 bg-gradient-to-br ${step.gradient} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                         >
                           <motion.div
                             animate={{ rotate: isHovered ? -360 : 0 }}
                             transition={{ duration: 0.8, ease: 'easeInOut' }}
                           >
                             <step.icon
-                              className={`w-8 h-8 bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}
-                              style={{
-                                WebkitTextStroke: isHovered
-                                  ? '2px currentColor'
-                                  : '1.5px currentColor',
-                              }}
+                              className={`w-8 h-8 text-white drop-shadow-sm`}
+                              strokeWidth={1.5}
                             />
                           </motion.div>
                         </div>

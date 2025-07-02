@@ -124,7 +124,10 @@ export const SophisticatedContactSection = () => {
   };
 
   return (
-    <section className="relative py-12 lg:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section
+      id="contact"
+      className="relative py-12 lg:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden"
+    >
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-green-400/10 to-emerald-400/5 rounded-full blur-3xl" />
