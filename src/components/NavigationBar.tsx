@@ -3,7 +3,7 @@ import { HamburgerMenu } from '@/components/ui/hamburger-menu';
 import { Sheet, SheetContent, SheetHeader } from '@/components/ui/sheet';
 import { durations } from '@/utils/animations';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export interface NavigationItem {
@@ -212,6 +212,18 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Outside Close Button - Only visible when mobile menu is open */}
+      {showMobileMenu && (
+        <div className="fixed top-4 right-4 z-[60] lg:hidden">
+          <button
+            onClick={() => setShowMobileMenu(false)}
+            className="size-14 sm:size-14 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+          >
+            <X className="w-5 h-5 sm:size-7 text-slate-700 group-hover:text-slate-900 transition-colors z-30" />
+          </button>
+        </div>
+      )}
 
       {/* Mobile Navigation Sheet */}
       <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
