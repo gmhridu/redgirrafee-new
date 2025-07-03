@@ -109,7 +109,7 @@ export const FinalContactSection = () => {
     },
     {
       icon: Mail,
-      title: 'connect@redgiraffe.com',
+      title: 'connect@RedGirraffe.com',
       subtitle: 'We Are Always Ready to Help',
     },
   ];
@@ -125,14 +125,14 @@ export const FinalContactSection = () => {
       <div className="container-inner relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 tracking-tight">
+          <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-6 tracking-tight">
             Ready to transform your business{' '}
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
               payments?
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of enterprises, banks, and PSPs simplifying payments with RedGiraffe
+          <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Join thousands of enterprises, banks, and PSPs simplifying payments with RedGirraffe
           </p>
         </div>
 

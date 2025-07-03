@@ -68,7 +68,7 @@ export const LayoutSection = () => {
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Header Section with Problem Statement */}
           <div className="text-center mb-16">
-            <h2 className="text-responsive-xl font-bold text-slate-900 mb-12 leading-tight">
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-12 leading-tight">
               Traditional B2B payouts fail —
               <span className="bg-gradient-to-r from-purple-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
                 {' '}
@@ -78,16 +78,16 @@ export const LayoutSection = () => {
 
             {/* Full Problem Visualization */}
             <motion.div
-              className="relative flex items-center justify-center mb-12"
+              className="relative flex items-center justify-center mb-12 px-4"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
+              <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                 {/* Central Problem Core */}
                 <motion.div
-                  className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white"
+                  className="absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-2 sm:border-4 border-white"
                   animate={{
                     scale: [1, 1.05, 1],
                     boxShadow: [
@@ -103,27 +103,49 @@ export const LayoutSection = () => {
                   }}
                 >
                   <div className="text-center">
-                    <AlertTriangle className="w-8 h-8 text-white mx-auto mb-2" />
-                    <p className="text-sm font-bold text-white">Legacy</p>
-                    <p className="text-sm font-bold text-white">Issues</p>
+                    <AlertTriangle className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white mx-auto mb-1 sm:mb-2" />
+                    <p className="text-xs xs:text-xs sm:text-sm font-bold text-white">Legacy</p>
+                    <p className="text-xs xs:text-xs sm:text-sm font-bold text-white">Issues</p>
                   </div>
                 </motion.div>
 
                 {/* Orbiting Problem Indicators */}
                 {[0, 1, 2, 3, 4].map(index => {
                   const angle = (index * 72 + 36) * (Math.PI / 180); // 5 dots evenly spaced, offset to avoid center
-                  const radius = 115; // Adjusted radius for smaller circle
-                  const center = 160; // Half of 320 (w-64 to w-80)
+
+                  // Responsive radius and center calculations
+                  const getResponsiveValues = () => {
+                    if (typeof window !== 'undefined') {
+                      const width = window.innerWidth;
+                      if (width < 475) {
+                        // xs
+                        return { radius: 85, center: 112, dotSize: 16 }; // w-48 = 192px, center = 96px
+                      } else if (width < 640) {
+                        // sm
+                        return { radius: 95, center: 128, dotSize: 20 }; // w-64 = 256px, center = 128px
+                      } else if (width < 768) {
+                        // md
+                        return { radius: 105, center: 144, dotSize: 24 }; // w-72 = 288px, center = 144px
+                      } else {
+                        return { radius: 115, center: 160, dotSize: 24 }; // w-80 = 320px, center = 160px
+                      }
+                    }
+                    return { radius: 85, center: 96, dotSize: 16 }; // Default mobile values
+                  };
+
+                  const { radius, center, dotSize } = getResponsiveValues();
                   const x = Math.cos(angle) * radius + center;
                   const y = Math.sin(angle) * radius + center;
 
                   return (
                     <motion.div
                       key={index}
-                      className="absolute w-6 h-6 bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
+                      className="absolute bg-gradient-to-br from-orange-400 to-red-500 rounded-full shadow-lg"
                       style={{
-                        left: x - 12,
-                        top: y - 12,
+                        width: `${dotSize}px`,
+                        height: `${dotSize}px`,
+                        left: x - dotSize / 2,
+                        top: y - dotSize / 2,
                       }}
                       animate={{
                         scale: [1, 1.3, 1],
@@ -149,11 +171,15 @@ export const LayoutSection = () => {
                     ease: 'linear',
                   }}
                 >
-                  <svg className="w-full h-full" viewBox="0 0 320 320">
+                  <svg
+                    className="w-full h-full"
+                    viewBox="0 0 320 320"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
                     <circle
-                      cx="160"
-                      cy="160"
-                      r="115"
+                      cx="50%"
+                      cy="50%"
+                      r="36%"
                       fill="none"
                       stroke="url(#problemGradient)"
                       strokeWidth="2"
@@ -171,7 +197,7 @@ export const LayoutSection = () => {
 
                 {/* Problem Label */}
                 <motion.div
-                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 ml-4 bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg"
+                  className="absolute -top-8 sm:-top-10 md:-top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full font-bold text-sm sm:text-base md:text-lg shadow-lg whitespace-nowrap"
                   initial={{ opacity: 0, y: -20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -207,7 +233,7 @@ export const LayoutSection = () => {
                       <card.icon className="w-6 h-6 text-slate-600 group-hover:text-red-500 transition-colors duration-300" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                      <h3 className="text-[17px] md:text-lg 2xl:text-xl font-semibold md:font-extrabold lg:leading-8 mb-3 group-hover:text-red-600 transition-colors duration-300">
                         {card.title}
                       </h3>
                       <p className="text-slate-600 leading-relaxed text-base md:line-clamp-1">
@@ -251,10 +277,10 @@ export const LayoutSection = () => {
                           <LastIcon className="w-6 h-6 text-slate-600 group-hover:text-red-500 transition-colors duration-300" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-xl text-slate-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                          <h3 className="text-[17px] md:text-lg 2xl:text-xl font-semibold md:font-extrabold lg:leading-8 mb-3 group-hover:text-red-600 transition-colors duration-300">
                             {lastCard.title}
                           </h3>
-                          <p className="text-slate-600 leading-relaxed text-base">
+                          <p className="text-slate-600 leading-relaxed text-base md:line-clamp-1">
                             {lastCard.description}
                           </p>
                         </div>

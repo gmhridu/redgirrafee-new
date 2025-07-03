@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui/button';
-import { durations, easings } from '@/utils/animations';
+import { HamburgerMenu } from '@/components/ui/hamburger-menu';
+import { Sheet, SheetContent, SheetHeader } from '@/components/ui/sheet';
+import { durations } from '@/utils/animations';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export interface NavigationItem {
@@ -78,48 +80,29 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
     }
   };
 
-  // Enhanced smooth scroll to section function
+  // Enhanced smooth scroll to section function with instant navigation
   const scrollToSection = (sectionId: string, closeMobileMenu: boolean = false) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Account for sticky navigation height with better positioning
-      const headerOffset = 50;
-
       const performScroll = () => {
+        // Get the current position of the element
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.pageYOffset - 20; // Minimal offset for better positioning
 
-        // Enhanced smooth scrolling with optimized performance
-        const startPosition = window.pageYOffset;
-        const distance = offsetPosition - startPosition;
-        // Optimized duration: faster base speed with reasonable max duration
-        const duration = Math.min(Math.abs(distance) * 0.2 + 200, 800); // Much faster scrolling
-        let start: number | null = null;
-
-        const easeInOutCubic = (t: number): number => {
-          return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-        };
-
-        const animateScroll = (timestamp: number) => {
-          if (start === null) start = timestamp;
-          const progress = Math.min((timestamp - start) / duration, 1);
-          const ease = easeInOutCubic(progress);
-
-          window.scrollTo(0, startPosition + distance * ease);
-
-          if (progress < 1) {
-            requestAnimationFrame(animateScroll);
-          }
-        };
-
-        requestAnimationFrame(animateScroll);
+        // Use native smooth scrolling for instant response and better performance
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
       };
 
       if (closeMobileMenu && showMobileMenu) {
-        // Close menu first, then scroll after animation completes
+        // Close sheet first, then scroll after animation completes
         setShowMobileMenu(false);
-        setTimeout(performScroll, 350); // Wait for menu close animation
+        // Wait for sheet animation to complete
+        setTimeout(performScroll, 300);
       } else {
+        // Instant navigation for desktop
         performScroll();
       }
     }
@@ -165,36 +148,13 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
             {/* Action Buttons */}
             <div className="flex items-center justify-center gap-1 xl:gap-2">
               {/* Mobile Menu Button - Show only on mobile */}
-              <Button
-                ref={mobileMenuButtonRef}
-                variant="ghost"
-                className="block lg:hidden w-10 h-10 p-2 btn-touch group"
-                onClick={handleMobileMenuClick}
-              >
-                <motion.div
-                  initial={false}
-                  animate={{ rotate: showMobileMenu ? 90 : 0 }}
-                  transition={{ duration: durations.fast, ease: easings.smooth }}
-                >
-                  {showMobileMenu ? (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: durations.fast }}
-                    >
-                      <X className="w-6 h-6 text-slate-800 group-hover:text-emerald-600" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: durations.fast }}
-                    >
-                      <Menu className="w-6 h-6 text-slate-800 group-hover:text-emerald-600" />
-                    </motion.div>
-                  )}
-                </motion.div>
-              </Button>
+              <div className="block lg:hidden">
+                <HamburgerMenu
+                  isOpen={showMobileMenu}
+                  onClick={handleMobileMenuClick}
+                  className="btn-touch"
+                />
+              </div>
 
               {/* Desktop Buttons - Hidden on mobile */}
               <div className="hidden lg:flex items-center gap-1 xl:gap-2">
@@ -253,39 +213,54 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      <AnimatePresence>
-        {showMobileMenu && (
-          <motion.div
-            ref={mobileMenuRef}
-            className="lg:hidden w-full bg-white/90 backdrop-blur-lg border-b border-white/30 px-4 py-4 sticky top-[80px] z-40 shadow-lg"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: durations.fast }}
-          >
-            <div className="flex flex-col gap-4">
+      {/* Mobile Navigation Sheet */}
+      <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
+        <SheetContent
+          side="left"
+          className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-r-0 p-0 w-[280px] sm:w-[320px]"
+        >
+          <div className="p-6 pb-8">
+            {/* Header with Logo and Flags */}
+            <SheetHeader className="mb-8">
+              <img src="/logo.svg" alt="Logo" className="w-40 pl-2" />
+            </SheetHeader>
+
+            {/* Navigation Links */}
+            <div className="space-y-1 mb-8">
               {navItems.map((item, index) => (
-                <motion.button
+                <button
                   key={index}
                   onClick={() => scrollToSection(item.sectionId, true)}
-                  className="text-left py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors btn-touch"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: durations.fast,
-                    delay: index * 0.1,
-                  }}
+                  className="w-full text-left py-4 px-4 text-white hover:bg-white/10 rounded-lg transition-colors flex items-center justify-between group"
                 >
-                  <span className="font-body-large-body-large-semibold text-textblack text-base">
-                    {item.label}
+                  <span className="text-lg font-medium">{item.label}</span>
+                  <span className="text-white/40 group-hover:text-white/60 transition-colors">
+                    |
                   </span>
-                </motion.button>
+                </button>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            {/* Contact Information */}
+            <div className="space-y-4 pt-4 border-t border-white/20">
+              <a
+                href="tel:+918010191019"
+                className="flex items-center gap-3 text-white hover:text-emerald-400 transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                <span className="text-base">(+91) 80-1019-1019</span>
+              </a>
+              <a
+                href="mailto:connect@redgirraffe.com"
+                className="flex items-center gap-3 text-white hover:text-emerald-400 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                <span className="text-base">connect@redgirraffe.com</span>
+              </a>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </>
   );
 };

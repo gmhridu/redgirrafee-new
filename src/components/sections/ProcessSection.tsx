@@ -63,7 +63,10 @@ export const ProcessSection = () => {
   };
 
   return (
-    <section className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section
+      id="how-it-works"
+      className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
+    >
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0">
         {/* Gradient Orbs */}
@@ -92,7 +95,7 @@ export const ProcessSection = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.h2
-              className="text-responsive-xl font-bold text-gray-900 mb-4 leading-tight"
+              className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,11 +103,11 @@ export const ProcessSection = () => {
             >
               How{' '}
               <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-red-700 bg-clip-text text-transparent">
-                RedGiraffe works
+                RedGirraffe works
               </span>
             </motion.h2>
             <motion.p
-              className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

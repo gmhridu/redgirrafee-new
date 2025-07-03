@@ -205,7 +205,7 @@ export const TailoredSuccessSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-responsive-xl font-bold text-gray-900 mb-4 leading-tight">
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 leading-tight">
               Tailored for{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 bg-clip-text text-transparent">
@@ -220,7 +220,7 @@ export const TailoredSuccessSection = () => {
                 /> */}
               </span>
             </h2>
-            <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Unlock smarter payments for banks and enterprises with RedGirraffe.
             </p>
           </motion.div>
@@ -238,80 +238,118 @@ export const TailoredSuccessSection = () => {
                 <div className="relative h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                   {/* Card Header - No hover effects on main card */}
                   <div
-                    className={`relative bg-gradient-to-r ${category.gradient} px-8 py-6 overflow-hidden`}
+                    className={`relative bg-gradient-to-r ${category.gradient} px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 overflow-hidden`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                    <h3 className="text-xl font-semibold text-white text-center relative z-10">
+                    <h3 className="text-base font-extrabold leading-6 text-white text-center relative z-10">
                       {category.title}
                     </h3>
                   </div>
 
                   {/* Features Grid */}
-                  <div className="p-8">
+                  <div className="p-4 sm:p-6 md:p-8">
                     <motion.div
-                      className="grid grid-cols-2 gap-4"
+                      className="space-y-4"
                       variants={containerVariants}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
                     >
-                      {category.features.map((feature, featureIndex) => {
-                        const Icon = feature.icon;
+                      {/* First 6 features in responsive grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        {category.features.slice(0, 6).map((feature, featureIndex) => {
+                          const Icon = feature.icon;
 
-                        // Render empty placeholder for spacing
-                        if (feature.isEmpty) {
                           return (
                             <motion.div
                               key={featureIndex}
                               variants={featureVariants}
-                              className="invisible"
+                              className="group/item relative"
+                              whileHover={{ scale: 1.05, y: -4 }}
+                              transition={{ duration: 0.2 }}
                             >
-                              <div className="h-full" />
+                              <div className="bg-gray-50/50 rounded-xl p-3 sm:p-4 md:p-5 hover:bg-white hover:shadow-xl transition-all duration-300 h-full border border-transparent hover:border-emerald-200/50 relative overflow-hidden">
+                                {/* Gradient Border Effect on Individual Card Hover */}
+                                <div
+                                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-5 transition-opacity duration-500 rounded-xl`}
+                                />
+
+                                <div className="text-center relative z-10">
+                                  <div
+                                    className={`relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${feature.lightGradient} rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 transform transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-3`}
+                                  >
+                                    <div
+                                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-20 rounded-xl transition-opacity duration-500`}
+                                    />
+                                    {Icon && (
+                                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
+                                    )}
+                                  </div>
+                                  <h4 className="font-semibold text-sm sm:text-base text-gray-900 mb-1 sm:mb-2 leading-tight group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-green-600 group-hover/item:to-emerald-600 group-hover/item:bg-clip-text transition-all duration-300">
+                                    {feature.title}
+                                  </h4>
+                                  <p className="text-gray-600 text-xs sm:text-sm lg:text-lg lg:leading-[28.8px] leading-relaxed group-hover/item:text-gray-700 transition-colors duration-300">
+                                    {feature.subtitle}
+                                  </p>
+                                </div>
+
+                                {/* Premium Shine Effect on Individual Cards */}
+                                <div className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 pointer-events-none">
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover/item:translate-x-[200%] transition-transform duration-1000" />
+                                </div>
+                              </div>
                             </motion.div>
                           );
-                        }
+                        })}
+                      </div>
 
-                        return (
-                          <motion.div
-                            key={featureIndex}
-                            variants={featureVariants}
-                            className="group/item relative"
-                            whileHover={{ scale: 1.05, y: -4 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <div className="bg-gray-50/50 rounded-xl p-5 hover:bg-white hover:shadow-xl transition-all duration-300 h-full border border-transparent hover:border-emerald-200/50 relative overflow-hidden">
-                              {/* Gradient Border Effect on Individual Card Hover */}
-                              <div
-                                className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-5 transition-opacity duration-500 rounded-xl`}
-                              />
+                      {/* Last 2 features centered */}
+                      <div className="flex justify-center gap-3 sm:gap-4">
+                        {category.features.slice(7, 8).map((feature, featureIndex) => {
+                          const Icon = feature.icon;
 
-                              <div className="text-center relative z-10">
+                          return (
+                            <motion.div
+                              key={featureIndex + 7}
+                              variants={featureVariants}
+                              className="group/item relative w-full md:max-w-[calc(50%-0.5rem)]"
+                              whileHover={{ scale: 1.05, y: -4 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <div className="bg-gray-50/50 rounded-xl p-3 sm:p-4 md:p-5 hover:bg-white hover:shadow-xl transition-all duration-300 h-full border border-transparent hover:border-emerald-200/50 relative overflow-hidden">
+                                {/* Gradient Border Effect on Individual Card Hover */}
                                 <div
-                                  className={`relative w-12 h-12 bg-gradient-to-br ${feature.lightGradient} rounded-xl flex items-center justify-center mx-auto mb-3 transform transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-3`}
-                                >
-                                  <div
-                                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-20 rounded-xl transition-opacity duration-500`}
-                                  />
-                                  {Icon && (
-                                    <Icon className="w-6 h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
-                                  )}
-                                </div>
-                                <h4 className="font-semibold text-base text-gray-900 mb-2 leading-tight group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-green-600 group-hover/item:to-emerald-600 group-hover/item:bg-clip-text transition-all duration-300">
-                                  {feature.title}
-                                </h4>
-                                <p className="text-gray-600 text-sm leading-relaxed group-hover/item:text-gray-700 transition-colors duration-300">
-                                  {feature.subtitle}
-                                </p>
-                              </div>
+                                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-5 transition-opacity duration-500 rounded-xl`}
+                                />
 
-                              {/* Premium Shine Effect on Individual Cards */}
-                              <div className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 pointer-events-none">
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover/item:translate-x-[200%] transition-transform duration-1000" />
+                                <div className="text-center relative z-10">
+                                  <div
+                                    className={`relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${feature.lightGradient} rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 transform transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-3`}
+                                  >
+                                    <div
+                                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/item:opacity-20 rounded-xl transition-opacity duration-500`}
+                                    />
+                                    {Icon && (
+                                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 group-hover/item:text-gray-900 transition-colors duration-300 relative z-10" />
+                                    )}
+                                  </div>
+                                  <h4 className="font-semibold text-sm sm:text-base text-gray-900 mb-1 sm:mb-2 leading-tight group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-green-600 group-hover/item:to-emerald-600 group-hover/item:bg-clip-text transition-all duration-300">
+                                    {feature.title}
+                                  </h4>
+                                  <p className="text-gray-600 text-xs sm:text-sm lg:text-lg lg:leading-[28.8px] leading-relaxed group-hover/item:text-gray-700 transition-colors duration-300">
+                                    {feature.subtitle}
+                                  </p>
+                                </div>
+
+                                {/* Premium Shine Effect on Individual Cards */}
+                                <div className="absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-700 pointer-events-none">
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-200%] group-hover/item:translate-x-[200%] transition-transform duration-1000" />
+                                </div>
                               </div>
-                            </div>
-                          </motion.div>
-                        );
-                      })}
+                            </motion.div>
+                          );
+                        })}
+                      </div>
                     </motion.div>
                   </div>
                 </div>

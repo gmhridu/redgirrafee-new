@@ -93,7 +93,7 @@ export const SophisticatedContactSection = () => {
     },
     {
       icon: Mail,
-      title: 'connect@redgiraffe.com',
+      title: 'connect@RedGirraffe.com',
       subtitle: 'We Are Always Ready to Help',
       gradient: 'from-teal-600 to-cyan-600',
     },
@@ -173,7 +173,7 @@ export const SophisticatedContactSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Join thousands of enterprises, banks, and PSPs simplifying payments with RedGiraffe's
+              Join thousands of enterprises, banks, and PSPs simplifying payments with RedGirraffe's
               cutting-edge infrastructure and unmatched global reach.
             </motion.p>
           </motion.div>

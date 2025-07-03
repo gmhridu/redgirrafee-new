@@ -45,34 +45,15 @@ export default function Homepage() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = 50; // Account for fixed header with better positioning
+      const headerOffset = 0; // No gap for perfect top positioning
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      // Enhanced smooth scrolling with custom easing
-      const startPosition = window.pageYOffset;
-      const distance = offsetPosition - startPosition;
-      // Optimized duration: faster base speed with reasonable max duration
-      const duration = Math.min(Math.abs(distance) * 0.2 + 200, 800); // Much faster scrolling
-      let start: number | null = null;
-
-      const easeInOutCubic = (t: number): number => {
-        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-      };
-
-      const animateScroll = (timestamp: number) => {
-        if (start === null) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        const ease = easeInOutCubic(progress);
-
-        window.scrollTo(0, startPosition + distance * ease);
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-
-      requestAnimationFrame(animateScroll);
+      // Use native smooth scrolling for instant response and better performance
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -89,7 +70,7 @@ export default function Homepage() {
         {/* <UserTestimonialsSection /> */}
         {/* test */}
         <HowItWorksSection />
-      <StatisticsSection />
+        <StatisticsSection />
         <ProcessSection />
         <PricingCardsSection />
         <SophisticatedContactSection />

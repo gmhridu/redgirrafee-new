@@ -27,7 +27,7 @@ export const PricingCardsSection = () => {
     {
       title: 'Bank Partnership',
       description:
-        'Reach out to RedGiraffe to engage in the B2B high-value global product partnership',
+        'Reach out to RedGirraffe to engage in the B2B high-value global product partnership',
       features: [
         'Existing banking relationship',
         'Negotiated commercial rates',
@@ -52,7 +52,7 @@ export const PricingCardsSection = () => {
     {
       title: 'Authorised PSPs',
       description:
-        'Partner with RedGiraffe to unlock large-scale high-value recurring product across geographies where you operate',
+        'Partner with RedGirraffe to unlock large-scale high-value recurring product across geographies where you operate',
       features: ['Tier 1 PSPs only', 'Competitive interchange', 'Local market expertise'],
       buttonText: 'Request a Demo',
       isHighlighted: false,
@@ -76,15 +76,15 @@ export const PricingCardsSection = () => {
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-responsive-xl font-bold text-slate-800 mb-4 sm:mb-6 tracking-tight">
-              RedGiraffe Global{' '}
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 sm:mb-6 tracking-tight">
+              RedGirraffe Global{' '}
               <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 bg-clip-text text-transparent">
                 Commercial Card Pricing
               </span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-5xl mx-auto leading-relaxed mb-12">
-              Pricing is subject to a commercial arrangement between your bank and RedGiraffe or its
-              authorised PSPs. Please contact your commercial bank to confirm your RedGiraffe
+            <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-slate-600 max-w-5xl mx-auto leading-relaxed mb-12">
+              Pricing is subject to a commercial arrangement between your bank and RedGirraffe or
+              its authorised PSPs. Please contact your commercial bank to confirm your RedGirraffe
               Pay-Pulse Commercial Credit Card high value recurring rates on Visa, MasterCard &
               other leading global Payment Networks.
             </p>

@@ -153,7 +153,7 @@ export const StatisticsSection = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.h2
-              className="text-responsive-xl font-bold text-gray-900 mb-4 leading-tight"
+              className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -165,13 +165,13 @@ export const StatisticsSection = () => {
               </span>
             </motion.h2>
             <motion.p
-              className="text-responsive-base text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Serving 97+ countries with 99.9% uptime and support for 150+ currencies—RedGiraffe
+              Serving 97+ countries with 99.9% uptime and support for 150+ currencies—RedGirraffe
               processes $20B+ annually with top-tier security.
             </motion.p>
           </motion.div>

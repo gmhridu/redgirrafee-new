@@ -11,6 +11,8 @@ export default {
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
+      '3xl': '1920px',
+      '4xl': '2560px',
     },
     extend: {
       // Responsive font sizes for better mobile readability
@@ -111,6 +113,7 @@ export default {
         'h6-h6-regular': 'var(--h6-h6-regular-font-family)',
         'h6-h6-semibold': 'var(--h6-h6-semibold-font-family)',
         sans: [
+          'Inter',
           'ui-sans-serif',
           'system-ui',
           'sans-serif',

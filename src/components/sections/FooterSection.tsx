@@ -250,14 +250,7 @@ export const FooterSection = (): JSX.Element => {
 
             {/* Company Info */}
             <div className="space-y-3">
-              <div className="text-white text-lg sm:text-xl font-bold">RedGirraffe</div>
-
-              <div className="flex items-center gap-2 flex-wrap">
-                <img src="/falg_1.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
-                <img src="/falg_2.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
-                <img src="/falg_3.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
-                <img src="/falg_4.png" alt="flag" className="w-6 h-4 sm:w-8 sm:h-6" />
-              </div>
+              <img src="/logo.svg" alt="" />
 
               <div className="flex flex-wrap items-center gap-1 text-yellow-500 text-xs sm:text-sm">
                 <span>Payments</span>

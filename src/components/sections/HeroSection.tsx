@@ -172,14 +172,14 @@ export const HeroSection = () => {
         ></div>
       </div>
 
-      <div className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-40 w-full">
+      <div className="relative pt-32 sm:pt-32 md:pt-36 lg:pt-40 w-full">
         {/* World-class full-width container - Maximum screen coverage with classy edge margins */}
         <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
           <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
-              {/* Left Content - Perfectly synergized with enhanced RedGiraffe logo */}
+              {/* Left Content - Perfectly synergized with enhanced RedGirraffe logo */}
               <motion.div
-                className="space-y-6 sm:space-y-8 order-1 lg:order-1 px-2 lg:px-0"
+                className="space-y-6 sm:space-y-8 order-1 lg:order-1 px-4 sm:px-6 lg:px-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -190,7 +190,7 @@ export const HeroSection = () => {
                   variants={itemVariants}
                 >
                   {/* Click to Change Button with cursor icon */}
-                  <div className="block absolute md:w-[163px] w-[120px] md:h-[45px] h-[30px] md:top-[-45px] top-[-45px] md:left-[260px] left-[230px]">
+                  <div className="block absolute md:w-[163px] w-[120px] md:h-[45px] h-[30px] md:top-[-45px] top-[-45px] md:left-[260px] left-[200px]">
                     <div className="relative h-[45px]">
                       <Card
                         className="inline-flex items-center justify-center gap-2.5 px-3.5 py-1 absolute top-0 left-[31px] bg-[#00d959] rounded-[55px] overflow-hidden border-none cursor-pointer"
@@ -244,7 +244,7 @@ export const HeroSection = () => {
 
                 {/* Main Heading */}
                 <motion.h1
-                  className="text-responsive-2xl font-bold text-slate-900 leading-tight tracking-tight text-center lg:text-left"
+                  className="text-[32px] md:text-[40px] 2xl:text-[56px] 3xl:text-[60px] 4xl:text-[80px] font-extrabold 3xl:leading-[80px] 4xl:leading-[102px] text-slate-900 tracking-tight text-left"
                   variants={itemVariants}
                 >
                   RedGirraffe Global
@@ -254,7 +254,7 @@ export const HeroSection = () => {
 
                 {/* Subtitle */}
                 <motion.p
-                  className="text-responsive-base text-slate-600 leading-relaxed font-light text-center lg:text-left"
+                  className="text-lg xl:max-w-[300px] 2xl:w-[700px] 3xl:max-w-[733px] md:text-xl font-normal leading-8 text-slate-600 text-left"
                   variants={itemVariants}
                 >
                   Simplify payments, reduce costs, and unlock smarter cash flow with seamless
@@ -263,11 +263,11 @@ export const HeroSection = () => {
 
                 {/* Action Buttons */}
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start"
                   variants={itemVariants}
                 >
                   <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-                    <Button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                    <Button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto min-w-[180px]">
                       <ArrowRight className="w-5 h-5" />
                       Request a Demo
                     </Button>
@@ -275,7 +275,7 @@ export const HeroSection = () => {
                   <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                     <Button
                       variant="outline"
-                      className="bg-white/80 backdrop-blur-sm border-2 border-emerald-300 text-slate-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50 hover:border-emerald-400 hover:text-emerald-700 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                      className="bg-white/80 backdrop-blur-sm border-2 border-emerald-300 text-slate-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-green-50 hover:border-emerald-400 hover:text-emerald-700 rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto min-w-[180px]"
                     >
                       <ArrowRight className="w-5 h-5" />
                       Contact Sales
@@ -284,7 +284,7 @@ export const HeroSection = () => {
                 </motion.div>
 
                 {/* Stats */}
-                <motion.div className="pt-4" variants={itemVariants}>
+                <motion.div className="pt-4 text-left" variants={itemVariants}>
                   <p className="text-lg font-semibold text-slate-700">
                     <span className="text-2xl font-bold text-slate-900">$20B+</span> processed
                     annually
@@ -364,7 +364,7 @@ export const HeroSection = () => {
                             <Play className="w-8 h-8 text-white ml-1" />
                           </motion.div>
                           <h3 className="text-lg font-semibold text-slate-800 mb-2">
-                            RedGiraffe Demo
+                            RedGirraffe Demo
                           </h3>
                           <p className="text-slate-600">Global payment solutions</p>
                           <div className="mt-4 flex justify-center space-x-1">

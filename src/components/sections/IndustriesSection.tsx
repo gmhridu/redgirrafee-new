@@ -154,7 +154,7 @@ export const IndustriesSection = () => {
               </span>
             </motion.div>
 
-            <h2 className="text-responsive-xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-6 leading-tight">
               Industries{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-700 bg-clip-text text-transparent">
@@ -169,7 +169,7 @@ export const IndustriesSection = () => {
                 /> */}
               </span>
             </h2>
-            <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Tailored payment solutions for diverse business sectors, empowering enterprises across
               the globe with cutting-edge financial infrastructure designed for scale and
               reliability.
@@ -272,14 +272,14 @@ export const IndustriesSection = () => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 transition-colors duration-300">
                         {industry.title}
                       </h3>
 
                       {/* Enhanced Description with Smooth Transition */}
                       <div className="flex-grow relative overflow-hidden">
                         <motion.p
-                          className="text-gray-600 text-sm leading-relaxed"
+                          className="text-gray-600 text-base leading-relaxed"
                           initial={{ opacity: 1, y: 0 }}
                           animate={{
                             opacity: isHovered ? 0 : 1,
@@ -290,7 +290,7 @@ export const IndustriesSection = () => {
                           {industry.description}
                         </motion.p>
                         <motion.p
-                          className="text-gray-600 text-sm leading-relaxed absolute top-0"
+                          className="text-gray-600 text-base leading-relaxed absolute top-0"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{
                             opacity: isHovered ? 1 : 0,

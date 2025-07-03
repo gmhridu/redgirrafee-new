@@ -77,7 +77,7 @@ export const MainContentSection = () => {
   };
 
   return (
-    <section className="relative py-12 lg:py-20 overflow-hidden">
+    <section id="features" className="relative py-12 lg:py-20 overflow-hidden">
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-emerald-50/20" />
 
@@ -101,7 +101,7 @@ export const MainContentSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-responsive-xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-6 leading-tight">
               <span className="inline-block">Global Recurring B2B Payments,</span>{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 bg-clip-text text-transparent">
@@ -116,7 +116,7 @@ export const MainContentSection = () => {
                 /> */}
               </span>
             </h2>
-            <p className="text-responsive-base text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Secure, scalable solutions for businesses of all sizes.
             </p>
           </motion.div>
@@ -151,13 +151,13 @@ export const MainContentSection = () => {
                           />
                           <Icon className="w-7 h-7 text-gray-700 group-hover:text-gray-900 transition-colors duration-300 relative z-10" />
                         </div>
-                        <h3 className="flex-1 text-xl font-semibold text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-600 group-hover:to-emerald-600 group-hover:bg-clip-text transition-all duration-300">
+                        <h3 className="flex-1 text-lg md:text-xl 2xl:text-[22px] font-bold lg:leading-[30.8px] text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-600 group-hover:to-emerald-600 group-hover:bg-clip-text transition-all duration-300">
                           {feature.title}
                         </h3>
                       </div>
 
                       {/* Description */}
-                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300 mb-6">
+                      <p className="text-base leading-[28.8px] text-gray-600 group-hover:text-gray-700 transition-colors duration-300 mb-6">
                         {feature.description}
                       </p>
                     </div>
