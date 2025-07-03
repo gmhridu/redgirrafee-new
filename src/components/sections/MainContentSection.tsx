@@ -102,7 +102,7 @@ export const MainContentSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-6 leading-tight">
-              <span className="inline-block">Global Recurring B2B Payments,</span>{' '}
+              <span className="inline-block">Global Recurring B2B Payments —</span>
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 bg-clip-text text-transparent">
                   Simplified

@@ -244,7 +244,7 @@ export const HeroSection = () => {
 
                 {/* Main Heading */}
                 <motion.h1
-                  className="text-[32px] md:text-[40px] 2xl:text-[56px] 3xl:text-[60px] 4xl:text-[80px] font-extrabold 3xl:leading-[80px] 4xl:leading-[102px] text-slate-900 tracking-tight text-left"
+                  className="text-[40px] md:text-[40px] 2xl:text-[56px] 3xl:text-[60px] 4xl:text-[80px] font-extrabold 3xl:leading-[80px] 4xl:leading-[102px] text-slate-900 tracking-tight text-left"
                   variants={itemVariants}
                 >
                   RedGirraffe Global
@@ -257,8 +257,8 @@ export const HeroSection = () => {
                   className="text-lg xl:max-w-[300px] 2xl:w-[700px] 3xl:max-w-[733px] md:text-xl font-normal leading-8 text-slate-600 text-left"
                   variants={itemVariants}
                 >
-                  Simplify payments, reduce costs, and unlock smarter cash flow with seamless
-                  recurring B2B payments in 97+ countries.
+                  Simplify recurring B2B payments, cut costs, and optimise cash flow in 97+
+                  countries.
                 </motion.p>
 
                 {/* Action Buttons */}

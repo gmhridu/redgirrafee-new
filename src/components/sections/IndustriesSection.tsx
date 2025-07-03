@@ -170,9 +170,7 @@ export const IndustriesSection = () => {
               </span>
             </h2>
             <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Tailored payment solutions for diverse business sectors, empowering enterprises across
-              the globe with cutting-edge financial infrastructure designed for scale and
-              reliability.
+              Scalable, reliable payment solutions for global enterprises across diverse sectors.
             </p>
           </motion.div>
 
