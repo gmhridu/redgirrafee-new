@@ -171,8 +171,8 @@ export const StatisticsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Serving 97+ countries with 99.9% uptime and support for 150+ currencies—RedGirraffe
-              processes $20B+ annually with top-tier security.
+              Scale globally with unmatched reliability RedGirraffe serves 97+ countries with 99.9%
+              uptime, 150+ currencies, and $20B+ processed annually with top security.
             </motion.p>
           </motion.div>
 

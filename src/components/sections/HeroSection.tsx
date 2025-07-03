@@ -254,7 +254,7 @@ export const HeroSection = () => {
 
                 {/* Subtitle */}
                 <motion.p
-                  className="text-lg xl:max-w-[300px] 2xl:w-[700px] 3xl:max-w-[733px] md:text-xl font-normal leading-8 text-slate-600 text-left"
+                  className="text-lg max-w-[98%] md:text-xl font-normal leading-8 text-slate-600 text-left"
                   variants={itemVariants}
                 >
                   Simplify recurring B2B payments, cut costs, and optimise cash flow in 97+

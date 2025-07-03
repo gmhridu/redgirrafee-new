@@ -88,7 +88,7 @@ export const TailoredSuccessSection = () => {
         {
           icon: CreditCard,
           title: 'Bill Discounting',
-          subtitle: 'Offer early payments with MDR fully absorbed—zero-cost',
+          subtitle: 'Early payment solutions',
           gradient: 'from-green-500 to-emerald-500',
           lightGradient: 'from-green-50 to-emerald-50',
         },
