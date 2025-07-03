@@ -65,7 +65,7 @@ export const ProcessSection = () => {
   return (
     <section
       id="how-it-works"
-      className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
+      className="relative py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
     >
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0">
@@ -88,33 +88,21 @@ export const ProcessSection = () => {
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Enhanced Header */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <motion.h2
-              className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
+            <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 sm:mb-6 tracking-tight">
               How{' '}
               <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-red-700 bg-clip-text text-transparent">
                 RedGirraffe works
               </span>
-            </motion.h2>
-            <motion.p
-              className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            </h2>
+            <p className="lg:text-lg 2xl:text-2xl font-normal 2xl:leading-[45.6px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Simplify your payments in three seamless steps.
-            </motion.p>
+            </p>
           </motion.div>
 
           {/* Modern Animated Timeline - Desktop */}
@@ -237,7 +225,7 @@ export const ProcessSection = () => {
 
           {/* Enhanced Steps Grid */}
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

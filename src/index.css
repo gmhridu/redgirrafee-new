@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 @tailwind components;
 @tailwind utilities;
 
@@ -15,74 +13,86 @@
   --app-primary: hsl(231, 48%, 48%);
   --app-secondary: hsl(220, 9%, 46%);
   --black: hsl(220, 13%, 9%);
-  --body-large-body-large-regular-font-family: 'Inter', Helvetica;
+  --body-large-body-large-regular-font-family: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --body-large-body-large-regular-font-size: 16px;
   --body-large-body-large-regular-font-style: normal;
   --body-large-body-large-regular-font-weight: 400;
   --body-large-body-large-regular-letter-spacing: 0px;
   --body-large-body-large-regular-line-height: 24px;
-  --body-large-body-large-semibold-font-family: 'SF Pro Display', Helvetica;
+  --body-large-body-large-semibold-font-family: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --body-large-body-large-semibold-font-size: 16px;
   --body-large-body-large-semibold-font-style: normal;
   --body-large-body-large-semibold-font-weight: 400;
   --body-large-body-large-semibold-letter-spacing: 0px;
   --body-large-body-large-semibold-line-height: 24px;
-  --body-medium-body-medium-bold-font-family: 'SF Pro Display', Helvetica;
+  --body-medium-body-medium-bold-font-family: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --body-medium-body-medium-bold-font-size: 14px;
   --body-medium-body-medium-bold-font-style: normal;
   --body-medium-body-medium-bold-font-weight: 700;
   --body-medium-body-medium-bold-letter-spacing: 0px;
   --body-medium-body-medium-bold-line-height: 20px;
-  --body-medium-body-medium-regular-font-family: 'SF Pro Display', Helvetica;
+  --body-medium-body-medium-regular-font-family: ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --body-medium-body-medium-regular-font-size: 14px;
   --body-medium-body-medium-regular-font-style: normal;
   --body-medium-body-medium-regular-font-weight: 400;
   --body-medium-body-medium-regular-letter-spacing: 0px;
   --body-medium-body-medium-regular-line-height: 20px;
   --dark-blue: hsl(221, 39%, 11%);
-  --h1-h1-semibold-font-family: 'SF Pro Display', Helvetica;
+  --h1-h1-semibold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h1-h1-semibold-font-size: 64px;
   --h1-h1-semibold-font-style: normal;
   --h1-h1-semibold-font-weight: 400;
   --h1-h1-semibold-letter-spacing: 0px;
   --h1-h1-semibold-line-height: 72px;
-  --h2-h2-bold-font-family: 'Inter', Helvetica;
+  --h2-h2-bold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h2-h2-bold-font-size: 48px;
   --h2-h2-bold-font-style: normal;
   --h2-h2-bold-font-weight: 700;
   --h2-h2-bold-letter-spacing: 0px;
   --h2-h2-bold-line-height: 56px;
-  --h3-h3-semibold-font-family: 'Inter', Helvetica;
+  --h3-h3-semibold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h3-h3-semibold-font-size: 40px;
   --h3-h3-semibold-font-style: normal;
   --h3-h3-semibold-font-weight: 600;
   --h3-h3-semibold-letter-spacing: 0px;
   --h3-h3-semibold-line-height: 48px;
-  --h4-h4-semibold-font-family: 'Inter', Helvetica;
+  --h4-h4-semibold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h4-h4-semibold-font-size: 32px;
   --h4-h4-semibold-font-style: normal;
   --h4-h4-semibold-font-weight: 600;
   --h4-h4-semibold-letter-spacing: 0px;
   --h4-h4-semibold-line-height: 40px;
-  --h5-h5-bold-font-family: 'SF Pro Display', Helvetica;
+  --h5-h5-bold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h5-h5-bold-font-size: 24px;
   --h5-h5-bold-font-style: normal;
   --h5-h5-bold-font-weight: 700;
   --h5-h5-bold-letter-spacing: 0px;
   --h5-h5-bold-line-height: 32px;
-  --h5-h5-semibold-font-family: 'Inter', Helvetica;
+  --h5-h5-semibold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h5-h5-semibold-font-size: 24px;
   --h5-h5-semibold-font-style: normal;
   --h5-h5-semibold-font-weight: 600;
   --h5-h5-semibold-letter-spacing: 0px;
   --h5-h5-semibold-line-height: 32px;
-  --h6-h6-regular-font-family: 'SF Pro Display', Helvetica;
+  --h6-h6-regular-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h6-h6-regular-font-size: 18px;
   --h6-h6-regular-font-style: normal;
   --h6-h6-regular-font-weight: 400;
   --h6-h6-regular-letter-spacing: 0px;
   --h6-h6-regular-line-height: 26px;
-  --h6-h6-semibold-font-family: 'Inter', Helvetica;
+  --h6-h6-semibold-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --h6-h6-semibold-font-size: 18px;
   --h6-h6-semibold-font-style: normal;
   --h6-h6-semibold-font-weight: 600;

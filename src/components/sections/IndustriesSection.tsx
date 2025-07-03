@@ -176,7 +176,7 @@ export const IndustriesSection = () => {
 
           {/* Industries Grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

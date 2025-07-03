@@ -210,7 +210,7 @@ export const LayoutSection = () => {
           </div>
 
           {/* Problem Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {/* First 6 cards in 2-column grid */}
             {problemCards.slice(0, 6).map((card, index) => (
               <div key={index} className="relative group">

@@ -73,14 +73,32 @@ export const HeroSection = () => {
     if (containerRef.current) {
       if (!isFullscreen) {
         try {
-          await containerRef.current.requestFullscreen();
+          // Try different fullscreen methods for cross-browser compatibility
+          if (containerRef.current.requestFullscreen) {
+            await containerRef.current.requestFullscreen();
+          } else if ((containerRef.current as any).webkitRequestFullscreen) {
+            await (containerRef.current as any).webkitRequestFullscreen();
+          } else if ((containerRef.current as any).mozRequestFullScreen) {
+            await (containerRef.current as any).mozRequestFullScreen();
+          } else if ((containerRef.current as any).msRequestFullscreen) {
+            await (containerRef.current as any).msRequestFullscreen();
+          }
           setIsFullscreen(true);
         } catch (error) {
           console.log('Fullscreen not supported');
         }
       } else {
         try {
-          await document.exitFullscreen();
+          // Try different exit fullscreen methods for cross-browser compatibility
+          if (document.exitFullscreen) {
+            await document.exitFullscreen();
+          } else if ((document as any).webkitExitFullscreen) {
+            await (document as any).webkitExitFullscreen();
+          } else if ((document as any).mozCancelFullScreen) {
+            await (document as any).mozCancelFullScreen();
+          } else if ((document as any).msExitFullscreen) {
+            await (document as any).msExitFullscreen();
+          }
           setIsFullscreen(false);
         } catch (error) {
           console.log('Exit fullscreen failed');
@@ -91,7 +109,12 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      const isCurrentlyFullscreen = !!document.fullscreenElement;
+      const isCurrentlyFullscreen = !!(
+        document.fullscreenElement ||
+        (document as any).webkitFullscreenElement ||
+        (document as any).mozFullScreenElement ||
+        (document as any).msFullscreenElement
+      );
       setIsFullscreen(isCurrentlyFullscreen);
 
       // Reset cycle tracking when entering fullscreen
@@ -108,10 +131,22 @@ export const HeroSection = () => {
       }
     };
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    // Handle multiple fullscreen change events for cross-browser compatibility
+    const events = [
+      'fullscreenchange',
+      'webkitfullscreenchange',
+      'mozfullscreenchange',
+      'MSFullscreenChange',
+    ];
+
+    events.forEach(event => {
+      document.addEventListener(event, handleFullscreenChange);
+    });
 
     return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      events.forEach(event => {
+        document.removeEventListener(event, handleFullscreenChange);
+      });
     };
   }, []);
 
@@ -209,7 +244,7 @@ export const HeroSection = () => {
                   </div>
 
                   {/* Slider Switch Container */}
-                  <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-72">
+                  <div className="relative bg-gray-200 rounded-full p-1 shadow-inner w-52 sm:w-64 lg:w-72">
                     {/* Sliding Background */}
                     <motion.div
                       className="absolute top-1 bottom-1 bg-slate-800 rounded-full shadow-md"
@@ -224,7 +259,7 @@ export const HeroSection = () => {
                     <div className="relative flex">
                       <button
                         onClick={() => setIsCommercial(true)}
-                        className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                        className={`flex-1 px-1 sm:px-2 lg:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
                           isCommercial ? 'text-white' : 'text-slate-600'
                         }`}
                       >
@@ -232,7 +267,7 @@ export const HeroSection = () => {
                       </button>
                       <button
                         onClick={() => setIsCommercial(false)}
-                        className={`flex-1 px-6 py-2 text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
+                        className={`flex-1 px-1 sm:px-2 lg:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium rounded-full transition-colors duration-300 z-10 ${
                           !isCommercial ? 'text-white' : 'text-slate-600'
                         }`}
                       >
@@ -244,7 +279,7 @@ export const HeroSection = () => {
 
                 {/* Main Heading */}
                 <motion.h1
-                  className="text-[40px] md:text-[40px] 2xl:text-[56px] 3xl:text-[60px] 4xl:text-[80px] font-extrabold 3xl:leading-[80px] 4xl:leading-[102px] text-slate-900 tracking-tight text-left"
+                  className="text-[2.4rem] md:text-responsive-2xl  font-bold text-slate-900 leading-tight tracking-tight text-left lg:text-left"
                   variants={itemVariants}
                 >
                   RedGirraffe Global
@@ -308,7 +343,7 @@ export const HeroSection = () => {
                       muted
                       loop
                       playsInline
-                      controls={isFullscreen}
+                      controls={false}
                       onTimeUpdate={() => {
                         // Auto-exit fullscreen when video completes a cycle
                         if (videoRef.current && isFullscreen && document.fullscreenElement) {
@@ -449,6 +484,107 @@ export const HeroSection = () => {
                           </button>
                         </div>
                       </div>
+                    </div>
+                  )}
+
+                  {/* Fullscreen overlay with custom controls */}
+                  {isFullscreen && (
+                    <div className="absolute inset-0 z-50 group/fullscreen">
+                      {/* Fullscreen controls - always visible with fade out */}
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-100 group-hover/fullscreen:opacity-100 transition-opacity duration-300">
+                        <button
+                          onClick={toggleMute}
+                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
+                          title={isMuted ? 'Unmute' : 'Mute'}
+                        >
+                          {isMuted ? (
+                            <svg
+                              className="w-6 h-6"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              className="w-6 h-6"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                        <button
+                          onClick={togglePlayPause}
+                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
+                          title={isPlaying ? 'Pause' : 'Play'}
+                        >
+                          {isPlaying ? (
+                            <svg
+                              className="w-6 h-6"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M10 9v6m4-6v6"
+                              />
+                            </svg>
+                          ) : (
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          )}
+                        </button>
+                        <button
+                          onClick={toggleFullscreen}
+                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
+                          title="Exit Fullscreen"
+                        >
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Click anywhere to exit fullscreen */}
+                      <div
+                        className="absolute inset-0 cursor-pointer"
+                        onClick={toggleFullscreen}
+                        title="Click to exit fullscreen"
+                      />
                     </div>
                   )}
                 </div>

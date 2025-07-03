@@ -124,161 +124,167 @@ const officeLocations = [
 export const FooterSection = (): JSX.Element => {
   return (
     <footer className="w-full bg-black text-white">
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
-          {/* Important Links */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Important Links</h3>
-            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
-              Quick access to essential pages
-            </p>
-            <div className="space-y-1 sm:space-y-2">
-              {importantLinks.map(({ label, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Policies & Compliance */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
-              Policies & Compliance
-            </h3>
-            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
-              Key policies for security and compliance
-            </p>
-            <div className="space-y-1 sm:space-y-2">
-              {policiesLinks.map(({ label, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Business Services */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
-              Business Services
-            </h3>
-            <p className="text-yellow-500 text-xs sm:text-sm mb-4">
-              Solutions for businesses & partners
-            </p>
-            <div className="space-y-1 sm:space-y-2">
-              {businessServices.map(({ label, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Our Offices */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Our Offices</h3>
-            <p className="text-yellow-500 text-xs sm:text-sm mb-4">Global presence, local impact</p>
-            <div className="space-y-4 sm:space-y-6">
-              {/* United Kingdom */}
-              <div className="space-y-1">
-                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">United Kingdom</h4>
-                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Inc.</p>
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                  Harben House, Harben Parade, Finchley Road, London, NW3 6LH.
-                </p>
-              </div>
-
-              {/* Singapore */}
-              <div className="space-y-1">
-                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">Singapore</h4>
-                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Holdings</p>
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                  3 Temasek Avenue, Centennial Tower, #17-01, Singapore 039190.
-                </p>
-              </div>
-
-              {/* India */}
-              <div className="space-y-1">
-                <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">India</h4>
-                <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe.com</p>
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                  904, Galleria Towers, DLF Phase IV, Gurgaon, Haryana - 122002.
-                </p>
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                  507, Tulsiani Chambers, Nariman Point, Mumbai - 400021.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Stay Connected */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Stay Connected</h3>
-            <p className="text-yellow-500 text-xs sm:text-sm mb-4">Never miss an update</p>
-
-            {/* Email Input */}
-            <div className="mb-6">
-              <div className="flex items-center bg-white rounded-full p-1 mb-3 max-w-xs">
-                <Input
-                  className="flex-1 border-0 bg-transparent text-gray-600 placeholder:text-gray-400 text-xs sm:text-sm px-3 focus:outline-none"
-                  placeholder="Enter your email"
-                />
-                <Button className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-full px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium">
-                  Subscribe
-                </Button>
-              </div>
-            </div>
-
-            {/* Company Info */}
+      <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full py-8 sm:py-12">
+        <div className="max-w-[98%] xl:max-w-[96%] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
+            {/* Important Links */}
             <div className="space-y-3">
-              <img src="/logo.svg" alt="" />
+              <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+                Important Links
+              </h3>
+              <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+                Quick access to essential pages
+              </p>
+              <div className="space-y-1 sm:space-y-2">
+                {importantLinks.map(({ label, href }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
 
-              <div className="flex flex-wrap items-center gap-1 text-yellow-500 text-xs sm:text-sm">
-                <span>Payments</span>
-                <span>|</span>
-                <span>B2B SaaS</span>
-                <span>|</span>
-                <span>Real Estate</span>
+            {/* Policies & Compliance */}
+            <div className="space-y-3">
+              <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+                Policies & Compliance
+              </h3>
+              <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+                Key policies for security and compliance
+              </p>
+              <div className="space-y-1 sm:space-y-2">
+                {policiesLinks.map(({ label, href }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Business Services */}
+            <div className="space-y-3">
+              <h3 className="text-white font-semibold text-sm sm:text-base mb-1">
+                Business Services
+              </h3>
+              <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+                Solutions for businesses & partners
+              </p>
+              <div className="space-y-1 sm:space-y-2">
+                {businessServices.map(({ label, href }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Our Offices */}
+            <div className="space-y-3">
+              <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Our Offices</h3>
+              <p className="text-yellow-500 text-xs sm:text-sm mb-4">
+                Global presence, local impact
+              </p>
+              <div className="space-y-4 sm:space-y-6">
+                {/* United Kingdom */}
+                <div className="space-y-1">
+                  <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">United Kingdom</h4>
+                  <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Inc.</p>
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    Harben House, Harben Parade, Finchley Road, London, NW3 6LH.
+                  </p>
+                </div>
+
+                {/* Singapore */}
+                <div className="space-y-1">
+                  <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">Singapore</h4>
+                  <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe Holdings</p>
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    3 Temasek Avenue, Centennial Tower, #17-01, Singapore 039190.
+                  </p>
+                </div>
+
+                {/* India */}
+                <div className="space-y-1">
+                  <h4 className="text-yellow-500 font-medium text-xs sm:text-sm">India</h4>
+                  <p className="text-white text-xs sm:text-sm font-medium">RedGirraffe.com</p>
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    904, Galleria Towers, DLF Phase IV, Gurgaon, Haryana - 122002.
+                  </p>
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    507, Tulsiani Chambers, Nariman Point, Mumbai - 400021.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Stay Connected */}
+            <div className="space-y-3">
+              <h3 className="text-white font-semibold text-sm sm:text-base mb-1">Stay Connected</h3>
+              <p className="text-yellow-500 text-xs sm:text-sm mb-4">Never miss an update</p>
+
+              {/* Email Input */}
+              <div className="mb-6">
+                <div className="flex items-center bg-white rounded-full p-1 mb-3 max-w-xs">
+                  <Input
+                    className="flex-1 border-0 bg-transparent text-gray-600 placeholder:text-gray-400 text-xs sm:text-sm px-3 focus:outline-none"
+                    placeholder="Enter your email"
+                  />
+                  <Button className="bg-yellow-600 hover:bg-yellow-700 text-white rounded-full px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium">
+                    Subscribe
+                  </Button>
+                </div>
               </div>
 
-              <div>
-                <p className="text-yellow-500 text-xs sm:text-sm mb-1">Write to us at:</p>
-                <a
-                  href="mailto:connect@redgirraffe.com"
-                  className="text-white text-xs sm:text-sm hover:text-yellow-500 transition-colors"
-                >
-                  connect@redgirraffe.com
-                </a>
+              {/* Company Info */}
+              <div className="space-y-3">
+                <img src="/logo.svg" alt="" />
+
+                <div className="flex flex-wrap items-center gap-1 text-yellow-500 text-xs sm:text-sm">
+                  <span>Payments</span>
+                  <span>|</span>
+                  <span>B2B SaaS</span>
+                  <span>|</span>
+                  <span>Real Estate</span>
+                </div>
+
+                <div>
+                  <p className="text-yellow-500 text-xs sm:text-sm mb-1">Write to us at:</p>
+                  <a
+                    href="mailto:connect@redgirraffe.com"
+                    className="text-white text-xs sm:text-sm hover:text-yellow-500 transition-colors"
+                  >
+                    connect@redgirraffe.com
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Footer Bottom */}
-        <div className="mt-8 pt-4 border-t border-yellow-600">
-          <div className="text-center">
-            <p className="text-white text-xs sm:text-sm font-medium">
-              Copyright © 2025-2026 | RedGirraffe - All rights reserved
-            </p>
+          {/* Footer Bottom */}
+          <div className="mt-8 pt-4 border-t border-yellow-600">
+            <div className="text-center">
+              <p className="text-white text-xs sm:text-sm font-medium">
+                Copyright © 2025-2026 | RedGirraffe - All rights reserved
+              </p>
+            </div>
           </div>
         </div>
       </div>

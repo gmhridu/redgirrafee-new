@@ -75,7 +75,7 @@ export const PricingCardsSection = () => {
       <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 w-full">
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Header */}
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-16">
             <h2 className="text-[32px] md:text-[40px] 2xl:text-[45px] 4xl:text-[72px] font-extrabold 4xl:leading-[102.8px] text-center mx-auto mb-4 sm:mb-6 tracking-tight">
               RedGirraffe Global{' '}
               <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 bg-clip-text text-transparent">

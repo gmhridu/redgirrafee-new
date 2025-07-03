@@ -24,10 +24,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showFlagDropdown, setShowFlagDropdown] = useState(false);
+  const [showMobileFlagDropdown, setShowMobileFlagDropdown] = useState(false);
   const [selectedFlag, setSelectedFlag] = useState(0); // US is default (index 0)
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const flagDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileFlagDropdownRef = useRef<HTMLDivElement>(null);
 
   // Flag data
   const flags = [
@@ -54,16 +56,21 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       if (flagDropdownRef.current && !flagDropdownRef.current.contains(target)) {
         setShowFlagDropdown(false);
       }
+
+      // Check if click is outside mobile flag dropdown
+      if (mobileFlagDropdownRef.current && !mobileFlagDropdownRef.current.contains(target)) {
+        setShowMobileFlagDropdown(false);
+      }
     };
 
-    if (showMobileMenu || showFlagDropdown) {
+    if (showMobileMenu || showFlagDropdown || showMobileFlagDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showMobileMenu, showFlagDropdown]);
+  }, [showMobileMenu, showFlagDropdown, showMobileFlagDropdown]);
 
   const handleMobileMenuClick = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -80,6 +87,17 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
     }
   };
 
+  // Handle mobile flag selection with navigation
+  const handleMobileFlagSelection = (index: number) => {
+    setSelectedFlag(index);
+    setShowMobileFlagDropdown(false);
+
+    // Navigate to India site if IN flag is selected
+    if (flags[index].code === 'IN') {
+      window.location.href = 'https://redgirraffe.com/in/';
+    }
+  };
+
   // Enhanced smooth scroll to section function with instant navigation
   const scrollToSection = (sectionId: string, closeMobileMenu: boolean = false) => {
     const element = document.getElementById(sectionId);
@@ -87,7 +105,31 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       const performScroll = () => {
         // Get the current position of the element
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - 20; // Minimal offset for better positioning
+
+        // Minimal offsets for perfect positioning without gaps
+        let customOffset = 0;
+        switch (sectionId) {
+          case 'industries':
+            // Minimal offset for perfect positioning
+            customOffset = window.innerWidth >= 1024 ? 20 : 12;
+            break;
+          case 'features':
+            // Minimal offset for perfect positioning
+            customOffset = window.innerWidth >= 1024 ? 20 : 16;
+            break;
+          case 'how-it-works':
+            // Minimal offset for perfect positioning
+            customOffset = window.innerWidth >= 1024 ? 20 : 12;
+            break;
+          case 'pricing':
+            // Minimal offset for perfect positioning
+            customOffset = window.innerWidth >= 1024 ? 20 : 16;
+            break;
+          default:
+            customOffset = 5; // Very minimal offset
+        }
+
+        const offsetPosition = elementPosition + window.pageYOffset - customOffset;
 
         // Use native smooth scrolling for instant response and better performance
         window.scrollTo({
@@ -119,12 +161,12 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       <div className={`flex items-center justify-center w-full ${className}`}>
         {/* Glass Morphism Background - Stripe-like transparent overlay */}
         <div className="absolute inset-0 bg-white/20 backdrop-blur-lg "></div>
-        <div className="max-w-none px-1 sm:px-2 lg:px-3 xl:px-4 relative z-10 w-full">
-          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[98%] xl:max-w-[96%] mx-auto py-4 sm:py-4 lg:py-6">
+        <div className="max-w-none px-4 sm:px-6 lg:px-3 xl:px-4 relative z-10 w-full">
+          <div className="flex h-16 sm:h-16 lg:h-20 items-center justify-between w-full max-w-[94%] sm:max-w-[98%] xl:max-w-[96%] mx-auto py-4 sm:py-4 lg:py-6">
             <div className="flex items-center gap-3 lg:gap-8 xl:gap-12">
               {/* Logo - Enhanced for premium synergy */}
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="font-bold text-slate-900 text-2xl sm:text-2xl lg:text-3xl xl:text-3xl tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent hover:from-emerald-700 hover:via-slate-900 hover:to-emerald-700 transition-all duration-300 drop-shadow-sm">
+              <div className="flex items-center gap-2 sm:gap-3 pl-1 sm:pl-0">
+                <div className="font-bold text-slate-900 text-2xl sm:text-2xl lg:text-3xl xl:text-3xl  tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent hover:from-emerald-700 hover:via-slate-900 hover:to-emerald-700 transition-all duration-300 drop-shadow-sm">
                   RedGirraffe
                 </div>
               </div>
@@ -147,8 +189,61 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
             {/* Action Buttons */}
             <div className="flex items-center justify-center gap-1 xl:gap-2">
-              {/* Mobile Menu Button - Show only on mobile */}
-              <div className="block lg:hidden">
+              {/* Mobile Flag Dropdown and Menu Button - Show only on mobile */}
+              <div className="flex lg:hidden items-center gap-2 pr-1 sm:pr-0">
+                {/* Mobile Flag Dropdown */}
+                <div className="relative" ref={mobileFlagDropdownRef}>
+                  <Button
+                    variant="ghost"
+                    className="w-10 h-10 p-0 rounded-full hover:bg-gray-300 transition-colors btn-touch flex items-center justify-center"
+                    onClick={() => setShowMobileFlagDropdown(!showMobileFlagDropdown)}
+                  >
+                    <span className="text-2xl leading-none">{flags[selectedFlag].flag}</span>
+                  </Button>
+
+                  {/* Mobile Flag Dropdown Menu */}
+                  <AnimatePresence>
+                    {showMobileFlagDropdown && (
+                      <>
+                        {/* Backdrop */}
+                        <motion.div
+                          className="fixed inset-0 bg-black/50 z-[9998]"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: durations.fast }}
+                          onClick={() => setShowMobileFlagDropdown(false)}
+                        />
+
+                        {/* Dropdown */}
+                        <motion.div
+                          className="fixed top-16 right-4 bg-white border border-abu-stroke rounded-lg shadow-2xl py-2 min-w-[160px] z-[9999]"
+                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                          transition={{ duration: durations.fast }}
+                        >
+                          {flags.map((flag, index) => (
+                            <motion.button
+                              key={index}
+                              onClick={() => handleMobileFlagSelection(index)}
+                              className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
+                                index === selectedFlag ? 'bg-gray-50' : ''
+                              }`}
+                              whileHover={{ backgroundColor: '#f9fafb' }}
+                            >
+                              <span className="text-xl">{flag.flag}</span>
+                              <span className="font-body-medium-body-medium-regular text-black text-sm">
+                                {flag.code}
+                              </span>
+                            </motion.button>
+                          ))}
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <HamburgerMenu
                   isOpen={showMobileMenu}
                   onClick={handleMobileMenuClick}
@@ -213,28 +308,22 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
         </div>
       </div>
 
-      {/* Outside Close Button - Only visible when mobile menu is open */}
-      {showMobileMenu && (
-        <div className="fixed top-4 right-4 z-[60] lg:hidden">
-          <button
-            onClick={() => setShowMobileMenu(false)}
-            className="size-14 sm:size-14 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
-          >
-            <X className="w-5 h-5 sm:size-7 text-slate-700 group-hover:text-slate-900 transition-colors z-30" />
-          </button>
-        </div>
-      )}
-
       {/* Mobile Navigation Sheet */}
       <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
         <SheetContent
           side="left"
           className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-r-0 p-0 w-[280px] sm:w-[320px]"
         >
-          <div className="p-6 pb-8">
-            {/* Header with Logo and Flags */}
-            <SheetHeader className="mb-8">
+          <div className="p-6 pb-8 absolute">
+            {/* Header with Logo and Close Button */}
+            <SheetHeader className="mb-8 flex-row items-center justify-between">
               <img src="/logo.svg" alt="Logo" className="w-40 pl-2" />
+              <button
+                onClick={() => setShowMobileMenu(false)}
+                className="size-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group relative right-[-38px] top-[-33px]"
+              >
+                <X className="w-5 h-5 text-white group-hover:text-white/80 transition-colors" />
+              </button>
             </SheetHeader>
 
             {/* Navigation Links */}

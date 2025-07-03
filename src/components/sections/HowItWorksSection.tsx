@@ -149,7 +149,7 @@ export const HowItWorksSection = () => {
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Enhanced Header */}
           <motion.div
-            className="text-center mb-12 sm:mb-16"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -180,7 +180,7 @@ export const HowItWorksSection = () => {
 
           {/* Partnership Advantages */}
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-20"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -296,7 +296,7 @@ export const HowItWorksSection = () => {
 
           {/* Additional Features Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

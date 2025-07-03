@@ -77,7 +77,7 @@ export const MainContentSection = () => {
   };
 
   return (
-    <section id="features" className="relative py-12 lg:py-20 overflow-hidden">
+    <section id="features" className="relative section-spacing overflow-hidden">
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-emerald-50/20" />
 
@@ -123,7 +123,7 @@ export const MainContentSection = () => {
 
           {/* Feature Cards Grid */}
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

@@ -124,7 +124,7 @@ export const StatisticsSection = () => {
   };
 
   return (
-    <section className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section className="relative section-spacing bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0">
         {/* Gradient Orbs */}
@@ -146,7 +146,7 @@ export const StatisticsSection = () => {
         <div className="w-full max-w-[98%] xl:max-w-[96%] mx-auto relative">
           {/* Enhanced Header */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

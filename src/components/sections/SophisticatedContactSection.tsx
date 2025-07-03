@@ -180,7 +180,7 @@ export const SophisticatedContactSection = () => {
 
           {/* Two-Card Layout */}
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

@@ -181,7 +181,7 @@ export const TailoredSuccessSection = () => {
   };
 
   return (
-    <section id="features" className="relative pt-4 pb-12 lg:pt-6 lg:pb-20 overflow-hidden">
+    <section id="features" className="relative section-spacing overflow-hidden">
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-emerald-50/20" />
 
@@ -199,7 +199,7 @@ export const TailoredSuccessSection = () => {
         <div className="max-w-[98%] xl:max-w-[96%] mx-auto">
           {/* Section Header */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -227,7 +227,7 @@ export const TailoredSuccessSection = () => {
 
           {/* Feature Categories Grid */}
           <motion.div
-            className="grid lg:grid-cols-2 gap-8 mb-16"
+            className="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

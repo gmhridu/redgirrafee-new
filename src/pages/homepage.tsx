@@ -45,9 +45,31 @@ export default function Homepage() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = 0; // No gap for perfect top positioning
+      // Minimal offsets for perfect positioning without gaps
+      let customOffset = 0;
+      switch (sectionId) {
+        case 'industries':
+          // Minimal offset for perfect positioning
+          customOffset = window.innerWidth >= 1024 ? 20 : 4;
+          break;
+        case 'features':
+          // Minimal offset for perfect positioning
+          customOffset = window.innerWidth >= 1024 ? 20 : 10;
+          break;
+        case 'how-it-works':
+          // Minimal offset for perfect positioning
+          customOffset = window.innerWidth >= 1024 ? 20 : 10;
+          break;
+        case 'pricing':
+          // Minimal offset for perfect positioning
+          customOffset = window.innerWidth >= 1024 ? 20 : 10;
+          break;
+        default:
+          customOffset = 5; // Very minimal offset
+      }
+
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - customOffset;
 
       // Use native smooth scrolling for instant response and better performance
       window.scrollTo({
