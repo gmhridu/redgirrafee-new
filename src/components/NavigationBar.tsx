@@ -73,7 +73,11 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   }, [showMobileMenu, showFlagDropdown, showMobileFlagDropdown]);
 
   const handleMobileMenuClick = () => {
-    setShowMobileMenu(!showMobileMenu);
+    // Only open the sheet if it's currently closed
+    // Don't close it when clicked - only the dedicated close button should close it
+    if (!showMobileMenu) {
+      setShowMobileMenu(true);
+    }
   };
 
   // Handle flag selection with navigation
@@ -244,11 +248,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
                   </AnimatePresence>
                 </div>
 
-                <HamburgerMenu
-                  isOpen={showMobileMenu}
-                  onClick={handleMobileMenuClick}
-                  className="btn-touch"
-                />
+                <HamburgerMenu onClick={handleMobileMenuClick} className="btn-touch" />
               </div>
 
               {/* Desktop Buttons - Hidden on mobile */}
