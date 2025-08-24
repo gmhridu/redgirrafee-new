@@ -10,9 +10,14 @@ export const HeroSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [hasCompletedCycle, setHasCompletedCycle] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [showControls, setShowControls] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,6 +53,54 @@ export const HeroSection = () => {
   const handleToggleSwitch = () => {
     // Simply toggle between Commercial and Platforms without navigation
     setIsCommercial(!isCommercial);
+  };
+
+  const showControlsTemporarily = () => {
+    setShowControls(true);
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 3000); // Hide after 3 seconds
+  };
+
+  const handleMouseMove = () => {
+    if (isFullscreen) {
+      showControlsTemporarily();
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const video = videoRef.current;
+    if (video) {
+      const newTime = (parseFloat(e.target.value) / 100) * duration;
+      video.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const video = videoRef.current;
+    if (video) {
+      const newVolume = parseFloat(e.target.value) / 100;
+      video.volume = newVolume;
+      setVolume(newVolume);
+      // If volume is set to 0, consider it muted
+      if (newVolume === 0) {
+        setIsMuted(true);
+        video.muted = true;
+      } else if (isMuted) {
+        setIsMuted(false);
+        video.muted = false;
+      }
+    }
   };
 
   const toggleMute = () => {
@@ -89,7 +142,6 @@ export const HeroSection = () => {
         }
       } else {
         try {
-          // Try different exit fullscreen methods for cross-browser compatibility
           if (document.exitFullscreen) {
             await document.exitFullscreen();
           } else if ((document as any).webkitExitFullscreen) {
@@ -120,6 +172,7 @@ export const HeroSection = () => {
       // Reset cycle tracking when entering fullscreen
       if (isCurrentlyFullscreen) {
         setHasCompletedCycle(false);
+        showControlsTemporarily(); // Show controls when entering fullscreen
       }
 
       // When exiting fullscreen, ensure video continues playing and is muted
@@ -128,6 +181,7 @@ export const HeroSection = () => {
         setIsMuted(true);
         videoRef.current.play().catch(console.log);
         setHasCompletedCycle(false); // Reset cycle tracking
+        setShowControls(false); // Hide controls when exiting fullscreen
       }
     };
 
@@ -147,6 +201,10 @@ export const HeroSection = () => {
       events.forEach(event => {
         document.removeEventListener(event, handleFullscreenChange);
       });
+      // Cleanup timeout on unmount
+      if (controlsTimeoutRef.current) {
+        clearTimeout(controlsTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -158,13 +216,36 @@ export const HeroSection = () => {
 
       const handlePlay = () => setIsPlaying(true);
       const handlePause = () => setIsPlaying(false);
+      const handleTimeUpdate = () => {
+        setCurrentTime(video.currentTime);
+      };
+      const handleLoadedMetadata = () => {
+        setDuration(video.duration);
+      };
+      const handleVolumeChange = () => {
+        setVolume(video.volume);
+        setIsMuted(video.muted);
+      };
 
       video.addEventListener('play', handlePlay);
       video.addEventListener('pause', handlePause);
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+      video.addEventListener('volumechange', handleVolumeChange);
+
+      // Set initial values if already loaded
+      if (video.duration) {
+        setDuration(video.duration);
+      }
+      setVolume(video.volume);
+      setIsMuted(video.muted);
 
       return () => {
         video.removeEventListener('play', handlePlay);
         video.removeEventListener('pause', handlePause);
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        video.removeEventListener('volumechange', handleVolumeChange);
       };
     }
   }, []);
@@ -178,6 +259,9 @@ export const HeroSection = () => {
       } else if (e.code === 'KeyM') {
         e.preventDefault();
         toggleMute();
+      } else if (e.code === 'Escape' && isFullscreen) {
+        e.preventDefault();
+        toggleFullscreen();
       }
     };
 
@@ -345,6 +429,11 @@ export const HeroSection = () => {
                       playsInline
                       controls={false}
                       onTimeUpdate={() => {
+                        // Update current time state
+                        if (videoRef.current) {
+                          setCurrentTime(videoRef.current.currentTime);
+                        }
+
                         // Auto-exit fullscreen when video completes a cycle
                         if (videoRef.current && isFullscreen && document.fullscreenElement) {
                           const { currentTime, duration } = videoRef.current;
@@ -489,101 +578,128 @@ export const HeroSection = () => {
 
                   {/* Fullscreen overlay with custom controls */}
                   {isFullscreen && (
-                    <div className="absolute inset-0 z-50 group/fullscreen">
-                      {/* Fullscreen controls - always visible with fade out */}
-                      <div className="absolute top-4 right-4 flex gap-3 opacity-100 group-hover/fullscreen:opacity-100 transition-opacity duration-300">
-                        <button
-                          onClick={toggleMute}
-                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
-                          title={isMuted ? 'Unmute' : 'Mute'}
-                        >
-                          {isMuted ? (
-                            <svg
-                              className="w-6 h-6"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
-                              />
-                            </svg>
-                          ) : (
-                            <svg
-                              className="w-6 h-6"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                              />
-                            </svg>
-                          )}
-                        </button>
-                        <button
-                          onClick={togglePlayPause}
-                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
-                          title={isPlaying ? 'Pause' : 'Play'}
-                        >
-                          {isPlaying ? (
-                            <svg
-                              className="w-6 h-6"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 9v6m4-6v6"
-                              />
-                            </svg>
-                          ) : (
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          )}
-                        </button>
+                    <div
+                      className="absolute inset-0 z-50"
+                      onMouseMove={handleMouseMove}
+                      onMouseEnter={() => setShowControls(true)}
+                    >
+                      {/* Top controls - Exit fullscreen */}
+                      <div className={`absolute top-4 right-4 transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                         <button
                           onClick={toggleFullscreen}
-                          className="bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 hover:scale-110 transition-all duration-200"
-                          title="Exit Fullscreen"
+                          className="bg-black/60 backdrop-blur-sm text-white p-2 rounded-md hover:bg-black/80 transition-colors duration-200"
+                          title="Exit Fullscreen (ESC)"
                         >
-                          <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M6 18L18 6M6 6l12 12"
-                            />
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                           </svg>
                         </button>
                       </div>
 
-                      {/* Click anywhere to exit fullscreen */}
+                      {/* Bottom controls bar - Modern Netflix/YouTube style */}
+                      <div className={`absolute bottom-0 left-0 right-0 transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+                        {/* Progress bar container */}
+                        <div className="px-4">
+                          <div className="relative group/progress">
+                            <input
+                              type="range"
+                              min="0"
+                              max="100"
+                              value={duration > 0 ? (currentTime / duration) * 100 : 0}
+                              onChange={handleProgressChange}
+                              className="w-full h-1 bg-white/30 rounded-full appearance-none cursor-pointer progress-slider group-hover/progress:h-1.5 transition-all duration-200"
+                              style={{
+                                background: `linear-gradient(to right, #ef4444 0%, #ef4444 ${duration > 0 ? (currentTime / duration) * 100 : 0}%, rgba(255,255,255,0.3) ${duration > 0 ? (currentTime / duration) * 100 : 0}%, rgba(255,255,255,0.3) 100%)`
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Controls container */}
+                        <div className="px-4 py-2">
+                          <div className="flex items-center justify-between">
+                            {/* Left controls */}
+                            <div className="flex items-center gap-3">
+                              {/* Play/Pause */}
+                              <button
+                                onClick={togglePlayPause}
+                                className="text-white hover:scale-110 transition-transform duration-200 p-1"
+                                title={isPlaying ? 'Pause (Space)' : 'Play (Space)'}
+                              >
+                                {isPlaying ? (
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6" />
+                                  </svg>
+                                ) : (
+                                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                )}
+                              </button>
+
+                              {/* Volume controls */}
+                              <div className="flex items-center gap-2 group/volume">
+                                <button
+                                  onClick={toggleMute}
+                                  className="text-white hover:scale-110 transition-transform duration-200 p-1"
+                                  title={isMuted ? 'Unmute (M)' : 'Mute (M)'}
+                                >
+                                  {isMuted ? (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                                    </svg>
+                                  ) : (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                    </svg>
+                                  )}
+                                </button>
+
+                                {/* Volume slider - appears on hover */}
+                                <div className="opacity-0 group-hover/volume:opacity-100 w-0 group-hover/volume:w-16 overflow-hidden transition-all duration-200">
+                                  <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value={isMuted ? 0 : volume * 100}
+                                    onChange={handleVolumeChange}
+                                    className="w-full h-0.5 bg-white/30 rounded-full appearance-none cursor-pointer volume-slider-mini"
+                                    style={{
+                                      background: `linear-gradient(to right, #ffffff 0%, #ffffff ${isMuted ? 0 : volume * 100}%, rgba(255,255,255,0.3) ${isMuted ? 0 : volume * 100}%, rgba(255,255,255,0.3) 100%)`
+                                    }}
+                                  />
+                                </div>
+                              </div>
+
+                              {/* Time display */}
+                              <div className="text-white text-xs font-medium tracking-wide">
+                                {formatTime(currentTime)} / {formatTime(duration)}
+                              </div>
+                            </div>
+
+                            {/* Right controls */}
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={toggleFullscreen}
+                                className="text-white hover:scale-110 transition-transform duration-200 p-1"
+                                title="Exit Fullscreen (ESC)"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9V4.5M9 9H4.5M9 9L3.5 3.5M15 9h4.5M15 9V4.5M15 9l5.5-5.5M9 15v4.5M9 15H4.5M9 15l-5.5 5.5M15 15h4.5M15 15v4.5m0-4.5l5.5 5.5" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Click anywhere to exit fullscreen (but not on controls) */}
                       <div
                         className="absolute inset-0 cursor-pointer"
                         onClick={toggleFullscreen}
                         title="Click to exit fullscreen"
+                        style={{ zIndex: -1 }}
                       />
                     </div>
                   )}
